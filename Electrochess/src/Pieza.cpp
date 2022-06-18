@@ -12,4 +12,3 @@ void Pieza::setCasilla(double fila, double columna)
 	casilla.setPosicion(fila + 0.5, columna + 0.5);
 }
 
-

@@ -1,6 +1,9 @@
 #pragma once
 #include "Pieza.h"
 #include "Casilla.h"
+#include "../Rey.h"
+
+
 
 class Tablero
 {
@@ -11,7 +14,10 @@ public:
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
+	//Rey Rey;
+
 public:
+	
 	void tecla(unsigned char key);
 	void inicializa();
 	void rotarOjo();

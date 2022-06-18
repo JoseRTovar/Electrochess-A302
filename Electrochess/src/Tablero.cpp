@@ -20,6 +20,7 @@ void Tablero::inicializa()
 				casilla[fila][columna].setColor(BLANCO);
 		}
 	}
+	
 }
 
 void Tablero::dibuja()
@@ -36,6 +37,7 @@ void Tablero::dibuja()
 			casilla[fila][columna].dibuja();
 		}
 	}
+	
 }
 
 void Tablero::tecla(unsigned char key)
@@ -50,8 +52,8 @@ void Tablero::mueve()
 
 void Tablero::rotarOjo()
 {
-	float dist = sqrt(x_ojo * x_ojo + z_ojo * z_ojo);
-	float ang = atan2(z_ojo, x_ojo);
+	double dist = sqrt(x_ojo * x_ojo + z_ojo * z_ojo);
+	double ang = atan2(z_ojo, x_ojo);
 	ang += 0.05f;
 	x_ojo = dist * cos(ang);
 	z_ojo = dist * sin(ang);
