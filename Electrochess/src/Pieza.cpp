@@ -1,14 +1,12 @@
 #include "Pieza.h"
-#include "freeglut.h"
 
-Pieza::Pieza(double fila, double columna)
+void Pieza::setColor(unsigned char color)
 {
-	casilla.fila = fila;
-	casilla.columna = columna;
+	this->color.rojo = this->color.verde = this->color.azul = color;
 }
 
 void Pieza::setCasilla(double fila, double columna)
 {
-	casilla.setPosicion(fila + 0.5, columna + 0.5);
+	casilla.fila = fila;
+	casilla.columna = columna;
 }
-

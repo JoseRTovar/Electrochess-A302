@@ -24,7 +24,10 @@
     <ClInclude Include="src\Tablero.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Rey.h">
+    <ClInclude Include="src\Rey.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Juego.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,7 +44,7 @@
     <ClCompile Include="src\Ajedrez.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Rey.cpp">
+    <ClCompile Include="src\Rey.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

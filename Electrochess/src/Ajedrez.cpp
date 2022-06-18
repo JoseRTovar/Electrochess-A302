@@ -5,9 +5,6 @@
 
 
 Tablero tablero;
-Rey rey;
-
-
 
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
@@ -40,14 +37,6 @@ int main(int argc, char* argv[])
 
 	tablero.inicializa();
 
-	//ES LO OPTIMO:
-
-	//rey.listaReyes[0]->inicializa();
-	//rey.listaReyes[1]->inicializa();
-
-
-	rey.inicializa();
-
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
 
@@ -65,13 +54,6 @@ void OnDraw(void)
 
 	tablero.dibuja();
 
-	//ES LO OPTIMO:
-
-	//rey.listaReyes[0]->dibuja();
-	//rey.listaReyes[1]->dibuja();
-
-
-	rey.dibuja();
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
 }

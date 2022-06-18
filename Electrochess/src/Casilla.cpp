@@ -1,5 +1,4 @@
 #include "Casilla.h"
-#include "freeglut.h"
 
 void Casilla::setColor(unsigned char color)
 {

@@ -19,16 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Rey.h" />
     <ClInclude Include="src\Casilla.h" />
+    <ClInclude Include="src\Juego.h" />
     <ClInclude Include="src\Pieza.h" />
+    <ClInclude Include="src\Rey.h" />
     <ClInclude Include="src\Tablero.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Rey.cpp" />
     <ClCompile Include="src\Casilla.cpp" />
     <ClCompile Include="src\Ajedrez.cpp" />
     <ClCompile Include="src\Pieza.cpp" />
+    <ClCompile Include="src\Rey.cpp" />
     <ClCompile Include="src\Tablero.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

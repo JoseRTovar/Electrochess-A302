@@ -20,7 +20,10 @@ void Tablero::inicializa()
 				casilla[fila][columna].setColor(BLANCO);
 		}
 	}
-	
+	ReyB.setCasilla(casilla[0][4].getFila(), casilla[0][4].getColumna());
+	ReyB.setColor(BLANCO);
+	ReyN.setCasilla(casilla[7][4].getFila(), casilla[7][4].getColumna());
+	ReyN.setColor(NEGRO);
 }
 
 void Tablero::dibuja()
@@ -37,7 +40,8 @@ void Tablero::dibuja()
 			casilla[fila][columna].dibuja();
 		}
 	}
-	
+	ReyB.dibuja();
+	ReyN.dibuja();
 }
 
 void Tablero::tecla(unsigned char key)
