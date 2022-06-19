@@ -5,7 +5,9 @@ class Rey : public Pieza
 {
 public:
 	Rey() :Pieza() {}
-public:
+
+	//Rey(Casilla casilla, Color color) : Pieza(casilla, color) {}
+
 	virtual void dibuja();
 };
 

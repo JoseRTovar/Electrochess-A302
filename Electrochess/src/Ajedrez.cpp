@@ -5,6 +5,7 @@
 
 
 Tablero tablero;
+Juego juego;
 
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
@@ -61,8 +62,8 @@ void OnDraw(void)
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
-	tablero.tecla(key);
-
+	tablero.tecla(key, juego);
+	juego.setTurno(!juego.getTurno());
 	glutPostRedisplay();
 }
 

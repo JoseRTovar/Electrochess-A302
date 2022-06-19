@@ -17,7 +17,7 @@ public:
 	Rey ReyB;
 	Rey ReyN;
 public:
-	void tecla(unsigned char key);
+	void tecla(unsigned char key,Juego juego);
 	void inicializa();
 	void rotarOjo();
 	void mueve();

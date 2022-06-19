@@ -44,9 +44,10 @@ void Tablero::dibuja()
 	ReyN.dibuja();
 }
 
-void Tablero::tecla(unsigned char key)
+void Tablero::tecla(unsigned char key,Juego juego)
 {
-
+	ReyB.mueve(key, juego);
+	ReyN.mueve(key, juego);
 }
 
 void Tablero::mueve()
