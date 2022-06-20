@@ -4,10 +4,8 @@
 class Rey : public Pieza
 {
 public:
-	Rey() :Pieza() {}
-
-	//Rey(Casilla casilla, Color color) : Pieza(casilla, color) {}
-
-	virtual void dibuja();
+	Rey(color_t color) :Pieza(color, REY) {}
+	void dibuja();
 };
+
 

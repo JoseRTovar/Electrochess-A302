@@ -1,24 +1,17 @@
 #pragma once
-#include "Casilla.h"
-#include "Juego.h"
+#define NEGRO 100
+#define BLANCO 255
 
 class Pieza
 {
-protected:
-
-	Casilla casilla;
-	Color color;
-
 public:
-	Pieza() {}
-	
-	//POLIMORFISMO -> VIRTUAL BASE
-	virtual void setColor(unsigned char color);
-	virtual void setCasilla(double fila, double columna);
+	enum pieza_t { NO_PIEZA = 0, REY, TORRE };
+	enum color_t { NO_COLOR = 0, BLANCA, NEGRA };
+protected:
+	pieza_t pieza;
+	color_t color;
+public:
+	Pieza(color_t c, pieza_t p) :color(c), pieza(p) {}
 	virtual void dibuja() = 0;
-
-	virtual void mueve(unsigned char key, Juego juego);
-
-
 };
 

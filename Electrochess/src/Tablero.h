@@ -1,25 +1,13 @@
 #pragma once
-#include "Pieza.h"
 #include "Casilla.h"
-#include "Rey.h"
-
-
 
 class Tablero
 {
 public:
 	static const int N_COL = 8;
 	static const int N_FIL = 8;
-	Casilla** casilla;
-	float x_ojo;
-	float y_ojo;
-	float z_ojo;
-	Rey ReyB;
-	Rey ReyN;
+	Casilla casilla[N_FIL][N_COL];
 public:
-	void tecla(unsigned char key,Juego juego);
-	void inicializa();
-	void rotarOjo();
-	void mueve();
+	Tablero();
 	void dibuja();
 };

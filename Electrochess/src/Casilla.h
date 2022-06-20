@@ -1,18 +1,30 @@
 #pragma once
-#include "Juego.h"
+#include "freeglut.h"
+#include "Rey.h"
+#include "Torre.h"
+
+struct Color
+{
+	unsigned char rojo = 0;
+	unsigned char verde = 0;
+	unsigned char azul = 0;
+	void set() { glColor3ub(rojo, verde, azul); }
+	Color() {};
+};
 
 class Casilla
 {
 public:
-	double fila = 0.0;
-	double columna = 0.0;
+	double fila;
+	double columna;
 	Color color;
+	Pieza* pieza;
 public:
-	Casilla() {};
-	void setColor(unsigned char color);
+	Casilla();
 	void setPosicion(double fila, double columna);
-	double getFila() { return fila; }
-	double getColumna() { return columna; }
+	void setColor(unsigned char color);
+	void setPieza(Pieza::pieza_t p, Pieza::color_t c);
 	void dibuja();
 };
+
 
