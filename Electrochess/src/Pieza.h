@@ -10,8 +10,17 @@ public:
 protected:
 	pieza_t pieza;
 	color_t color;
+	
 public:
 	Pieza(color_t c, pieza_t p) :color(c), pieza(p) {}
+
 	virtual void dibuja() = 0;
+
+	//Añadido nuevo
+	color_t setcolor(color_t Color) {
+		return Color;
+	}
+
+	
 };
 

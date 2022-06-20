@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Moves.h" />
     <ClInclude Include="src\Casilla.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Pieza.h" />

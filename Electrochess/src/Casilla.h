@@ -24,7 +24,15 @@ public:
 	void setPosicion(double fila, double columna);
 	void setColor(unsigned char color);
 	void setPieza(Pieza::pieza_t p, Pieza::color_t c);
+	bool detectarPieza();
 	void dibuja();
+	double getfila() {
+		return fila;
+	}
+	double getcolumna() {
+		return columna;
+	}
+
 };
 
 

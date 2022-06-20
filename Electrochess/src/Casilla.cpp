@@ -18,6 +18,15 @@ void Casilla::setColor(unsigned char color)
 	this->color.rojo = this->color.verde = this->color.azul = color;
 }
 
+bool Casilla::detectarPieza() {
+	if (pieza != nullptr) {
+		return true;
+	}
+	else
+		return false;
+}
+
+
 void Casilla::setPieza(Pieza::pieza_t p, Pieza::color_t c)
 {
 	switch (p)
