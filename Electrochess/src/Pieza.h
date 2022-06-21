@@ -6,7 +6,7 @@
 class Pieza
 {
 public:
-	enum pieza_t { NO_PIEZA = -1, REY, TORRE };
+	enum pieza_t { NO_PIEZA = -1, REY, TORRE, ALFIL };
 	enum color_t { NO_COLOR = -1, BLANCA, NEGRA };
 protected:
 	pieza_t pieza = NO_PIEZA;
@@ -22,5 +22,17 @@ public:
 	virtual int getColumna() { return columna; }
 	virtual void dibuja() = 0;
 	virtual bool validmove(int fila, int columna) = 0;
-};
 
+	bool tableroinmove(int fila, int columna) {
+		if (fila < 0 || columna > 7) return false;
+	}
+
+
+
+	//Nuevo añadido
+
+	virtual void setFila(int f) { fila = f; }
+	virtual void setColumna(int c) { columna = c; }
+
+	virtual pieza_t eliminarPieza() = 0;
+};

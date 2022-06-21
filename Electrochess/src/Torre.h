@@ -11,4 +11,18 @@ public:
 	virtual int getFila() { return Pieza::getFila(); }
 	virtual int getColumna() { return Pieza::getColumna(); }
 	virtual bool validmove(int fila, int columna);
+
+	virtual void setFila(int f) { fila = f; }
+	virtual void setColumna(int c) { columna = c; }
+
+	/*virtual bool tableroinmove(int fila, int columna) {
+		if (fila < 0 || columna > 7) return false;
+	}*/
+
+	//Torre:
+	virtual  Pieza::pieza_t eliminarPieza() {
+		setFila(NULL);
+		setColumna(NULL);
+		return Pieza::NO_PIEZA;
+	}
 };

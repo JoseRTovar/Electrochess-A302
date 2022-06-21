@@ -38,6 +38,7 @@ int main(int argc, char* argv[])
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
 
+
 	return 0;
 }
 
@@ -59,6 +60,8 @@ void OnDraw(void)
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
 	//poner aqui el código de teclado
+	mundo.tecla(key);
+
 	glutPostRedisplay();
 }
 

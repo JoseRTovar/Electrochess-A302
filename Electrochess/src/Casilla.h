@@ -2,6 +2,7 @@
 #include "freeglut.h"
 #include "Rey.h"
 #include "Torre.h"
+#include "Alfil.h"
 
 struct Color
 {
@@ -30,5 +31,12 @@ public:
 	int getColumnapieza() { return pieza->getColumna(); }
 	bool getValidmove(int fila, int columna);
 	void dibuja();
+
+	Pieza::pieza_t eliminarPieza() {
+		delete pieza;
+		pieza = nullptr;
+		return Pieza::NO_PIEZA;
+	}
 };
+
 

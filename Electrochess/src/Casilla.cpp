@@ -28,6 +28,9 @@ void Casilla::setPieza(Pieza::pieza_t p, Pieza::color_t c)
 	case Pieza::TORRE:
 		pieza = new Torre(fila, columna, c);
 		break;
+	case Pieza::ALFIL:
+		pieza = new Alfil(fila, columna, c);
+		break;
 	case Pieza::NO_PIEZA:
 		//Este delete hay que cambiarlo porq si antes no había pieza, delete igual?
 		delete pieza;

@@ -36,6 +36,9 @@
     <ClInclude Include="src\Interaccion.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="src\Alfil.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Casilla.cpp">
@@ -60,6 +63,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\Interaccion.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Alfil.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

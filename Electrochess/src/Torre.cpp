@@ -10,5 +10,18 @@ void Torre::dibuja()
 
 bool Torre::validmove(int fila, int columna)
 {
-	return true;
+
+	if ((((fila != this->fila) && (columna == this->columna)) || ((columna != this->columna) && (fila == this->fila))) && (tableroinmove(fila, columna) != false)) return true;
+	return false;
+
+
 }
+
+/*
+virtual bool tableroinmove(int fila, int columna) {
+	for (int i = 0; i < 8; i++) {
+		if (fila != i || columna != i) return false;
+		return true;
+	}
+}
+*/

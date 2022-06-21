@@ -15,5 +15,6 @@ class Interaccion
 {
 public:
 	static void mueve(Tablero& t, Juego j);
+	static void JaqueMate(Tablero& t, int filai, int columnai, int filao, int columnao);
+	static void Comer(Tablero& t, Juego juego, int filai, int columnai, int filao, int columnao);
 };
-

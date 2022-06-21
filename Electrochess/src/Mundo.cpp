@@ -12,7 +12,10 @@ void Mundo::inicializa()
 	tablero.casilla[0][7].setPieza(Pieza::TORRE, Pieza::BLANCA);
 	tablero.casilla[7][0].setPieza(Pieza::TORRE, Pieza::NEGRA);
 	tablero.casilla[7][7].setPieza(Pieza::TORRE, Pieza::NEGRA);
-
+	tablero.casilla[0][2].setPieza(Pieza::ALFIL, Pieza::BLANCA);
+	tablero.casilla[0][5].setPieza(Pieza::ALFIL, Pieza::BLANCA);
+	tablero.casilla[7][2].setPieza(Pieza::ALFIL, Pieza::NEGRA);
+	tablero.casilla[7][5].setPieza(Pieza::ALFIL, Pieza::NEGRA);
 }
 
 void Mundo::dibuja()
@@ -31,6 +34,7 @@ void Mundo::tecla(unsigned char key)
 void Mundo::mueve()
 {
 	Interaccion::mueve(tablero, juego);
+	juego.cambiarTurno();
 }
 
 void Mundo::rotarOjo()
