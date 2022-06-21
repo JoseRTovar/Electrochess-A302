@@ -7,7 +7,7 @@ Casilla::Casilla()
 	pieza = nullptr;
 }
 
-void Casilla::setPosicion(double fila, double columna)
+void Casilla::setPosicion(int fila, int columna)
 {
 	this->fila = fila;
 	this->columna = columna;
@@ -18,26 +18,40 @@ void Casilla::setColor(unsigned char color)
 	this->color.rojo = this->color.verde = this->color.azul = color;
 }
 
-bool Casilla::detectarPieza() {
-	if (pieza != nullptr) {
-		return true;
-	}
-	else
-		return false;
-}
-
-
 void Casilla::setPieza(Pieza::pieza_t p, Pieza::color_t c)
 {
 	switch (p)
 	{
 	case Pieza::REY:
-		pieza = new Rey(c);
+		pieza = new Rey(fila, columna, c);
 		break;
 	case Pieza::TORRE:
-		pieza = new Torre(c);
+		pieza = new Torre(fila, columna, c);
+		break;
+	case Pieza::NO_PIEZA:
+		//Este delete hay que cambiarlo porq si antes no había pieza, delete igual?
+		delete pieza;
+		pieza = nullptr;
 		break;
 	}
+}
+
+Pieza::pieza_t Casilla::getPieza()
+{
+	if (pieza == nullptr) return Pieza::NO_PIEZA;
+	return pieza->getPieza();
+}
+
+Pieza::color_t Casilla::getColor()
+{
+	if (pieza == nullptr) return Pieza::NO_COLOR;
+	return pieza->getColor();
+}
+
+bool Casilla::getValidmove(int fila, int columna)
+{
+	//if (pieza == nullptr) return false;
+	return pieza->validmove(fila, columna);
 }
 
 void Casilla::dibuja()
@@ -51,6 +65,7 @@ void Casilla::dibuja()
 	glVertex3d(columna, fila + 1.0, 0.0);
 	glEnd();
 	glEnable(GL_LIGHTING);
+
 	if (pieza != nullptr)
 	{
 		glTranslatef(columna + 0.5, fila + 0.5, 0);

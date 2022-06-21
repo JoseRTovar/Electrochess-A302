@@ -1,7 +1,6 @@
 #include "Mundo.h"
 #include <math.h>
 
-
 void Mundo::inicializa()
 {
 	x_ojo = 4;
@@ -13,7 +12,6 @@ void Mundo::inicializa()
 	tablero.casilla[0][7].setPieza(Pieza::TORRE, Pieza::BLANCA);
 	tablero.casilla[7][0].setPieza(Pieza::TORRE, Pieza::NEGRA);
 	tablero.casilla[7][7].setPieza(Pieza::TORRE, Pieza::NEGRA);
-	//mover.desplazar(casilla[7][7], casilla[5][5], Pieza::TORRE, Pieza::NEGRA, tablero);
 
 }
 
@@ -32,7 +30,7 @@ void Mundo::tecla(unsigned char key)
 
 void Mundo::mueve()
 {
-
+	Interaccion::mueve(tablero, juego);
 }
 
 void Mundo::rotarOjo()

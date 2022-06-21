@@ -7,3 +7,8 @@ void Torre::dibuja()
 	else if (color == Pieza::BLANCA) glColor3ub(BLANCO, BLANCO, BLANCO);
 	glutSolidCube(0.8);
 }
+
+bool Torre::validmove(int fila, int columna)
+{
+	return true;
+}

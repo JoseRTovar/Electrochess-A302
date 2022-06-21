@@ -1,15 +1,13 @@
 #pragma once
 #include "Rey.h"
 #include "Tablero.h"
-#include "Game.h"
-//#include "Moves.h"
+#include "Interaccion.h"
 
 class Mundo
 {
 private:
 	Tablero tablero;
-	Game juego;
-	//Moves mover;
+	Juego juego;
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;

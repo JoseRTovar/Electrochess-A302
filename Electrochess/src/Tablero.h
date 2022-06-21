@@ -10,4 +10,5 @@ public:
 public:
 	Tablero();
 	void dibuja();
+	friend class interaccion;
 };

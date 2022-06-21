@@ -19,9 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Moves.h" />
     <ClInclude Include="src\Casilla.h" />
+    <ClInclude Include="src\Interaccion.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Pieza.h" />
     <ClInclude Include="src\Rey.h" />
@@ -30,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Casilla.cpp" />
+    <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Pieza.cpp" />

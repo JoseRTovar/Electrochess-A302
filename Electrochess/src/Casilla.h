@@ -14,25 +14,21 @@ struct Color
 
 class Casilla
 {
-public:
-	double fila;
-	double columna;
+private:
+	int fila;
+	int columna;
 	Color color;
 	Pieza* pieza;
 public:
 	Casilla();
-	void setPosicion(double fila, double columna);
+	void setPosicion(int fila, int columna);
 	void setColor(unsigned char color);
-	void setPieza(Pieza::pieza_t p, Pieza::color_t c);
-	bool detectarPieza();
+	void setPieza(Pieza::pieza_t p, Pieza::color_t c = Pieza::NO_COLOR);
+	Pieza::pieza_t getPieza();
+	Pieza::color_t getColor();
+	int getFilapieza() { return pieza->getFila(); }
+	int getColumnapieza() { return pieza->getColumna(); }
+	bool getValidmove(int fila, int columna);
 	void dibuja();
-	double getfila() {
-		return fila;
-	}
-	double getcolumna() {
-		return columna;
-	}
-
 };
-
 
