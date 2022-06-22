@@ -12,9 +12,11 @@ void Alfil::dibuja()
 
 bool Alfil::validmove(int fila, int columna)
 {
-	if ((abs(((fila + columna) - ((this->fila) + (this->columna))) >= 0) || (((fila + columna) - ((this->fila) + (this->columna))) == 2) && ((tableroinmove(fila, columna) != false)))) return true;
+	//if ((abs(((fila + columna) - ((this->fila) + (this->columna))) >= 0) || (((fila + columna) - ((this->fila) + (this->columna))) == 2) && ((tableroinmove(fila, columna) != false)))) return true;
+	if ((((fila!= this->fila) && (columna != this->columna)))  && ((tableroinmove(fila, columna) != false))) return true;
 	return false;
 
+	
 }
 
 //if ((abs(((fila + columna) - ((this->fila) + (this->columna))) >= 0) || (((fila + columna) - ((this->fila) + (this->columna))) == 2) && ((tableroinmove(fila, columna) != false)))) return true;
@@ -23,23 +25,23 @@ bool Alfil::validmove(int fila, int columna)
 //DIAGONAL ARRIBA IZQUIERDA
 		case't':
 			casilla.setPosicion(casilla.fila + 1.0, casilla.columna - 1);
-			setPos(casilla.fila + 1.0, casilla.columna - 1);
+			
 			break;
 			//DIAGONAL ARRIBA DERECHA
 		case 'y':
 			casilla.setPosicion(casilla.fila + 1.0, casilla.columna + 1);
-			setPos(casilla.fila + 1.0, casilla.columna + 1);
+			
 			break;
 
 			//DIAGONAL ABAJO DERECHA
 		case 'h':
 			casilla.setPosicion(casilla.fila - 1.0, casilla.columna + 1);
-			setPos(casilla.fila - 1.0, casilla.columna + 1);
+			
 			break;
 			//DIAGONAL ABAJO IZQUIERDA
 		case 'j':
 			casilla.setPosicion(casilla.fila - 1.0, casilla.columna - 1);
-			setPos(casilla.fila - 1.0, casilla.columna - 1);
+			
 			break;
 
 */

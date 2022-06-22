@@ -23,44 +23,52 @@ void Interaccion::mueve(Tablero& t, Juego j)
 		else if (t.casilla[filain][columnain].getValidmove(filaout, columnaout) == false) cout << "No es un movimiento valido" << endl;
 	} while (t.casilla[filaout][columnaout].getColor() == j.turno_color || t.casilla[filain][columnain].getValidmove(filaout, columnaout) == false);
 
-	//Comer(t, j, filain, columnain, filaout, columnaout);
+	NoSaltar(t, j, filain, columnain, filaout, columnaout);
+	JaqueMate(t, filaout, columnaout);
 	t.casilla[filaout][columnaout].setPieza(t.casilla[filain][columnain].getPieza(), j.turno_color);
 	t.casilla[filain][columnain].setPieza(Pieza::NO_PIEZA);
-	//JaqueMate(t, filain, columnain, filaout, columnaout);
+	//JaqueMate(t, filaout, columnaout);
 
 
-}
-
-//Para futuras intervenciones:
-void Interaccion::JaqueMate(Tablero& t, int filai, int columnai, int filao, int columnao) {
-
-
-	for (int fila = 0; fila < 8; fila++)
-	{
-		for (int columna = 0; columna < 8; columna++)
-		{
-			if (t.casilla[filai][columnai].getPieza() != Pieza::REY) {
-				t.casilla[fila][columna].setPieza(Pieza::NO_PIEZA);
-			}
-		}
-	}
 }
 
 
 //HAY QUE ACABAR DE HACERLA BIEN
 //NO ENCUENTRO EL FALLO -> QUIERO QUE RECORRA TODAS LAS CASILLAS Y QUE ME INVALIDE EL MOVIMIENTO A LA CASILLA DE DESTINO CUANDO HAY DE SU MISMO COLOR ENTRE MEDIAS
-void Interaccion::Comer(Tablero& t, Juego juego, int filai, int columnai, int filao, int columnao) {
+void Interaccion::NoSaltar(Tablero& t, Juego juego, int filai, int columnai, int filao, int columnao) {
 
-	for (int fila = 0; fila < 8; fila++)
-	{
-		for (int columna = 0; columna < 8; columna++)
-		{
-			if (t.casilla[fila][columna].getColor() == juego.turno_color) {
-				fila = filao;
-				columna = columnao;
+	//Recorre filas y no las salta
+	if(filai != filao){
+		for (int i = filai + 1; i < filao + 1 ; i++) {
+			if ((t.casilla[i][columnai].getColor() == juego.turno_color)) {
 				t.casilla[filai][columnai].getValidmove(filao, columnao) == false;
 			}
 		}
 	}
 
+	if (columnai != columnao) {
+		for (int i = columnai + 1; i < columnao + 1; i++) {
+			if (t.casilla[filai][i].getColor() == juego.turno_color) {
+				t.casilla[filai][columnai].getValidmove(filao, columnao) == false;
+			}
+		}
+	}
+
+}
+
+void Interaccion::JaqueMate(Tablero& t, int filaout, int columnaout) {
+
+	if (t.casilla[filaout][columnaout].getPieza() == Pieza::REY) {
+	for (int fila = 0; fila < 8; fila++)
+	{
+		for (int columna = 0; columna < 8; columna++)
+		{
+			
+				t.casilla[fila][columna].setPieza(Pieza::NO_PIEZA);
+			
+		}
+	}
+	
+	cout << "Game Over, rey comido";
+	}
 }

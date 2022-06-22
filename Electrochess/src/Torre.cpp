@@ -13,15 +13,6 @@ bool Torre::validmove(int fila, int columna)
 
 	if ((((fila != this->fila) && (columna == this->columna)) || ((columna != this->columna) && (fila == this->fila))) && (tableroinmove(fila, columna) != false)) return true;
 	return false;
-
+	//Filas y columnas distintas y dentro del tablero 
 
 }
-
-/*
-virtual bool tableroinmove(int fila, int columna) {
-	for (int i = 0; i < 8; i++) {
-		if (fila != i || columna != i) return false;
-		return true;
-	}
-}
-*/
