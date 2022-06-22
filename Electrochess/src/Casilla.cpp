@@ -1,21 +1,17 @@
 #include "Casilla.h"
 
-Casilla::Casilla()
-{
-	fila = 0.0;
-	columna = 0.0;
-	pieza = nullptr;
-}
-
 void Casilla::setPosicion(int fila, int columna)
 {
-	this->fila = fila;
-	this->columna = columna;
+	posicion.fila = fila;
+	posicion.columna = columna;
+	rojo = verde = azul = 0;
 }
 
-void Casilla::setColor(unsigned char color)
+void Casilla::setColor(byte r, byte v, byte a)
 {
-	this->color.rojo = this->color.verde = this->color.azul = color;
+	rojo = r;
+	verde = v;
+	azul = a;
 }
 
 void Casilla::setPieza(Pieza::pieza_t p, Pieza::color_t c)
@@ -23,13 +19,13 @@ void Casilla::setPieza(Pieza::pieza_t p, Pieza::color_t c)
 	switch (p)
 	{
 	case Pieza::REY:
-		pieza = new Rey(fila, columna, c);
+		pieza = new Rey(posicion, c);
 		break;
 	case Pieza::TORRE:
-		pieza = new Torre(fila, columna, c);
+		pieza = new Torre(posicion, c);
 		break;
 	case Pieza::ALFIL:
-		pieza = new Alfil(fila, columna, c);
+		pieza = new Alfil(posicion, c);
 		break;
 	case Pieza::NO_PIEZA:
 		//Este delete hay que cambiarlo porq si antes no había pieza, delete igual?
@@ -45,7 +41,7 @@ Pieza::pieza_t Casilla::getPieza()
 	return pieza->getPieza();
 }
 
-Pieza::color_t Casilla::getColor()
+Pieza::color_t Casilla::getColorPieza()
 {
 	if (pieza == nullptr) return Pieza::NO_COLOR;
 	return pieza->getColor();
@@ -60,19 +56,19 @@ bool Casilla::getValidmove(int fila, int columna)
 void Casilla::dibuja()
 {
 	glDisable(GL_LIGHTING);
-	color.set();
+	glColor3ub(rojo, verde, azul);
 	glBegin(GL_POLYGON);
-	glVertex3d(columna, fila, 0.0);
-	glVertex3d(columna + 1.0, fila, 0.0);
-	glVertex3d(columna + 1.0, fila + 1.0, 0.0);
-	glVertex3d(columna, fila + 1.0, 0.0);
+	glVertex3d(posicion.columna, posicion.fila, 0.0);
+	glVertex3d(posicion.columna + 1.0, posicion.fila, 0.0);
+	glVertex3d(posicion.columna + 1.0, posicion.fila + 1.0, 0.0);
+	glVertex3d(posicion.columna, posicion.fila + 1.0, 0.0);
 	glEnd();
 	glEnable(GL_LIGHTING);
 
 	if (pieza != nullptr)
 	{
-		glTranslatef(columna + 0.5, fila + 0.5, 0);
+		glTranslatef(posicion.columna + 0.5, posicion.fila + 0.5, 0);
 		pieza->dibuja();
-		glTranslatef(-columna - 0.5, -fila - 0.5, 0);
+		glTranslatef(-posicion.columna - 0.5, -posicion.fila - 0.5, 0);
 	}
 }

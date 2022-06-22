@@ -1,20 +1,20 @@
 #pragma once
-#include "Rey.h"
-#include "Tablero.h"
-#include "Interaccion.h"
+#include "Casilla.h"
+#include <iostream>
+using namespace std;
 
 class Mundo
 {
 private:
-	Tablero tablero;
-	Juego juego;
+	Casilla casilla[8][8];
+	bool turno = 0;
 	float x_ojo;
 	float y_ojo;
 	float z_ojo;
 public:
-	void tecla(unsigned char key);
 	void inicializa();
-	void rotarOjo();
-	void mueve();
+	Coordenadas click1();
+	void click2(Coordenadas c);
+	void cambiarTurno() { turno = !turno; }
 	void dibuja();
 };

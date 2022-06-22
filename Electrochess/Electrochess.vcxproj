@@ -25,7 +25,6 @@
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Pieza.h" />
     <ClInclude Include="src\Rey.h" />
-    <ClInclude Include="src\Tablero.h" />
     <ClInclude Include="src\Torre.h" />
   </ItemGroup>
   <ItemGroup>
@@ -34,9 +33,7 @@
     <ClCompile Include="src\Interaccion.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
-    <ClCompile Include="src\Pieza.cpp" />
     <ClCompile Include="src\Rey.cpp" />
-    <ClCompile Include="src\Tablero.cpp" />
     <ClCompile Include="src\Torre.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

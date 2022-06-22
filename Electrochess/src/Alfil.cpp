@@ -3,45 +3,17 @@
 
 void Alfil::dibuja()
 {
-	if (color == Pieza::NEGRA)  glColor3ub(NEGRO, NEGRO, NEGRO);
-	else if (color == Pieza::BLANCA) glColor3ub(BLANCO, BLANCO, BLANCO);
-	//glRotatef(45.0, 0.0, 0.0, 1.0);
+	if (color == Pieza::NEGRA)  glColor3ub(100, 100, 100);
+	else if (color == Pieza::BLANCA) glColor3ub(255, 255, 255);
 	glutSolidTorus(0.15, 0.3, 20, 20);
-
 }
 
 bool Alfil::validmove(int fila, int columna)
 {
-	//if ((abs(((fila + columna) - ((this->fila) + (this->columna))) >= 0) || (((fila + columna) - ((this->fila) + (this->columna))) == 2) && ((tableroinmove(fila, columna) != false)))) return true;
-	if ((((fila!= this->fila) && (columna != this->columna)))  && ((tableroinmove(fila, columna) != false))) return true;
+	//if ((((fila!= posicion.fila) && (columna != posicion.columna)))  && ((tableroinmove(fila, columna) != false))) return true;
+	if((abs(fila-posicion.fila)+abs(columna-posicion.columna))%2==0 &&
+		abs(fila-posicion.fila)==abs(columna-posicion.columna)
+		&& ((limitetablero(fila, columna) != false))) return true;
 	return false;
-
-	
 }
 
-//if ((abs(((fila + columna) - ((this->fila) + (this->columna))) >= 0) || (((fila + columna) - ((this->fila) + (this->columna))) == 2) && ((tableroinmove(fila, columna) != false)))) return true;
-
-/*
-//DIAGONAL ARRIBA IZQUIERDA
-		case't':
-			casilla.setPosicion(casilla.fila + 1.0, casilla.columna - 1);
-			
-			break;
-			//DIAGONAL ARRIBA DERECHA
-		case 'y':
-			casilla.setPosicion(casilla.fila + 1.0, casilla.columna + 1);
-			
-			break;
-
-			//DIAGONAL ABAJO DERECHA
-		case 'h':
-			casilla.setPosicion(casilla.fila - 1.0, casilla.columna + 1);
-			
-			break;
-			//DIAGONAL ABAJO IZQUIERDA
-		case 'j':
-			casilla.setPosicion(casilla.fila - 1.0, casilla.columna - 1);
-			
-			break;
-
-*/

@@ -3,30 +3,23 @@
 #include "Rey.h"
 #include "Torre.h"
 #include "Alfil.h"
-
-struct Color
-{
-	unsigned char rojo = 0;
-	unsigned char verde = 0;
-	unsigned char azul = 0;
-	void set() { glColor3ub(rojo, verde, azul); }
-	Color() {};
-};
+typedef unsigned char byte;
 
 class Casilla
 {
 private:
-	int fila;
-	int columna;
-	Color color;
+	Coordenadas posicion;
 	Pieza* pieza;
+	byte rojo;
+	byte verde;
+	byte azul;
 public:
-	Casilla();
+	Casilla() :pieza(nullptr) {}
 	void setPosicion(int fila, int columna);
-	void setColor(unsigned char color);
+	void setColor(byte r, byte v, byte a);
 	void setPieza(Pieza::pieza_t p, Pieza::color_t c = Pieza::NO_COLOR);
 	Pieza::pieza_t getPieza();
-	Pieza::color_t getColor();
+	Pieza::color_t getColorPieza();
 	int getFilapieza() { return pieza->getFila(); }
 	int getColumnapieza() { return pieza->getColumna(); }
 	bool getValidmove(int fila, int columna);
