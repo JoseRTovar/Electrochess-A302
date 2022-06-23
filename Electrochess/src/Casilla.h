@@ -14,7 +14,7 @@ private:
 	byte verde;
 	byte azul;
 public:
-	Casilla() :pieza(nullptr) {}
+	Casilla():pieza(nullptr) {}
 	void setPosicion(int fila, int columna);
 	void setColor(byte r, byte v, byte a);
 	void setPieza(Pieza::pieza_t p, Pieza::color_t c = Pieza::NO_COLOR);
@@ -23,6 +23,7 @@ public:
 	int getFilapieza() { return pieza->getFila(); }
 	int getColumnapieza() { return pieza->getColumna(); }
 	bool getValidmove(int fila, int columna);
+	void setValidmovefalse(int fila, int columna);
 	void dibuja();
 
 	Pieza::pieza_t eliminarPieza() {

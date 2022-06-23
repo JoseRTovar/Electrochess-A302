@@ -17,4 +17,6 @@ public:
 	void click2(Coordenadas c);
 	void cambiarTurno() { turno = !turno; }
 	void dibuja();
+	void JaqueMate(int filaout, int columnaout);
+	bool NoSaltar(int filai, int columnai, int filao, int columnao);
 };

@@ -10,7 +10,6 @@ void Alfil::dibuja()
 
 bool Alfil::validmove(int fila, int columna)
 {
-	//if ((((fila!= posicion.fila) && (columna != posicion.columna)))  && ((tableroinmove(fila, columna) != false))) return true;
 	if((abs(fila-posicion.fila)+abs(columna-posicion.columna))%2==0 &&
 		abs(fila-posicion.fila)==abs(columna-posicion.columna)
 		&& ((limitetablero(fila, columna) != false))) return true;

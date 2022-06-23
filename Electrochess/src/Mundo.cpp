@@ -94,6 +94,12 @@ void Mundo::click2(Coordenadas c)
 			cout << "Tecnicamente has comido" << endl;
 	} while (casilla[c.fila][c.columna].getValidmove(fil, col) == false || (casilla[fil][col].getPieza() != Pieza::NO_PIEZA && casilla[fil][col].getColorPieza() == (Pieza::color_t)turno && casilla[c.fila][c.columna].getValidmove(fil, col) == true));
 
+	if (NoSaltar(c.fila, c.columna, fil, col) == true) {
+
+		casilla[c.fila][c.columna].setValidmovefalse(fil, col); //Esto no funciona
+		cout << "Movimiento no valido, no se pueden saltar piezas";
+	}
+
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 8; j++)
@@ -105,7 +111,48 @@ void Mundo::click2(Coordenadas c)
 		}
 	}
 
+	JaqueMate(fil, col);
 	casilla[fil][col].setPieza(casilla[c.fila][c.columna].getPieza(), (Pieza::color_t)turno);
 	casilla[c.fila][c.columna].setPieza(Pieza::NO_PIEZA);
 	cambiarTurno();
+}
+
+void Mundo::JaqueMate(int filaout, int columnaout) {
+
+	//Detecta que se ha comido el rey y se acaba la partida -> GAME OVER
+	if (casilla[filaout][columnaout].getPieza() == Pieza::REY) {
+		for (int fila = 0; fila < 8; fila++)
+		{
+			for (int columna = 0; columna < 8; columna++)
+			{
+
+				casilla[fila][columna].setPieza(Pieza::NO_PIEZA);
+
+			}
+		}
+
+		cout << "Game Over, rey comido";
+	}
+}
+
+
+bool Mundo::NoSaltar(int filai, int columnai, int filao, int columnao) {
+
+	//Recorre filas y no las salta
+	if (filai != filao) {
+		for (int i = filai + 1; i < filao + 1; i++) {
+			if ((casilla[i][columnai].getColorPieza() == (Pieza::color_t)turno)) {
+				return true;
+
+			}
+		}
+	}
+	//Recorre columnas y no las salta
+	if (columnai != columnao) {
+		for (int i = columnai + 1; i < columnao + 1; i++) {
+			if (casilla[filai][i].getColorPieza() == (Pieza::color_t)turno) {
+				return true;
+			}
+		}
+	}
 }
