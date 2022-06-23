@@ -1,14 +1,13 @@
-#include "Mundo.h"
+#include "Tablero.h"
 #include "freeglut.h"
 #include <iostream>
 
-Mundo mundo;
-
+Tablero tablero;
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
 //NO HACE FALTA LLAMARLAS EXPLICITAMENTE
 void OnDraw(void); //esta funcion sera llamada para dibujar
-void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion	
+void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 
 int main(int argc, char* argv[])
 {
@@ -31,7 +30,7 @@ int main(int argc, char* argv[])
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25, OnTimer, 0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 
-	mundo.inicializa();
+
 
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
@@ -49,21 +48,20 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	mundo.dibuja();
+	tablero.dibuja();
 
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
 }
 
-
 void OnTimer(int value)
 {
 	//poner aqui el código de animacion
-	Coordenadas aux = mundo.click1();
-	OnDraw();
-	mundo.click2(aux);
 
 	//no borrar estas lineas
 	glutTimerFunc(25, OnTimer, 0);
 	glutPostRedisplay();
 }
+
+
+
