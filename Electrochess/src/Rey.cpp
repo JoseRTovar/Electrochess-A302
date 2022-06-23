@@ -10,8 +10,6 @@ void Rey::dibuja()
 
 bool Rey::validmove(int fila, int columna)
 {
-	//Para comer:
-	//(((fila == posicion.fila) && (columna != posicion.columna)) || ((columna == posicion.columna) && (fila != posicion.fila)))
-	if (abs(fila - posicion.fila) <= 1 && abs(columna - posicion.columna) <= 1 && (((fila == posicion.fila) && (columna != posicion.columna)) || ((columna == posicion.columna) && (fila != posicion.fila))) && (limitetablero(fila, columna) != false)) return true;
+	if (abs(fila - posicion.fila) <= 1 && abs(columna - posicion.columna) <= 1) return true;
 	return false;
 }

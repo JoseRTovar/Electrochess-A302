@@ -53,12 +53,6 @@ bool Casilla::getValidmove(int fila, int columna)
 	return pieza->validmove(fila, columna);
 }
 
-void Casilla::setValidmovefalse(int fila, int columna)
-{
-	//if (pieza == nullptr) return false;
-	pieza->validmove(fila, columna) == false;
-}
-
 void Casilla::dibuja()
 {
 	glDisable(GL_LIGHTING);

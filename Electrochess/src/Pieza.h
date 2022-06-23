@@ -20,14 +20,12 @@ protected:
 public:
 	Pieza() {}
 	Pieza(Coordenadas posicion, color_t c, pieza_t p) :posicion(posicion), color(c), pieza(p) {}
-	virtual pieza_t getPieza() { return pieza; }
-	virtual color_t getColor() { return color; }
-	virtual int getFila() { return posicion.fila; }
-	virtual int getColumna() { return posicion.columna; }
+	pieza_t getPieza() { return pieza; }
+	color_t getColor() { return color; }
+	int getFila() { return posicion.fila; }
+	int getColumna() { return posicion.columna; }
 	virtual bool validmove(int fila, int columna) = 0;
 	virtual void dibuja() = 0;
 	bool limitetablero(int fila, int columna) { if (fila < 0 || columna > 7) return false; }
-	virtual void setFila(int f) { posicion.fila = f; }
-	virtual void setColumna(int c) { posicion.columna = c; }
-	virtual pieza_t eliminarPieza() = 0;
+	//virtual pieza_t eliminarPieza() = 0;
 };

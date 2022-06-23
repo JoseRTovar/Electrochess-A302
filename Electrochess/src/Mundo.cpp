@@ -92,13 +92,12 @@ void Mundo::click2(Coordenadas c)
 			cout << "Ahi hay una pieza de tu mismo color" << endl;
 		else if (casilla[fil][col].getColorPieza() == (Pieza::color_t)!turno)
 			cout << "Tecnicamente has comido" << endl;
+	//if (NoSaltar(c.fila, c.columna, fil, col) == true) {
+	//	casilla[c.fila][c.columna].getValidmove(fil, col) == false; //Esto no funciona
+	//	cout << "Movimiento no valido, no se pueden saltar piezas" << endl;
+	//}
 	} while (casilla[c.fila][c.columna].getValidmove(fil, col) == false || (casilla[fil][col].getPieza() != Pieza::NO_PIEZA && casilla[fil][col].getColorPieza() == (Pieza::color_t)turno && casilla[c.fila][c.columna].getValidmove(fil, col) == true));
 
-	if (NoSaltar(c.fila, c.columna, fil, col) == true) {
-
-		casilla[c.fila][c.columna].setValidmovefalse(fil, col); //Esto no funciona
-		cout << "Movimiento no valido, no se pueden saltar piezas";
-	}
 
 	for (int i = 0; i < 8; i++)
 	{
@@ -136,23 +135,23 @@ void Mundo::JaqueMate(int filaout, int columnaout) {
 }
 
 
-bool Mundo::NoSaltar(int filai, int columnai, int filao, int columnao) {
-
-	//Recorre filas y no las salta
-	if (filai != filao) {
-		for (int i = filai + 1; i < filao + 1; i++) {
-			if ((casilla[i][columnai].getColorPieza() == (Pieza::color_t)turno)) {
-				return true;
-
-			}
-		}
-	}
-	//Recorre columnas y no las salta
-	if (columnai != columnao) {
-		for (int i = columnai + 1; i < columnao + 1; i++) {
-			if (casilla[filai][i].getColorPieza() == (Pieza::color_t)turno) {
-				return true;
-			}
-		}
-	}
-}
+//bool Mundo::NoSaltar(int filai, int columnai, int filao, int columnao) {
+//
+//	//Recorre filas y no las salta
+//	if (filai != filao) {
+//		for (int i = filai + 1; i < filao + 1; i++) {
+//			if ((casilla[i][columnai].getColorPieza() == (Pieza::color_t)turno)) {
+//				return true;
+//
+//			}
+//		}
+//	}
+//	//Recorre columnas y no las salta
+//	if (columnai != columnao) {
+//		for (int i = columnai + 1; i < columnao + 1; i++) {
+//			if (casilla[filai][i].getColorPieza() == (Pieza::color_t)turno) {
+//				return true;
+//			}
+//		}
+//	}
+//}

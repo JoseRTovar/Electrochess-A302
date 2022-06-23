@@ -23,7 +23,6 @@ public:
 	int getFilapieza() { return pieza->getFila(); }
 	int getColumnapieza() { return pieza->getColumna(); }
 	bool getValidmove(int fila, int columna);
-	void setValidmovefalse(int fila, int columna);
 	void dibuja();
 
 	Pieza::pieza_t eliminarPieza() {
