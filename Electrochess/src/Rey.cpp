@@ -8,15 +8,12 @@ void Rey::dibuja()
 	glutSolidSphere(0.4, 20, 20);
 }
 
-bool Rey::validmove(int fo, int co, int fd, int cd, Tablero& t)
+
+bool Rey::validmove(int fo, int co, int fd, int cd)
 {
 	if (abs(fo - fd) <= 1 && abs(co - cd) <= 1)
 	{
-		Pieza::validmove(fo, co, fd, cd, t);
+		Pieza::validmove(fo, co, fd, cd);
 	}
-	else
-	{
-		cout << "Movimiento no valido" << endl;
 		return false;
-	}
 }

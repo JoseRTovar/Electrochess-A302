@@ -15,20 +15,28 @@ Tablero::Tablero()
 
 void Tablero::inicializa()
 {
+	
 	tab[0][4] = new Rey(Pieza::BLANCA);
 	tab[7][4] = new Rey(Pieza::NEGRA);
+	tab[0][0] = new Torre(Pieza::BLANCA);
+	tab[0][7] = new Torre(Pieza::BLANCA);
+	tab[7][0] = new Torre(Pieza::NEGRA);
+	tab[7][7] = new Torre(Pieza::NEGRA);
+
 }
+
 
 void Tablero::cambiarEstado(int fo, int co, int fd, int cd, Pieza::pieza_t p, Pieza::color_t c)
 {
+
 	switch (p)
 	{
 	case Pieza::REY:
 		tab[fd][cd] = new Rey(c);
 		break;
-		//case Pieza::TORRE:
-		//	tab[fd][cd] = new Torre(posicion, c);
-		//	break;
+	case Pieza::TORRE:
+		tab[fd][cd] = new Torre(c);
+		break;
 		//case Pieza::ALFIL:
 		//	tab[fd][cd] = new Alfil(posicion, c);
 		//	break;
@@ -75,3 +83,17 @@ void Tablero::dibuja()
 	}
 }
 
+void Tablero::click1() {
+
+	int fi, ci, fo, co;
+
+	cout << "Posicion de origen: " << endl;
+	cin >> fi >> ci;
+	cout << "Posicion de destino: " << endl;
+	cin >> fo >> co;
+
+	do {
+		cambiarEstado(fi, ci, fo, co, tab[fi][ci]->getPieza(), tab[fi][ci]->getColor());
+	} while ((tab[fi][ci]->getColor() != (Pieza::color_t)turno) && (tab[fi][ci]->validmove(fi,ci,fo,co) == true));
+
+}

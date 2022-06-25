@@ -1,6 +1,6 @@
 #pragma once
-#include "Tablero.h"
 #include <iostream>
+
 using namespace std;
 
 class Pieza
@@ -12,10 +12,9 @@ protected:
 	pieza_t pieza = NO_PIEZA;
 	color_t color = NO_COLOR;
 public:
-	//Pieza() {}
-	Pieza(color_t c, pieza_t p) : color(c), pieza(p) {}
+	Pieza(color_t c, pieza_t p) : color(c), pieza(p) {};
 	pieza_t getPieza() { return pieza; }
 	color_t getColor() { return color; }
 	virtual void dibuja() = 0;
-	virtual bool validmove(int fo, int co, int fd, int cd, Tablero& t) = 0;
+	virtual bool validmove(int fo, int co, int fd, int cd);
 };

@@ -57,7 +57,9 @@ void OnDraw(void)
 void OnTimer(int value)
 {
 	//poner aqui el código de animacion
-
+	//OnDraw();
+	tablero.click1();
+	tablero.cambiarTurno();
 	//no borrar estas lineas
 	glutTimerFunc(25, OnTimer, 0);
 	glutPostRedisplay();
