@@ -42,13 +42,13 @@ void Tablero::cambiarEstado(int fo, int co, int fd, int cd, Pieza::pieza_t p, Pi
 		tab[fd][cd] = new Torre(c);
 		break;
 	case Pieza::ALFIL:
-	tab[fd][cd] = new Alfil(c);
+		tab[fd][cd] = new Alfil(c);
 		break;
 	case Pieza::NO_PIEZA:
-		delete tab[fd][cd];
-		//case Pieza::ALFIL:
-		//	tab[fd][cd] = new Alfil(posicion, c);
-		//	break;
+		tab[fd][cd] = nullptr;
+		tab[fd][cd]->getPieza() == Pieza::NO_PIEZA;
+		tab[fd][cd]->getColor() == Pieza::NO_COLOR;
+		break;
 	}
 	tab[fo][co] = nullptr;
 }
@@ -95,29 +95,27 @@ void Tablero::dibuja()
 void Tablero::click() {
 
 		int fi, ci, fo, co;
-
-		cout << "Posicion de origen: " << endl;
-		cin >> fi >> ci;
-		cout << "Posicion de destino: " << endl;
-		cin >> fo >> co;
-
-		/*
-		do {
-				cout << "Posicion de origen: " << endl;
-				cin >> fi >> ci;
-				cout << "Posicion de destino: " << endl;
-				cin >> fo >> co;
-
-				if((tab[fi][ci]->validmove(fi, ci, fo, co) == false))
-					cout << "Movimiento no valido" << endl;
-
-		} while ((tab[fi][ci]->validmove(fi, ci, fo, co) == false));*/
 		
+		
+		do {
+			cout << "Posicion de origen: " << endl;
+			cin >> fi >> ci;
+			if (tab[fi][ci]->getPieza() == Pieza::NO_PIEZA) cout << "CASILLA VACIA" << endl;
+			else if (tab[fi][ci]->getColor() != (Pieza::color_t)turno) cout << "NO ES SU TURNO" << endl;
+		}while(tab[fi][ci]->getPieza() == Pieza::NO_PIEZA || tab[fi][ci]->getColor() != (Pieza::color_t)turno);
+
+		do {
+			cout << "Posicion de destino: " << endl;
+			cin >> fo >> co;
+			if (tab[fi][ci]->validmove(fi, ci, fo, co) == false) cout << "MOVIMIENTO NO VALIDO" << endl;
+			else if (tab[fo][co]->getColor() == (Pieza::color_t)turno) cout << "ESTA PIEZA ES DE TU PROPIO TEAM:" << (Pieza::color_t)turno << endl;
+			else if (tab[fo][co]->getColor() == (Pieza::color_t)!turno) cout << "FICHA COMIDA" << endl;
+		} while ((tab[fi][ci]->validmove(fi, ci, fo, co) == false) || (tab[fo][co]->getPieza() != Pieza::NO_PIEZA && tab[fo][co]->getColor() == (Pieza::color_t)turno && tab[fi][ci]->validmove(fi, ci, fo, co) == true));
+
 		Pieza::pieza_t tipo = tab[fi][ci]->getPieza();
 		Pieza::color_t color = tab[fi][ci]->getColor();
 
-		do{
 		cambiarEstado(fi, ci, fo, co, tipo, color);
-		} while ((tab[fi][ci]->validmove(fi, ci, fo, co) == true));
-
+		cambiarTurno();
+		
 }

@@ -13,8 +13,8 @@ protected:
 	color_t color = NO_COLOR;
 public:
 	Pieza(color_t c, pieza_t p) : color(c), pieza(p) {};
-	color_t getColor() { return color; }
-	pieza_t getPieza() { return pieza; }
+	pieza_t getPieza();
+	color_t getColor();
 	virtual void dibuja() = 0;
 	virtual bool validmove(int fo, int co, int fd, int cd);
 };

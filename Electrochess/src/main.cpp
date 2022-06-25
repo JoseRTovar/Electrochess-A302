@@ -30,11 +30,8 @@ int main(int argc, char* argv[])
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25, OnTimer, 0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 
-
-
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
-
 
 	return 0;
 }
@@ -59,7 +56,7 @@ void OnTimer(int value)
 	//poner aqui el código de animacion
 	//OnDraw();
 	tablero.click();
-	tablero.cambiarTurno();
+	//tablero.cambiarTurno();
 	//no borrar estas lineas
 	glutTimerFunc(25, OnTimer, 0);
 	glutPostRedisplay();

@@ -13,9 +13,10 @@ void Alfil::dibuja()
 
 bool Alfil::validmove(int fo, int co, int fd, int cd) {
 
-	if (((abs(fd - fo) + abs(cd - co)) % 2 == 0) &&	(abs(fd - fo) == abs(cd - co)))
+	if (((abs(fd - fo) + abs(cd - co)) % 2 == 0) && (abs(fd - fo) == abs(cd - co)))
 	{
-		Pieza::validmove(fo, co, fd, cd);
+		return true;
+		//Pieza::validmove(fo, co, fd, cd);->Cagada ponerlo ahi ya esta heredado JAAJAJ
 	}
 	return false;
 }

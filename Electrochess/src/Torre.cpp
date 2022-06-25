@@ -11,9 +11,9 @@ void Torre::dibuja()
 
 bool Torre::validmove(int fo, int co, int fd, int cd){
 
-	if((fd != fo && cd == co) || (cd != co && fo == fd))
+	if((fd != fo && cd == co) || (cd != co && fd == fo))
 	{
-		Pieza::validmove(fo, co, fd, cd);
+		return true;
 	}
 	return false;
 }

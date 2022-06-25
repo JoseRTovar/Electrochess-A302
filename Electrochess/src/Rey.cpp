@@ -8,12 +8,12 @@ void Rey::dibuja()
 	glutSolidSphere(0.4, 20, 20);
 }
 
-
 bool Rey::validmove(int fo, int co, int fd, int cd)
 {
-	if (abs(fo - fd) <= 1 && abs(co - cd) <= 1)
+	if (abs(fd - fo) <= 1 && abs(cd - co) <= 1)
 	{
-		Pieza::validmove(fo, co, fd, cd);
+		return true;
+		//Pieza::validmove(fo, co, fd, cd);->Cagada ponerlo ahi ya esta heredado JAAJAJ
 	}
 		return false;
 }
