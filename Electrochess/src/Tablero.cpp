@@ -22,6 +22,10 @@ void Tablero::inicializa()
 	tab[0][7] = new Torre(Pieza::BLANCA);
 	tab[7][0] = new Torre(Pieza::NEGRA);
 	tab[7][7] = new Torre(Pieza::NEGRA);
+	tab[0][2] = new Alfil(Pieza::BLANCA);
+	tab[0][5] = new Alfil(Pieza::BLANCA);
+	tab[7][2] = new Alfil(Pieza::NEGRA);
+	tab[7][5] = new Alfil(Pieza::NEGRA);
 
 }
 
@@ -37,6 +41,11 @@ void Tablero::cambiarEstado(int fo, int co, int fd, int cd, Pieza::pieza_t p, Pi
 	case Pieza::TORRE:
 		tab[fd][cd] = new Torre(c);
 		break;
+	case Pieza::ALFIL:
+	tab[fd][cd] = new Alfil(c);
+		break;
+	case Pieza::NO_PIEZA:
+		delete tab[fd][cd];
 		//case Pieza::ALFIL:
 		//	tab[fd][cd] = new Alfil(posicion, c);
 		//	break;
@@ -77,23 +86,38 @@ void Tablero::dibuja()
 			{
 				glTranslatef(columna + 0.5, fila + 0.5, 0);
 				tab[fila][columna]->dibuja();
-				glTranslatef(-columna - 0.5, fila - 0.5, 0);
+				glTranslatef(-columna - 0.5, - fila - 0.5, 0);
 			}
 		}
 	}
 }
 
-void Tablero::click1() {
+void Tablero::click() {
 
-	int fi, ci, fo, co;
+		int fi, ci, fo, co;
 
-	cout << "Posicion de origen: " << endl;
-	cin >> fi >> ci;
-	cout << "Posicion de destino: " << endl;
-	cin >> fo >> co;
+		cout << "Posicion de origen: " << endl;
+		cin >> fi >> ci;
+		cout << "Posicion de destino: " << endl;
+		cin >> fo >> co;
 
-	do {
-		cambiarEstado(fi, ci, fo, co, tab[fi][ci]->getPieza(), tab[fi][ci]->getColor());
-	} while ((tab[fi][ci]->getColor() != (Pieza::color_t)turno) && (tab[fi][ci]->validmove(fi,ci,fo,co) == true));
+		/*
+		do {
+				cout << "Posicion de origen: " << endl;
+				cin >> fi >> ci;
+				cout << "Posicion de destino: " << endl;
+				cin >> fo >> co;
+
+				if((tab[fi][ci]->validmove(fi, ci, fo, co) == false))
+					cout << "Movimiento no valido" << endl;
+
+		} while ((tab[fi][ci]->validmove(fi, ci, fo, co) == false));*/
+		
+		Pieza::pieza_t tipo = tab[fi][ci]->getPieza();
+		Pieza::color_t color = tab[fi][ci]->getColor();
+
+		do{
+		cambiarEstado(fi, ci, fo, co, tipo, color);
+		} while ((tab[fi][ci]->validmove(fi, ci, fo, co) == true));
 
 }

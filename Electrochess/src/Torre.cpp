@@ -9,13 +9,6 @@ void Torre::dibuja()
 	glutSolidCube(0.8);
 }
 
-//bool Torre::validmove(int fila, int columna)
-//{
-//
-//	if ((((fila != posicion.fila) && (columna == posicion.columna)) || ((columna != posicion.columna) && (fila == posicion.fila))) && (limitetablero(fila, columna) != false)) return true;
-//	return false;
-//}
-
 bool Torre::validmove(int fo, int co, int fd, int cd){
 
 	if((fd != fo && cd == co) || (cd != co && fo == fd))

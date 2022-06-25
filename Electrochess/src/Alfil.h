@@ -1,10 +1,10 @@
 #pragma once
 #include "Pieza.h"
 
-class Torre : public Pieza
+class Alfil : public Pieza
 {
 public:
-	Torre(color_t color) :Pieza(color, TORRE) {}
+	Alfil(color_t color) :Pieza(color, ALFIL) {}
 	virtual void dibuja();
 	virtual bool validmove(int fo, int co, int fd, int cd);
 };
