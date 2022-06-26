@@ -10,10 +10,6 @@ void Rey::dibuja()
 
 bool Rey::validmove(int fo, int co, int fd, int cd)
 {
-	if (abs(fd - fo) <= 1 && abs(cd - co) <= 1)
-	{
-		return true;
-		//Pieza::validmove(fo, co, fd, cd);->Cagada ponerlo ahi ya esta heredado JAAJAJ
-	}
-		return false;
+	if (abs(fd - fo) <= 1 && abs(cd - co) <= 1) return true;
+	return false;
 }

@@ -10,14 +10,9 @@ void Alfil::dibuja()
 	glutSolidTorus(0.15, 0.3, 20, 20);
 }
 
-
-bool Alfil::validmove(int fo, int co, int fd, int cd) {
-
-	if (((abs(fd - fo) + abs(cd - co)) % 2 == 0) && (abs(fd - fo) == abs(cd - co)))
-	{
-		return true;
-		//Pieza::validmove(fo, co, fd, cd);->Cagada ponerlo ahi ya esta heredado JAAJAJ
-	}
+bool Alfil::validmove(int fo, int co, int fd, int cd)
+{
+	if (((abs(fd - fo) + abs(cd - co)) % 2 == 0) && (abs(fd - fo) == abs(cd - co))) return true;
 	return false;
 }
 

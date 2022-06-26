@@ -8,7 +8,6 @@ Tablero tablero;
 //NO HACE FALTA LLAMARLAS EXPLICITAMENTE
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
-
 int main(int argc, char* argv[])
 {
 	//Inicializar el gestor de ventanas GLUT
@@ -54,13 +53,16 @@ void OnDraw(void)
 void OnTimer(int value)
 {
 	//poner aqui el código de animacion
-	//OnDraw();
+
 	tablero.click();
-	//tablero.cambiarTurno();
+
 	//no borrar estas lineas
 	glutTimerFunc(25, OnTimer, 0);
 	glutPostRedisplay();
 }
+
+
+
 
 
 
