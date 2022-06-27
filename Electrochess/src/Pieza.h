@@ -6,7 +6,7 @@ using namespace std;
 class Pieza
 {
 public:
-	enum pieza_t { NO_PIEZA = -1, REY, TORRE, ALFIL };
+	enum pieza_t { NO_PIEZA = -1, REY, TORRE, ALFIL, REINA };
 	enum color_t { NO_COLOR = -1, BLANCA, NEGRA };
 protected:
 	pieza_t pieza = NO_PIEZA;

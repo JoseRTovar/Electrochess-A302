@@ -14,3 +14,4 @@ bool Torre::validmove(int fo, int co, int fd, int cd)
 	if ((fd != fo && cd == co) || (cd != co && fd == fo)) return true;
 	return false;
 }
+

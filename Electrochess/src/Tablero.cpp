@@ -20,6 +20,9 @@ Tablero::Tablero()
 	tab[0][5] = new Alfil(Pieza::BLANCA);
 	tab[7][2] = new Alfil(Pieza::NEGRA);
 	tab[7][5] = new Alfil(Pieza::NEGRA);
+	tab[0][3] = new Reina(Pieza::BLANCA);
+	tab[7][3] = new Reina(Pieza::NEGRA);
+
 }
 
 void Tablero::cambiarEstado(int fo, int co, int fd, int cd, Pieza::pieza_t p, Pieza::color_t c)
@@ -34,6 +37,9 @@ void Tablero::cambiarEstado(int fo, int co, int fd, int cd, Pieza::pieza_t p, Pi
 		break;
 	case Pieza::ALFIL:
 		tab[fd][cd] = new Alfil(c);
+		break;
+	case Pieza::REINA:
+		tab[fd][cd] = new Reina(c);
 		break;
 	}
 	tab[fo][co] = nullptr;
@@ -114,6 +120,9 @@ void Tablero::click()
 			cout << "MOVIMIENTO NO VALIDO" << endl;
 			error = 1;
 		}
+		//Saltar piezas:
+		else if (fi != fo)NoSaltar(fi, ci, fo, co, error); //PRUEBA
+
 		else if (tab[fo][co] != nullptr)
 		{
 			if (tab[fo][co]->getColor() == (Pieza::color_t)turno)
@@ -121,11 +130,19 @@ void Tablero::click()
 				cout << "ESTA PIEZA ES DE TU PROPIO TEAM:" << (Pieza::color_t)turno << endl;
 				error = 1;
 			}
+		
+			else if (tab[fo][co]->getPieza() == Pieza::REY) {
+				cout << "JAQUE" << endl;
+				error = 1;
+			}
 			else if (tab[fo][co]->getColor() == (Pieza::color_t)!turno)
 				cout << "FICHA COMIDA" << endl;
 		}
+		
 	} while (error == 1);
 
 	cambiarEstado(fi, ci, fo, co, tab[fi][ci]->getPieza(), tab[fi][ci]->getColor());
 	cambiarTurno();
+
 }
+
