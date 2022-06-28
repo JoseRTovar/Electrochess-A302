@@ -1,6 +1,9 @@
 #pragma once
 #include <iostream>
+#include "Coordenadas.h"
+#include "ETSIDI.h"
 
+using ETSIDI::Sprite;
 using namespace std;
 
 class Pieza
@@ -16,5 +19,5 @@ public:
 	pieza_t getPieza() { return pieza; }
 	color_t getColor() { return color; }
 	virtual void dibuja() = 0;
-	virtual bool validmove(int fi, int ci, int fd, int cd) = 0;
+	virtual bool validmove(Coordenadas origen, Coordenadas destino) = 0;
 };

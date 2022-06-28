@@ -9,7 +9,7 @@ void Reina::dibuja()
 	glutSolidTeapot(0.3);
 }
 
-bool Reina::validmove(int fo, int co, int fd, int cd)
+bool Reina::validmove(Coordenadas origen, Coordenadas destino)
 {
 	return true;
 }

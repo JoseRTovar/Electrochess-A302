@@ -25,24 +25,20 @@ Tablero::Tablero()
 
 }
 
-void Tablero::cambiarEstado(int fo, int co, int fd, int cd, Pieza::pieza_t p, Pieza::color_t c)
+void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)
 {
-	switch (p)
-	{
-	case Pieza::REY:
-		tab[fd][cd] = new Rey(c);
-		break;
-	case Pieza::TORRE:
-		tab[fd][cd] = new Torre(c);
-		break;
-	case Pieza::ALFIL:
-		tab[fd][cd] = new Alfil(c);
-		break;
-	case Pieza::REINA:
-		tab[fd][cd] = new Reina(c);
-		break;
+	int sizecomidas = 0;
+
+	if (tab[destino.fila][destino.columna] != nullptr) {
+		Comidas[sizecomidas++] = tab[destino.fila][destino.columna];
+		cout << "Has comido el tipo de pieza:" << tab[destino.fila][destino.columna]->getPieza() << endl;
+		//Dibujar 
 	}
-	tab[fo][co] = nullptr;
+
+	tab[destino.fila][destino.columna]= tab[origen.getFila()][origen.getColumna()];
+
+	tab[origen.fila][origen.columna] = nullptr; 
+	//esto habia dicho el profe que no no?? no me acuerdo bien de como ha dicho que moviesemos sin borrarla en cuanto a dibujo
 }
 
 void Tablero::dibuja()
@@ -55,6 +51,13 @@ void Tablero::dibuja()
 	{
 		for (int columna = 0; columna < N_COLUMNAS; columna++)
 		{
+			if (tab[fila][columna] != nullptr)
+			{
+				glTranslatef(columna + 0.5, fila + 0.5, 0);
+				tab[fila][columna]->dibuja();
+				glTranslatef(-columna - 0.5, -fila - 0.5, 0);
+			}
+
 			glDisable(GL_LIGHTING);
 			if ((fila + columna) % 2 == 0) glColor3ub(100, 100, 100);
 			else glColor3ub(255, 255, 255);
@@ -66,38 +69,32 @@ void Tablero::dibuja()
 			glEnd();
 			glEnable(GL_LIGHTING);
 
-			if (tab[fila][columna] != nullptr)
-			{
-				glTranslatef(columna + 0.5, fila + 0.5, 0);
-				tab[fila][columna]->dibuja();
-				glTranslatef(-columna - 0.5, -fila - 0.5, 0);
-			}
 		}
 	}
 }
 
 void Tablero::click()
 {
-	int fi, ci, fo, co;
+	Coordenadas origen, destino;
 	bool error;
 
 	do
 	{
 		error = 0;
 		cout << "Posicion de origen: " << endl;
-		cin >> fi >> ci;
+		cin >> origen.fila >> origen.columna;
 
-		if (fi > 7 || fi < 0 || ci > 7 || ci < 0)
+		if (origen.fila > 7 || origen.fila < 0 || origen.columna > 7 || origen.columna < 0)
 		{
 			cout << "FUERA DEL TABLERO" << endl;
 			error = 1;
 		}
-		else if (tab[fi][ci] == nullptr)
+		else if (tab[origen.fila][origen.columna] == nullptr)
 		{
 			cout << "CASILLA VACIA" << endl;
 			error = 1;
 		}
-		else if (tab[fi][ci]->getColor() != (Pieza::color_t)turno)
+		else if (tab[origen.fila][origen.columna]->getColor() != (Pieza::color_t)turno)
 		{
 			cout << "NO ES SU TURNO" << endl;
 			error = 1;
@@ -108,40 +105,37 @@ void Tablero::click()
 	{
 		error = 0;
 		cout << "Posicion de destino: " << endl;
-		cin >> fo >> co;
+		cin >> destino.fila >> destino.columna;
 
-		if (fo > 7 || fo < 0 || co > 7 || co < 0)
+		if (destino.fila > 7 || destino.fila < 0 || destino.columna > 7 || destino.columna < 0)
 		{
 			cout << "FUERA DEL TABLERO" << endl;
 			error = 1;
 		}
-		else if (tab[fi][ci]->validmove(fi, ci, fo, co) == false)
+		else if (tab[origen.fila][origen.columna]->validmove(origen,destino) == false)
 		{
 			cout << "MOVIMIENTO NO VALIDO" << endl;
 			error = 1;
 		}
-		//Saltar piezas:
-		else if (fi != fo)NoSaltar(fi, ci, fo, co, error); //PRUEBA
 
-		else if (tab[fo][co] != nullptr)
+		else if (tab[destino.fila][destino.columna] != nullptr)
 		{
-			if (tab[fo][co]->getColor() == (Pieza::color_t)turno)
+			if (tab[destino.fila][destino.columna]->getColor() == (Pieza::color_t)turno)
 			{
 				cout << "ESTA PIEZA ES DE TU PROPIO TEAM:" << (Pieza::color_t)turno << endl;
 				error = 1;
 			}
 		
-			else if (tab[fo][co]->getPieza() == Pieza::REY) {
+			else if (tab[destino.fila][destino.columna]->getPieza() == Pieza::REY) {
 				cout << "JAQUE" << endl;
 				error = 1;
 			}
-			else if (tab[fo][co]->getColor() == (Pieza::color_t)!turno)
+			else if (tab[destino.fila][destino.columna]->getColor() == (Pieza::color_t)!turno)
 				cout << "FICHA COMIDA" << endl;
 		}
-		
 	} while (error == 1);
 
-	cambiarEstado(fi, ci, fo, co, tab[fi][ci]->getPieza(), tab[fi][ci]->getColor());
+	MoverPieza(origen,destino);
 	cambiarTurno();
 
 }

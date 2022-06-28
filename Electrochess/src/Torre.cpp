@@ -9,9 +9,9 @@ void Torre::dibuja()
 	glutSolidCube(0.8);
 }
 
-bool Torre::validmove(int fo, int co, int fd, int cd)
+bool Torre::validmove(Coordenadas origen, Coordenadas destino)
 {
-	if ((fd != fo && cd == co) || (cd != co && fd == fo)) return true;
+	if ((destino.fila != origen.fila && destino.columna == origen.columna) || (destino.columna != origen.columna && destino.fila == origen.fila)) return true;
 	return false;
 }
 

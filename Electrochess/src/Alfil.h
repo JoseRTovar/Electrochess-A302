@@ -6,5 +6,5 @@ class Alfil : public Pieza
 public:
 	Alfil(color_t color) :Pieza(color, ALFIL) {}
 	virtual void dibuja();
-	virtual bool validmove(int fo, int co, int fd, int cd);
+	virtual bool validmove(Coordenadas origen, Coordenadas destino);
 };

@@ -3,13 +3,16 @@
 
 void Rey::dibuja()
 {
-	if (color == Pieza::NEGRA)  glColor3ub(100, 100, 100);
-	else if (color == Pieza::BLANCA) glColor3ub(255, 255, 255);
-	glutSolidSphere(0.4, 20, 20);
+	reynegro.setCenter(0.4, 0.4);
+	reynegro.setSize(0.8, 0.8);
+	reyblanco.setCenter(0.4, 0.4);
+	reyblanco.setSize(0.8, 0.8);
+	if (color == Pieza::NEGRA) reynegro.draw();
+	if (color == Pieza::BLANCA) reyblanco.draw();
 }
 
-bool Rey::validmove(int fo, int co, int fd, int cd)
+bool Rey::validmove(Coordenadas origen, Coordenadas destino)
 {
-	if (abs(fd - fo) <= 1 && abs(cd - co) <= 1) return true;
+	if (abs(destino.fila - origen.fila) <= 1 && abs(destino.columna - origen.columna) <= 1) return true;
 	return false;
 }
