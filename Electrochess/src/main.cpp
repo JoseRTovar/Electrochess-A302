@@ -72,12 +72,12 @@ void OnMouseClick(int b, int state, int x, int y) {
 
 	if (b == GLUT_LEFT_BUTTON) {
 		button = MOUSE_LEFT_BUTTON;
-		cout << "MOUSE_LEFT_BUTTON" << endl;
 	}
 	if (b == GLUT_RIGHT_BUTTON) {
 		button = MOUSE_RIGHT_BUTTON;
-		cout << "MOUSE_RIGHT_BUTTON" << endl;
 	}
+	tablero.MovimientoRaton(x, y, b, down);
+
 	glutPostRedisplay();
 }
 
