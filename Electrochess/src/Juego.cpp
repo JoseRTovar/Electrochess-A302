@@ -29,7 +29,15 @@ void Juego::MovimientoRaton(int x, int y, int button, bool down)
 		rightButton = down;
 
 	//escribe las coordenadas de la celda donde está el ratón
-	if (down) cout << "(" << xcell_sel << "," << ycell_sel << ")" << endl;
+	if (down) {
+		if (xcell_sel > 7 || xcell_sel < 0 || ycell_sel > 7 || ycell_sel < 0)
+		{
+			cout << "FUERA DEL TABLERO" << endl;
+		}
+		else {
+			cout << "(" << xcell_sel << "," << ycell_sel << ")" << endl;
+		}
+	}
 }
 
 void Juego::ConvCoord(double x, double y, int& cell_x, int& cell_y)

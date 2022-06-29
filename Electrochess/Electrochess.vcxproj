@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="src\Alfil.h" />
     <ClInclude Include="src\Coordenadas.h" />
+    <ClInclude Include="src\Inicio.h" />
     <ClInclude Include="src\Juego.h" />
     <ClInclude Include="src\Pieza.h" />
     <ClInclude Include="src\Reina.h" />
@@ -30,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Alfil.cpp" />
+    <ClCompile Include="src\Inicio.cpp" />
     <ClCompile Include="src\Juego.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Pieza.cpp" />
