@@ -14,7 +14,6 @@ Inicio inicio;
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnMouseClick(int button, int state, int x, int y); //esta funcion sera llamada para gestionar el ratón
 void OnKeyboardDown(unsigned char key, int x_t, int y_t); //detectar inicio del juego
-//void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion no es necesaria en este caso
 
 int main(int argc, char* argv[])
 {
@@ -37,7 +36,6 @@ int main(int argc, char* argv[])
 	glutDisplayFunc(OnDraw);
 	glutKeyboardFunc(OnKeyboardDown);
 	glutMouseFunc(OnMouseClick);
-	//glutTimerFunc(25, OnTimer, 0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
@@ -61,19 +59,11 @@ void OnDraw(void)
 	glutSwapBuffers();
 }
 
-
 void OnMouseClick(int b, int state, int x, int y)
 {
 	bool down = (state == GLUT_DOWN);
-	int button;
-
 	if (b == GLUT_LEFT_BUTTON)
-		button = MOUSE_LEFT_BUTTON;
-
-	if (b == GLUT_RIGHT_BUTTON)
-		button = MOUSE_RIGHT_BUTTON;
-
-	juego.MovimientoRaton(x, y, b, down);
+		juego.botonRaton(x, y, b, down);
 	glutPostRedisplay();
 }
 
@@ -89,16 +79,6 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 	glutPostRedisplay();
 }
 
-/*void OnTimer(int value)
-{
-	//poner aqui el código de animacion
-
-	tablero.click();
-
-	//no borrar estas lineas
-	glutTimerFunc(25, OnTimer, 0);
-	glutPostRedisplay();
-}*/
 
 
 

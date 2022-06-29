@@ -25,19 +25,11 @@ Tablero::Tablero()
 
 void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)
 {
-	int sizecomidas = 0;
 
-	if (tab[destino.fila][destino.columna] != nullptr)
-	{
-		Comidas[sizecomidas++] = tab[destino.fila][destino.columna];
-		cout << "Has comido el tipo de pieza:" << tab[destino.fila][destino.columna]->getPieza() << endl;
-		//Dibujar 
-	}
+	//Sobrecargar operador igual de coordendas
 
-	tab[destino.fila][destino.columna] = tab[origen.getFila()][origen.getColumna()];
-
+	tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
 	tab[origen.fila][origen.columna] = nullptr;
-	//esto habia dicho el profe que no no?? no me acuerdo bien de como ha dicho que moviesemos sin borrarla en cuanto a dibujo
 }
 
 void Tablero::dibuja()

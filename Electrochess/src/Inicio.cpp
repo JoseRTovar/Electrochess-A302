@@ -5,9 +5,8 @@
 #include <iostream>
 #include <string>
 
-//const int font1 = (int)GLUT_BITMAP_TIMES_ROMAN_24;
-
-void Inicio::TextoInicial(float x, float y, float z, void* font, const char* string) {
+void Inicio::TextoInicial(float x, float y, float z, void* font, const char* string) 
+{
 	const char* c;
 	glRasterPos3f(x, y, z);
 	for (c = string; *c != '\0'; c++)
@@ -15,6 +14,7 @@ void Inicio::TextoInicial(float x, float y, float z, void* font, const char* str
 		glutBitmapCharacter(font, *c);
 	}
 }
+
 void Inicio::dibuja()
 {
 	gluLookAt(4, 4, 15,  // posicion del ojo

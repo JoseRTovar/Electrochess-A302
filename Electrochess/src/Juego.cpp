@@ -1,57 +1,6 @@
 #include "Juego.h"
 #include "freeglut.h"
 
-void Juego::MovimientoRaton(int x, int y, int button, bool down)
-{
-	// gestiona el control de los botones del ratón
-	// convierte de coordenadas generales (mundo) a coordenadas del tablero (celda)
-
-	GLint viewport[4];
-	GLdouble modelview[16];
-	GLdouble projection[16];
-	GLfloat winX, winY, winZ;
-	GLdouble posX, posY, posZ;
-
-	glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
-	glGetDoublev(GL_PROJECTION_MATRIX, projection);
-	glGetIntegerv(GL_VIEWPORT, viewport);
-
-	winX = (float)x;
-	winY = (float)viewport[3] - (float)y;
-	glReadPixels(x, int(winY), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
-	gluUnProject(winX, winY, winZ, modelview, projection, viewport, &posX, &posY, &posZ);
-
-	ConvCoord(posX, posY, xcell_sel, ycell_sel);
-
-	if (button == MOUSE_LEFT_BUTTON)
-		leftButton = down;
-	else if (button == MOUSE_RIGHT_BUTTON)
-		rightButton = down;
-
-	//escribe las coordenadas de la celda donde está el ratón
-	if (down) {
-		if (xcell_sel > 7 || xcell_sel < 0 || ycell_sel > 7 || ycell_sel < 0)
-		{
-			cout << "FUERA DEL TABLERO" << endl;
-		}
-		else {
-			cout << "(" << xcell_sel << "," << ycell_sel << ")" << endl;
-		}
-	}
-}
-
-void Juego::ConvCoord(double x, double y, int& cell_x, int& cell_y)
-{
-	cell_x = (int)(abs(y));
-	cell_y = (int)(x);
-}
-
-void Juego::interaccionJugador()
-{
-	//Aquí es donde habría que pedir las coordenadas, llamar al validmove, cambiar el turno etc.
-
-}
-
 void Juego::dibuja()
 {
 	gluLookAt(4, 4, 15,  // posicion del ojo
@@ -73,4 +22,73 @@ void Juego::dibuja()
 	}
 
 	tablero.dibuja();
+}
+
+Coordenadas Juego::click1()
+{
+	Coordenadas c = raton;
+
+	if (tablero[c] == nullptr)
+		cout << "Casilla vacia" << endl;
+
+	else if (tablero[c]->getColor() != (Pieza::color_t)turno)
+		cout << "No es tu turno" << endl;
+
+	else
+	{
+		cout << "Se puede jugar esta pieza" << endl;
+		click = 1;
+	}
+	return c;
+}
+
+void Juego::click2(Coordenadas o)
+{
+	Coordenadas d = raton;
+
+	if (tablero[d] != nullptr && tablero[d]->getColor() == (Pieza::color_t)turno)
+		cout << "Pieza del mimsmo color" << endl;
+
+	else if (tablero[o]->validmove(o, d) == true)
+	{
+		cout << "(" << o.fila << "," << o.columna << ")" << " -> " << "(" << d.fila << "," << d.columna << ")" << endl;
+		click = 0;
+		tablero.MoverPieza(o, d);
+		cambiarTurno();
+	}
+}
+
+void Juego::botonRaton(int x, int y, int button, bool down)
+{
+	// gestiona el control de los botones del ratón
+	// convierte de coordenadas generales (mundo) a coordenadas del tablero (celda)
+
+	GLint viewport[4];
+	GLdouble modelview[16];
+	GLdouble projection[16];
+	GLfloat winX, winY, winZ;
+	GLdouble posX, posY, posZ;
+
+	glGetDoublev(GL_MODELVIEW_MATRIX, modelview);
+	glGetDoublev(GL_PROJECTION_MATRIX, projection);
+	glGetIntegerv(GL_VIEWPORT, viewport);
+
+	winX = (float)x;
+	winY = (float)viewport[3] - (float)y;
+	glReadPixels(x, int(winY), 1, 1, GL_DEPTH_COMPONENT, GL_FLOAT, &winZ);
+	gluUnProject(winX, winY, winZ, modelview, projection, viewport, &posX, &posY, &posZ);
+
+	raton.fila = (int)(abs(posY));
+	raton.columna = (int)(posX);
+
+	//Se podria poner quizas un metodo en coordenadas pa saber si son validas
+	if (down)
+	{
+		if (raton.fila > 7 || raton.fila < 0 || raton.columna > 7 || raton.columna < 0)
+			cout << "Fuera del tablero" << endl;
+
+		else if (click == 0) raton_sel = click1();
+
+		else if (click == 1) click2(raton_sel);
+	}
 }
