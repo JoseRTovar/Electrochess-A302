@@ -1,5 +1,5 @@
 #include "Rey.h"
-#include "freeglut.h"
+
 
 void Rey::dibuja()
 {

@@ -1,16 +1,14 @@
-#include "Tablero.h"
-#include "freeglut.h"
-#include <iostream>
+#include "Juego.h"
 
-enum { MOUSE_LEFT_BUTTON, MOUSE_MIDDLE_BUTTON, MOUSE_RIGHT_BUTTON };
+Juego juego;
 
-Tablero tablero;
 //los callback, funciones que seran llamadas automaticamente por la glut
 //cuando sucedan eventos
 //NO HACE FALTA LLAMARLAS EXPLICITAMENTE
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnMouseClick(int button, int state, int x, int y); //esta funcion sera llamada para gestionar el ratón
 //void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion no es necesaria en este caso
+
 int main(int argc, char* argv[])
 {
 	//Inicializar el gestor de ventanas GLUT
@@ -48,10 +46,26 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	tablero.dibuja();
+	juego.dibuja();
 
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
+}
+
+
+void OnMouseClick(int b, int state, int x, int y)
+{
+	bool down = (state == GLUT_DOWN);
+	int button;
+
+	if (b == GLUT_LEFT_BUTTON)
+		button = MOUSE_LEFT_BUTTON;
+
+	if (b == GLUT_RIGHT_BUTTON)
+		button = MOUSE_RIGHT_BUTTON;
+
+	juego.MovimientoRaton(x, y, b, down);
+	glutPostRedisplay();
 }
 
 /*void OnTimer(int value)
@@ -64,22 +78,6 @@ void OnDraw(void)
 	glutTimerFunc(25, OnTimer, 0);
 	glutPostRedisplay();
 }*/
-
-void OnMouseClick(int b, int state, int x, int y) {
-
-	bool down = (state == GLUT_DOWN);
-	int button;
-
-	if (b == GLUT_LEFT_BUTTON) {
-		button = MOUSE_LEFT_BUTTON;
-	}
-	if (b == GLUT_RIGHT_BUTTON) {
-		button = MOUSE_RIGHT_BUTTON;
-	}
-	tablero.MovimientoRaton(x, y, b, down);
-
-	glutPostRedisplay();
-}
 
 
 

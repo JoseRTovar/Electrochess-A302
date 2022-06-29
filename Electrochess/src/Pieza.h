@@ -1,8 +1,8 @@
 #pragma once
 #include <iostream>
-#include "Coordenadas.h"
 #include "ETSIDI.h"
-
+#include "freeglut.h"
+#include "Coordenadas.h"
 using ETSIDI::Sprite;
 using namespace std;
 

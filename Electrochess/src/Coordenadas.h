@@ -1,7 +1,8 @@
 #pragma once
 #include <cmath>
 
-class Coordenadas {
+class Coordenadas
+{
 public:
 	int fila, columna;
 	Coordenadas() {};

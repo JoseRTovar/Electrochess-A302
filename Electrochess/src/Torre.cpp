@@ -1,6 +1,5 @@
 #pragma once
 #include "Torre.h"
-#include "freeglut.h"
 
 void Torre::dibuja()
 {
