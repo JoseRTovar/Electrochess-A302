@@ -3,9 +3,12 @@
 
 void Torre::dibuja()
 {
-	if (color == Pieza::NEGRA)  glColor3ub(100, 100, 100);
-	else if (color == Pieza::BLANCA) glColor3ub(255, 255, 255);
-	glutSolidCube(0.8);
+	torrenegra.setCenter(0.4, 0.4);
+	torrenegra.setSize(0.8, 0.8);
+	torreblanca.setCenter(0.4, 0.4);
+	torreblanca.setSize(0.8, 0.8);
+	if (color == Pieza::NEGRA) torrenegra.draw();
+	if (color == Pieza::BLANCA) torreblanca.draw();
 }
 
 bool Torre::validmove(Coordenadas origen, Coordenadas destino){

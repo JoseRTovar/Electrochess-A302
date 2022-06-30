@@ -36,6 +36,16 @@ Coordenadas Juego::click1()
 	else
 	{
 		cout << "Se puede jugar esta pieza" << endl;
+
+	/*	glColor3ub(250, 255, 180);
+		glLineWidth(3);
+		glBegin(GL_LINE_LOOP);//start drawing a line loop
+		glVertex3d(0, 0, 0);//left of window
+		glVertex3d(1,0,0);//bottom of window
+		glVertex3d(1,1,0);//right of window
+		glVertex3d(0,1,0);//top of window
+		glEnd();//end drawing of line loop*/
+
 		click = 1;
 	}
 	return c;

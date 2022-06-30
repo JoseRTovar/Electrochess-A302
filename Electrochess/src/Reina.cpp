@@ -3,9 +3,12 @@
 
 void Reina::dibuja()
 {
-	if (color == Pieza::NEGRA)  glColor3ub(100, 100, 100);
-	else if (color == Pieza::BLANCA) glColor3ub(255, 255, 255);
-	glutSolidTeapot(0.3);
+	reinanegra.setCenter(0.4, 0.4);
+	reinanegra.setSize(0.8, 0.8);
+	reinablanca.setCenter(0.4, 0.4);
+	reinablanca.setSize(0.8, 0.8);
+	if (color == Pieza::NEGRA) reinanegra.draw();
+	if (color == Pieza::BLANCA) reinablanca.draw();
 }
 
 bool Reina::validmove(Coordenadas origen, Coordenadas destino)
