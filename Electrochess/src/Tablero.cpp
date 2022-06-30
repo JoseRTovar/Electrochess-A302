@@ -25,12 +25,16 @@ Tablero::Tablero()
 
 void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)
 {
-
-	//Sobrecargar operador igual de coordendas
+	int sizecomidas = 0;
+	if (tab[destino.fila][destino.columna] != nullptr) {
+		Comidas[sizecomidas++] = tab[destino.fila][destino.columna];
+	}
 
 	tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
 	tab[origen.fila][origen.columna] = nullptr;
 }
+
+
 
 void Tablero::dibuja()
 {

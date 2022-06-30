@@ -1,4 +1,5 @@
 #pragma once
+#include "Pieza.h"
 
 /*
 //PRUEBA

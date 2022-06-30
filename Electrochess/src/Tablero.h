@@ -8,7 +8,7 @@
 
 class Tablero
 {
-private:
+public:
 	Pieza* tab[N_FILAS][N_COLUMNAS];
 	Pieza* Comidas[30]; //Lista de piezas comidas
 public:
@@ -16,4 +16,5 @@ public:
 	void dibuja();
 	void MoverPieza(Coordenadas origen, Coordenadas destino);
 	Pieza* operator[](Coordenadas pos) const { return tab[pos.fila][pos.columna]; }
+	
 };

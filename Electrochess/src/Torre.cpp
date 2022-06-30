@@ -8,8 +8,7 @@ void Torre::dibuja()
 	glutSolidCube(0.8);
 }
 
-bool Torre::validmove(Coordenadas origen, Coordenadas destino)
-{
+bool Torre::validmove(Coordenadas origen, Coordenadas destino){
 	if ((destino.fila != origen.fila && destino.columna == origen.columna) || (destino.columna != origen.columna && destino.fila == origen.fila)) return true;
 	return false;
 }
