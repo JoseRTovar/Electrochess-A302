@@ -74,7 +74,7 @@ bool Juego::NoSaltar(Coordenadas origen, Coordenadas destino) {
 	}
 
 	//DERECHA E IZQUIERDA
-	if (destino.columna != origen.columna && destino.fila == origen.fila)
+	else if (destino.columna != origen.columna && destino.fila == origen.fila)
 	{
 		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
 		while (abs(destino.columna - origen.columna) > 1)
@@ -85,7 +85,7 @@ bool Juego::NoSaltar(Coordenadas origen, Coordenadas destino) {
 	}
 
 	//DIAGONAL IZQ -> DCHA ARRIBA Y ABAJO
-	if (destino.columna != origen.columna && destino.fila != origen.fila)
+	else if ((destino.columna-origen.columna==destino.fila-origen.fila) && destino.columna != origen.columna && destino.fila != origen.fila)
 	{
 		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
 		while (abs(destino.columna - origen.columna) > 1)
@@ -97,20 +97,18 @@ bool Juego::NoSaltar(Coordenadas origen, Coordenadas destino) {
 	}
 
 	//DIAGONAL DCHA -> IZQ
-	if (destino.columna != origen.columna && destino.fila != origen.fila)
+	else if (destino.columna != origen.columna && destino.fila != origen.fila)
 	{
 		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
 		while (abs(destino.columna - origen.columna) > 1)
 		{
 			origen.columna = origen.columna + aux;
-			origen.fila = origen.fila + aux;
+			origen.fila = origen.fila - aux;
 			if (tablero[origen] != nullptr) return false;
 		}
 	}
 
-
 	return true;
-
 }
 
 void Juego::botonRaton(int x, int y, int button, bool down)
