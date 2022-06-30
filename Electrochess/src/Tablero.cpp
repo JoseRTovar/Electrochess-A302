@@ -38,6 +38,9 @@ void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)
 
 void Tablero::dibuja()
 {
+	stopMusica;
+	playMusica("sonidos/Aday.mp3");
+
 	for (int fila = 0; fila < N_FILAS; fila++)
 	{
 		for (int columna = 0; columna < N_COLUMNAS; columna++)

@@ -1,5 +1,6 @@
 #pragma once
 #include "Tablero.h"
+#include "freeglut.h"
 
 enum { MOUSE_LEFT_BUTTON, MOUSE_MIDDLE_BUTTON, MOUSE_RIGHT_BUTTON };
 

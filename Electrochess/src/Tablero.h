@@ -3,6 +3,9 @@
 #include "Torre.h"
 #include "Alfil.h"
 #include "Reina.h"
+#include "ETSIDI.h"
+using ETSIDI::playMusica;
+using ETSIDI::stopMusica;
 #define N_FILAS 8
 #define N_COLUMNAS 8
 

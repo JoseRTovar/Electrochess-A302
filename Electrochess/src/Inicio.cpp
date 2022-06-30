@@ -1,9 +1,4 @@
 #include "Inicio.h"
-#include "freeglut.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <iostream>
-#include <string>
 
 void Inicio::TextoInicial(float x, float y, float z, void* font, const char* string) 
 {
@@ -20,6 +15,12 @@ void Inicio::dibuja()
 	gluLookAt(4, 4, 15,  // posicion del ojo
 		4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)
+
+	stopMusica;
+	playMusica("sonidos/Route66.mp3");
+	logo.setCenter(0, 0);
+	logo.setSize(3.244, 1.501);
+	logo.draw();
 
 	glDisable(GL_LIGHTING);
 	glColor3ub(250, 255, 180);

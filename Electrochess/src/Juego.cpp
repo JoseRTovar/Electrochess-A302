@@ -1,5 +1,4 @@
 #include "Juego.h"
-#include "freeglut.h"
 
 void Juego::dibuja()
 {
