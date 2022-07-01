@@ -27,6 +27,10 @@ Tablero::Tablero()
 	tab[7][5] = new Alfil(Pieza::NEGRA);
 	tab[0][3] = new Reina(Pieza::BLANCA);
 	tab[7][3] = new Reina(Pieza::NEGRA);
+	tab[0][1] = new Caballo(Pieza::BLANCA);
+	tab[0][6] = new Caballo(Pieza::BLANCA);
+	tab[7][1] = new Caballo(Pieza::NEGRA);
+	tab[7][6] = new Caballo(Pieza::NEGRA);
 }
 
 void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)

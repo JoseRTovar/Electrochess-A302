@@ -3,6 +3,7 @@
 #include "Torre.h"
 #include "Alfil.h"
 #include "Reina.h"
+#include "Caballo.h"
 #include "ETSIDI.h"
 #define N_FILAS 8
 #define N_COLUMNAS 8
