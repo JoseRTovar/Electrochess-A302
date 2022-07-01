@@ -13,6 +13,6 @@ void Rey::dibuja()
 
 bool Rey::validmove(Coordenadas origen, Coordenadas destino)
 {
-	if (abs(destino.fila - origen.fila) <= 1 && abs(destino.columna - origen.columna) <= 1) return true;
+	if (Coordenadas::Movdeunoenuno(origen,destino) == true) return true;
 	return false;
 }

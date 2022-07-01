@@ -12,7 +12,7 @@ void Torre::dibuja()
 }
 
 bool Torre::validmove(Coordenadas origen, Coordenadas destino){
-	if ((destino.fila != origen.fila && destino.columna == origen.columna) || (destino.columna != origen.columna && destino.fila == origen.fila)) return true;
+	if (Coordenadas::MovLineal(origen,destino)==true) return true;
 	return false;
 }
 

@@ -9,9 +9,8 @@ public:
 public:
 	Coordenadas() {}
 	Coordenadas(int fila, int columna) :fila(fila), columna(columna) {}
-	int getFila() { return fila; }
-	void setFila(Coordenadas coordenadas) { fila = coordenadas.fila; }
-	int getColumna() { return columna; }
-	void setColumna(Coordenadas coordenadas) { columna = coordenadas.columna; }
-
+	static const bool MovLineal(Coordenadas origen, Coordenadas destino);
+	static const bool MovDiagonal(Coordenadas origen, Coordenadas destino);
+	static const bool Movdeunoenuno(Coordenadas origen, Coordenadas destino);
+	static const bool FueraTablero(Coordenadas c);
 };

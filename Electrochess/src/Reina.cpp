@@ -13,6 +13,8 @@ void Reina::dibuja()
 
 bool Reina::validmove(Coordenadas origen, Coordenadas destino)
 {
-	return true;
+	if (Coordenadas::MovLineal(origen, destino) == true) return true;
+	else if (Coordenadas::MovDiagonal(origen, destino) == true) return true;
+	return false;
 }
 

@@ -19,5 +19,4 @@ public:
 	void dibuja();
 	void MoverPieza(Coordenadas origen, Coordenadas destino);
 	Pieza* operator[](Coordenadas pos) const { return tab[pos.fila][pos.columna]; }
-	
 };

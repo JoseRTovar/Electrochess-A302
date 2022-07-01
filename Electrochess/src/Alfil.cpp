@@ -13,6 +13,6 @@ void Alfil::dibuja()
 
 bool Alfil::validmove(Coordenadas origen, Coordenadas destino)
 {
-	if (((abs(destino.fila - origen.fila) + abs(destino.columna - origen.columna)) % 2 == 0) && (abs(destino.fila - origen.fila) == abs(destino.columna - origen.columna))) return true;
+	if (Coordenadas::MovDiagonal(origen, destino) == true) return true;
 	return false;
 }

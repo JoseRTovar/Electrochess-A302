@@ -31,6 +31,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Alfil.cpp" />
+    <ClCompile Include="src\Coordenadas.cpp" />
     <ClCompile Include="src\Inicio.cpp" />
     <ClCompile Include="src\Juego.cpp" />
     <ClCompile Include="src\main.cpp" />

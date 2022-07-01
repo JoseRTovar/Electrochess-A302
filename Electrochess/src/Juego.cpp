@@ -19,7 +19,6 @@ void Juego::dibuja()
 			}
 		}
 	}
-
 	tablero.dibuja();
 }
 
@@ -116,7 +115,6 @@ bool Juego::NoSaltar(Coordenadas origen, Coordenadas destino) {
 			if (tablero[origen] != nullptr) return false;
 		}
 	}
-
 	return true;
 }
 
@@ -146,8 +144,7 @@ void Juego::botonRaton(int x, int y, int button, bool down)
 	//Se podria poner quizas un metodo en coordenadas pa saber si son validas
 	if (down)
 	{
-		if (raton.fila > 7 || raton.fila < 0 || raton.columna > 7 || raton.columna < 0)
-			cout << "Fuera del tablero" << endl;
+		if (Coordenadas::FueraTablero(raton) == true) cout << "Fuera del tablero" << endl;
 
 		else if (click == 0) raton_sel = click1();
 
