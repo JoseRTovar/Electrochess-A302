@@ -9,5 +9,5 @@ public:
 	Sprite torreblanca{ "imagenes/Torreblanca.png" };
 	Torre(color_t color) :Pieza(color, TORRE) {}
 	virtual void dibuja();
-	virtual bool validmove(Coordenadas origen, Coordenadas destino);
+	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };

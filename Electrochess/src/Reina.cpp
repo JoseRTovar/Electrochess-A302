@@ -1,5 +1,6 @@
 #pragma once
 #include "Reina.h"
+#include "Tablero.h"
 
 void Reina::dibuja()
 {
@@ -11,10 +12,14 @@ void Reina::dibuja()
 	if (color == Pieza::BLANCA) reinablanca.draw();
 }
 
-bool Reina::validmove(Coordenadas origen, Coordenadas destino)
+bool Reina::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
-	if (Coordenadas::MovLineal(origen, destino) == true) return true;
-	else if (Coordenadas::MovDiagonal(origen, destino) == true) return true;
+	if (Coordenadas::MovLineal(origen, destino) == true) {
+		Pieza::validmove(origen, destino, tablero);
+	}
+	else if (Coordenadas::MovDiagonal(origen, destino) == true) {
+		Pieza::validmove(origen, destino, tablero);
+	}
 	return false;
 }
 

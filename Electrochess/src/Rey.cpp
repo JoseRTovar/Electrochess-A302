@@ -1,5 +1,5 @@
 #include "Rey.h"
-
+#include "Tablero.h"
 
 void Rey::dibuja()
 {
@@ -11,8 +11,10 @@ void Rey::dibuja()
 	if (color == Pieza::BLANCA) reyblanco.draw();
 }
 
-bool Rey::validmove(Coordenadas origen, Coordenadas destino)
+bool Rey::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
-	if (Coordenadas::Movdeunoenuno(origen,destino) == true) return true;
+	if (Coordenadas::Movdeunoenuno(origen, destino) == true) {
+		Pieza::validmove(origen, destino, tablero);
+	}
 	return false;
 }

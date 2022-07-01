@@ -7,11 +7,10 @@
 using ETSIDI::Sprite;
 using namespace std;
 
-
+class Tablero;
 class Pieza
 {
 public:
-	
 	enum pieza_t { NO_PIEZA = -1, REY, TORRE, ALFIL, REINA };
 	enum color_t { NO_COLOR = -1, BLANCA, NEGRA };
 protected:
@@ -22,7 +21,5 @@ public:
 	pieza_t getPieza() { return pieza; }
 	color_t getColor() { return color; }
 	virtual void dibuja() = 0;
-	virtual bool validmove(Coordenadas origen, Coordenadas destino) = 0;
-
-
+	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero &tablero);
 };

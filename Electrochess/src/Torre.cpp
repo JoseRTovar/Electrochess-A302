@@ -1,5 +1,6 @@
 #pragma once
 #include "Torre.h"
+#include "Tablero.h"
 
 void Torre::dibuja()
 {
@@ -11,8 +12,8 @@ void Torre::dibuja()
 	if (color == Pieza::BLANCA) torreblanca.draw();
 }
 
-bool Torre::validmove(Coordenadas origen, Coordenadas destino){
-	if (Coordenadas::MovLineal(origen,destino)==true) return true;
+bool Torre::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero){
+	if (Coordenadas::MovLineal(origen, destino) == true) return true;
 	return false;
 }
 

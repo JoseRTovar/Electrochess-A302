@@ -1,5 +1,6 @@
 #pragma once
 #include "Alfil.h"
+#include "Tablero.h"
 
 void Alfil::dibuja()
 {
@@ -11,8 +12,10 @@ void Alfil::dibuja()
 	if (color == Pieza::BLANCA) alfilblanco.draw();
 }
 
-bool Alfil::validmove(Coordenadas origen, Coordenadas destino)
+bool Alfil::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
-	if (Coordenadas::MovDiagonal(origen, destino) == true) return true;
+	if (Coordenadas::MovDiagonal(origen, destino) == true) {
+		Pieza::validmove(origen, destino, tablero);
+	}
 	return false;
 }

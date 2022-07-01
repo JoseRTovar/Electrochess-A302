@@ -35,16 +35,6 @@ Coordenadas Juego::click1()
 	else
 	{
 		cout << "Se puede jugar esta pieza" << endl;
-
-	/*	glColor3ub(250, 255, 180);
-		glLineWidth(3);
-		glBegin(GL_LINE_LOOP);//start drawing a line loop
-		glVertex3d(0, 0, 0);//left of window
-		glVertex3d(1,0,0);//bottom of window
-		glVertex3d(1,1,0);//right of window
-		glVertex3d(0,1,0);//top of window
-		glEnd();//end drawing of line loop*/
-
 		click = 1;
 	}
 	return c;
@@ -54,10 +44,7 @@ void Juego::click2(Coordenadas o)
 {
 	Coordenadas d = raton;
 
-	if (tablero[d] != nullptr && tablero[d]->getColor() == (Pieza::color_t)turno)
-		cout << "Pieza del mismo color" << endl;
-
-	else if (tablero[o]->validmove(o, d) == true && NoSaltar(o,d) == true)
+	if (tablero[o]->validmove(o, d,tablero) == true)
 	{
 		cout << "(" << o.fila << "," << o.columna << ")" << " -> " << "(" << d.fila << "," << d.columna << ")" << endl;
 		click = 0;
@@ -66,57 +53,59 @@ void Juego::click2(Coordenadas o)
 	}
 }
 
-bool Juego::NoSaltar(Coordenadas origen, Coordenadas destino) {
 
-	int aux;
+//bool Juego::NoSaltar(Coordenadas origen, Coordenadas destino) {
+//
+//	int aux;
+//
+//	//ARRIBA ABAJO
+//	if (destino.fila != origen.fila && destino.columna == origen.columna)
+//	{
+//		aux = (destino.fila - origen.fila) / abs(destino.fila - origen.fila);
+//		while (abs(destino.fila - origen.fila) > 1)
+//		{
+//			origen.fila = origen.fila + aux;
+//			if (tablero[origen] != nullptr) return false;
+//		}
+//	}
+//
+//	//DERECHA E IZQUIERDA
+//	else if (destino.columna != origen.columna && destino.fila == origen.fila)
+//	{
+//		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
+//		while (abs(destino.columna - origen.columna) > 1)
+//		{
+//			origen.columna = origen.columna + aux;
+//			if (tablero[origen] != nullptr) return false;
+//		}
+//	}
+//
+//	//DIAGONAL IZQ -> DCHA ARRIBA Y ABAJO
+//	else if ((destino.columna-origen.columna==destino.fila-origen.fila) && destino.columna != origen.columna && destino.fila != origen.fila)
+//	{
+//		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
+//		while (abs(destino.columna - origen.columna) > 1)
+//		{
+//			origen.columna = origen.columna + aux;
+//			origen.fila = origen.fila + aux;
+//			if (tablero[origen] != nullptr) return false;
+//		}
+//	}
+//
+//	//DIAGONAL DCHA -> IZQ
+//	else if (destino.columna != origen.columna && destino.fila != origen.fila)
+//	{
+//		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
+//		while (abs(destino.columna - origen.columna) > 1)
+//		{
+//			origen.columna = origen.columna + aux;
+//			origen.fila = origen.fila - aux;
+//			if (tablero[origen] != nullptr) return false;
+//		}
+//	}
+//	return true;
+//}
 
-	//ARRIBA ABAJO
-	if (destino.fila != origen.fila && destino.columna == origen.columna)
-	{
-		aux = (destino.fila - origen.fila) / abs(destino.fila - origen.fila);
-		while (abs(destino.fila - origen.fila) > 1)
-		{
-			origen.fila = origen.fila + aux;
-			if (tablero[origen] != nullptr) return false;
-		}
-	}
-
-	//DERECHA E IZQUIERDA
-	else if (destino.columna != origen.columna && destino.fila == origen.fila)
-	{
-		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
-		while (abs(destino.columna - origen.columna) > 1)
-		{
-			origen.columna = origen.columna + aux;
-			if (tablero[origen] != nullptr) return false;
-		}
-	}
-
-	//DIAGONAL IZQ -> DCHA ARRIBA Y ABAJO
-	else if ((destino.columna-origen.columna==destino.fila-origen.fila) && destino.columna != origen.columna && destino.fila != origen.fila)
-	{
-		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
-		while (abs(destino.columna - origen.columna) > 1)
-		{
-			origen.columna = origen.columna + aux;
-			origen.fila = origen.fila + aux;
-			if (tablero[origen] != nullptr) return false;
-		}
-	}
-
-	//DIAGONAL DCHA -> IZQ
-	else if (destino.columna != origen.columna && destino.fila != origen.fila)
-	{
-		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
-		while (abs(destino.columna - origen.columna) > 1)
-		{
-			origen.columna = origen.columna + aux;
-			origen.fila = origen.fila - aux;
-			if (tablero[origen] != nullptr) return false;
-		}
-	}
-	return true;
-}
 
 void Juego::botonRaton(int x, int y, int button, bool down)
 {

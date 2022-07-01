@@ -8,5 +8,5 @@ public:
 	Sprite reinablanca{ "imagenes/Reinablanca.png" };
 	Reina(color_t color) :Pieza(color, REINA) {}
 	virtual void dibuja();
-	virtual bool validmove(Coordenadas origen, Coordenadas destino);
+	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };

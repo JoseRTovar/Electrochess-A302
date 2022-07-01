@@ -18,5 +18,5 @@ public:
 	void dibuja();
 	Coordenadas click1();
 	void click2(Coordenadas o);
-	bool NoSaltar(Coordenadas origen, Coordenadas destino);
+	//bool NoSaltar(Coordenadas origen, Coordenadas destino);
 };
