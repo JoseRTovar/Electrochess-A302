@@ -14,8 +14,9 @@ void Alfil::dibuja()
 
 bool Alfil::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
-	if (Coordenadas::MovDiagonal(origen, destino) == true) {
-		Pieza::validmove(origen, destino, tablero);
+	if (Coordenadas::MovDiagonal(origen, destino) == true) 
+	{
+		return Pieza::validmove(origen, destino, tablero);
 	}
 	return false;
 }

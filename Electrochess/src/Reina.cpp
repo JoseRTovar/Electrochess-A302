@@ -14,11 +14,12 @@ void Reina::dibuja()
 
 bool Reina::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
-	if (Coordenadas::MovLineal(origen, destino) == true) {
-		Pieza::validmove(origen, destino, tablero);
+	if (Coordenadas::MovLineal(origen, destino) == true)
+	{
+		return Pieza::validmove(origen, destino, tablero);
 	}
 	else if (Coordenadas::MovDiagonal(origen, destino) == true) {
-		Pieza::validmove(origen, destino, tablero);
+		return Pieza::validmove(origen, destino, tablero);
 	}
 	return false;
 }

@@ -2,13 +2,13 @@
 #include "Pieza.h"
 #include "Tablero.h"
 
-bool Pieza::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero) {
-
+bool Pieza::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero) 
+{
 	int aux;
 
-	if (tablero[destino] != nullptr && tablero[destino]->getColor() == color) { //Casilla ocupada y mismo color
-		return false; 
-	}
+	//Casilla ocupada y mismo color
+
+	if (tablero[destino] != nullptr && tablero[destino]->getColor() == color) return false;
 
 	//no saltar -> Algoritmo para comprobar trayectoria
 	//ARRIBA ABAJO 

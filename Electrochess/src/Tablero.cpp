@@ -9,9 +9,12 @@ Tablero::Tablero()
 			tab[fila][columna] = nullptr;
 		}
 	}
-	for(int i= 0;i < 30; i++){
+
+	for(int i= 0;i < 30; i++)
+	{
 		Comidas[i] = nullptr;
 	}
+
 	tab[0][4] = new Rey(Pieza::BLANCA);
 	tab[7][4] = new Rey(Pieza::NEGRA);
 	tab[0][0] = new Torre(Pieza::BLANCA);
@@ -29,7 +32,8 @@ Tablero::Tablero()
 void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)
 {
 	int sizecomidas = 0;
-	if (tab[destino.fila][destino.columna] != nullptr) {
+	if (tab[destino.fila][destino.columna] != nullptr)
+	{
 		Comidas[sizecomidas++] = tab[destino.fila][destino.columna];
 		cout << "Pieza comida " << endl;
 	}

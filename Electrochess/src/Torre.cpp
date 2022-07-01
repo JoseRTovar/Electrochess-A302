@@ -13,7 +13,10 @@ void Torre::dibuja()
 }
 
 bool Torre::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero){
-	if (Coordenadas::MovLineal(origen, destino) == true) return true;
+	if (Coordenadas::MovLineal(origen, destino) == true)
+	{
+		return Pieza::validmove(origen, destino, tablero);
+	}
 	return false;
 }
 

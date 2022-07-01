@@ -37,6 +37,7 @@ Coordenadas Juego::click1()
 		cout << "Se puede jugar esta pieza" << endl;
 		click = 1;
 	}
+
 	return c;
 }
 
@@ -52,60 +53,6 @@ void Juego::click2(Coordenadas o)
 		cambiarTurno();
 	}
 }
-
-
-//bool Juego::NoSaltar(Coordenadas origen, Coordenadas destino) {
-//
-//	int aux;
-//
-//	//ARRIBA ABAJO
-//	if (destino.fila != origen.fila && destino.columna == origen.columna)
-//	{
-//		aux = (destino.fila - origen.fila) / abs(destino.fila - origen.fila);
-//		while (abs(destino.fila - origen.fila) > 1)
-//		{
-//			origen.fila = origen.fila + aux;
-//			if (tablero[origen] != nullptr) return false;
-//		}
-//	}
-//
-//	//DERECHA E IZQUIERDA
-//	else if (destino.columna != origen.columna && destino.fila == origen.fila)
-//	{
-//		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
-//		while (abs(destino.columna - origen.columna) > 1)
-//		{
-//			origen.columna = origen.columna + aux;
-//			if (tablero[origen] != nullptr) return false;
-//		}
-//	}
-//
-//	//DIAGONAL IZQ -> DCHA ARRIBA Y ABAJO
-//	else if ((destino.columna-origen.columna==destino.fila-origen.fila) && destino.columna != origen.columna && destino.fila != origen.fila)
-//	{
-//		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
-//		while (abs(destino.columna - origen.columna) > 1)
-//		{
-//			origen.columna = origen.columna + aux;
-//			origen.fila = origen.fila + aux;
-//			if (tablero[origen] != nullptr) return false;
-//		}
-//	}
-//
-//	//DIAGONAL DCHA -> IZQ
-//	else if (destino.columna != origen.columna && destino.fila != origen.fila)
-//	{
-//		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
-//		while (abs(destino.columna - origen.columna) > 1)
-//		{
-//			origen.columna = origen.columna + aux;
-//			origen.fila = origen.fila - aux;
-//			if (tablero[origen] != nullptr) return false;
-//		}
-//	}
-//	return true;
-//}
-
 
 void Juego::botonRaton(int x, int y, int button, bool down)
 {
