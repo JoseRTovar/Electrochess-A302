@@ -1,6 +1,6 @@
 #include "Inicio.h"
 
-void Inicio::TextoInicial(float x, float y, float z, void* font, const char* string) 
+void Inicio::TextoInicial(float x, float y, float z, void* font, const char* string)
 {
 	const char* c;
 	glRasterPos3f(x, y, z);
@@ -16,8 +16,8 @@ void Inicio::dibuja()
 		4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)
 
-	//stopMusica;
-	//playMusica("sonidos/Route66.mp3");
+	stopMusica;
+	playMusica("Route66.mp3");
 	logo.setCenter(0, 0);
 	logo.setSize(3.244, 1.501);
 	logo.draw();

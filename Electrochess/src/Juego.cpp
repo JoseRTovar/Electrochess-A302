@@ -45,7 +45,7 @@ void Juego::click2(Coordenadas o)
 {
 	Coordenadas d = raton;
 
-	if (tablero[o]->validmove(o, d,tablero) == true)
+	if (tablero[o]->validmove(o, d, tablero) == true)
 	{
 		cout << "(" << o.fila << "," << o.columna << ")" << " -> " << "(" << d.fila << "," << d.columna << ")" << endl;
 		click = 0;

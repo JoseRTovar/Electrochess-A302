@@ -4,9 +4,6 @@
 class Reina : public Pieza
 {
 public:
-	Sprite reinanegra{ "imagenes/Reina.png" };
-	Sprite reinablanca{ "imagenes/Reinablanca.png" };
-	Reina(color_t color) :Pieza(color, REINA) {}
-	virtual void dibuja();
+	Reina(color_t color) :Pieza(color, REINA, "Reinablanca.png", "Reina.png") {}
 	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };

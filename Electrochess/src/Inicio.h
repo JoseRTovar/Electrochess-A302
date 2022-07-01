@@ -12,7 +12,7 @@ using ETSIDI::stopMusica;
 class Inicio
 {
 public:
-	Sprite logo{ "imagenes/Logo_color.png" };
+	Sprite logo{ "Logo_color.png" };
 	virtual void dibuja();
 	void TextoInicial(float x, float y, float z, void* font, const char* string);
 };
