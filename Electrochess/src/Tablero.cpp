@@ -39,11 +39,14 @@ void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)
 	if (tab[destino.fila][destino.columna] != nullptr)
 	{
 		Comidas[sizecomidas++] = tab[destino.fila][destino.columna];
+		playMusica("Take.mp3");
 		cout << "Pieza comida " << endl;
 	}
+	else playMusica("Move.mp3");
 	
 	tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
 	tab[origen.fila][origen.columna] = nullptr;
+
 }
 
 void Tablero::dibuja()

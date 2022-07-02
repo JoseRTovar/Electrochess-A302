@@ -16,7 +16,6 @@ void Inicio::dibuja()
 		4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
 		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)
 
-	stopMusica;
 	playMusica("Route66.mp3");
 	logo.setCenter(0, 0);
 	logo.setSize(3.244, 1.501);

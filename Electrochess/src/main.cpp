@@ -72,7 +72,10 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 	switch (key)
 	{
 	case ' ':
-		if (start == 0) start = 1;
+		if (start == 0) {
+			start = 1;
+			stopMusica();
+		}
 	default:
 		break;
 	}
