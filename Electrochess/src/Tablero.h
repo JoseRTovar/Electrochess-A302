@@ -18,6 +18,7 @@ public:
 	Pieza* tab[N_FILAS][N_COLUMNAS];
 	Pieza* Comidas[30]; //Lista de piezas comidas
 	Sprite fondo{ "Fondo.png" };
+	int SizeComidas = 0;
 public:
 	Tablero();
 	void dibuja();

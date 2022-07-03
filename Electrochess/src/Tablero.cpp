@@ -40,15 +40,14 @@ Tablero::Tablero()
 
 void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)
 {
-	int sizecomidas = 0;
 	if (tab[destino.fila][destino.columna] != nullptr)
 	{
-		Comidas[sizecomidas++] = tab[destino.fila][destino.columna];
+		Comidas[SizeComidas++] = tab[destino.fila][destino.columna];
 		playMusica("Take.mp3");
 		cout << "Pieza comida " << endl;
 	}
 	else playMusica("Move.mp3");
-	
+
 	tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
 	tab[origen.fila][origen.columna] = nullptr;
 
@@ -70,6 +69,23 @@ void Tablero::dibuja()
 			glVertex3d(columna, fila + 1.0, 0.0);
 			glEnd();
 			glEnable(GL_LIGHTING);
+		}
+	}
+	int Columna = 0, FilaB = 8, FilaN = 8;
+	int Fila = 8;
+	for (int i = 0;i < 30;i++) {
+		if (Comidas[i] != nullptr) {
+			if (Comidas[i]->getColor() == 0) {
+				Columna = -1;
+				Fila = FilaB--;
+			}
+			else {
+				Columna = 9;
+				Fila = FilaN--;
+			}
+			glTranslatef(Columna, Fila, 0);
+			Comidas[i]->dibuja();
+			glTranslatef(-Columna, -Fila, 0);
 		}
 	}
 
