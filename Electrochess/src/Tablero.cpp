@@ -72,5 +72,9 @@ void Tablero::dibuja()
 			glEnable(GL_LIGHTING);
 		}
 	}
+
+	fondo.setCenter(4, 4);
+	fondo.setSize(20, 20);
+	fondo.draw();
 }
 

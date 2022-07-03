@@ -4,6 +4,6 @@
 class Peon : public Pieza
 {
 public:
-	Peon(color_t color) :Pieza(color, PEON,"Peonblanco.png","Peonnegro.png") {}
+	Peon(color_t color) :Pieza(color, PEON,"Peonblanco.png","Peon.png") {}
 	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };

@@ -17,6 +17,7 @@ class Tablero
 public:
 	Pieza* tab[N_FILAS][N_COLUMNAS];
 	Pieza* Comidas[30]; //Lista de piezas comidas
+	Sprite fondo{ "Fondo.png" };
 public:
 	Tablero();
 	void dibuja();

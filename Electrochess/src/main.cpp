@@ -15,6 +15,8 @@ void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnMouseClick(int button, int state, int x, int y); //esta funcion sera llamada para gestionar el ratón
 void OnKeyboardDown(unsigned char key, int x_t, int y_t); //detectar inicio del juego
 
+void resize(int width, int height);
+
 int main(int argc, char* argv[])
 {
 	//Inicializar el gestor de ventanas GLUT
@@ -36,6 +38,9 @@ int main(int argc, char* argv[])
 	glutDisplayFunc(OnDraw);
 	glutKeyboardFunc(OnKeyboardDown);
 	glutMouseFunc(OnMouseClick);
+
+	//Evitar el maximizar la pantalla
+	glutReshapeFunc(resize);
 
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
@@ -82,6 +87,10 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 	glutPostRedisplay();
 }
 
+void resize(int width, int height) {
+	// Impide maximizar la pantalla:
+	glutReshapeWindow(800, 600);
+}
 
 
 
