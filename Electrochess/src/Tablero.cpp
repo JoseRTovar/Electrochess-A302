@@ -71,17 +71,37 @@ void Tablero::dibuja()
 			glEnable(GL_LIGHTING);
 		}
 	}
-	int Columna = 0, FilaB = 8, FilaN = 8;
+	int Columna = 0;
+	int FilaB = 8, FilaN = 8;
 	int Fila = 8;
+	int blancas = 0, negras = 0;
 	for (int i = 0;i < 30;i++) {
 		if (Comidas[i] != nullptr) {
 			if (Comidas[i]->getColor() == 0) {
-				Columna = -1;
+				if (blancas <= 7) {
+					Columna = -1;
+				}
+				else{
+					if (blancas == 8) {
+						FilaB = 8;				
+					}
+					Columna = -2;
+				}
 				Fila = FilaB--;
+				blancas++;
 			}
 			else {
-				Columna = 9;
+				if (negras <= 7) {
+					Columna = 9;
+				}
+				else {
+					if (negras == 8) {
+						FilaN = 8;
+					}
+					Columna = 10;
+				}
 				Fila = FilaN--;
+				negras++;
 			}
 			glTranslatef(Columna, Fila, 0);
 			Comidas[i]->dibuja();
