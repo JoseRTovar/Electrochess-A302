@@ -4,6 +4,7 @@
 #include "Alfil.h"
 #include "Reina.h"
 #include "Caballo.h"
+#include "Peon.h"
 #include "ETSIDI.h"
 using ETSIDI::playMusica;
 using ETSIDI::stopMusica;

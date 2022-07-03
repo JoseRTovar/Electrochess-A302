@@ -12,10 +12,12 @@ private:
 	bool click = 0;
 	Coordenadas raton;
 	Coordenadas raton_sel;
+	bool jaque = 0;
 public:
 	void botonRaton(int x, int y, int button, bool down);
 	void cambiarTurno() { turno = !turno; }
 	void dibuja();
 	Coordenadas click1();
 	void click2(Coordenadas o);
+	void checkJaque();
 };

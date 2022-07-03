@@ -31,6 +31,11 @@ Tablero::Tablero()
 	tab[0][6] = new Caballo(Pieza::BLANCA);
 	tab[7][1] = new Caballo(Pieza::NEGRA);
 	tab[7][6] = new Caballo(Pieza::NEGRA);
+	for (int i = 0; i < 8; i++) {
+		tab[1][i] = new Peon(Pieza::BLANCA);
+		tab[6][i] = new Peon(Pieza::NEGRA);
+	}
+	
 }
 
 void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)

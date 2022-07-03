@@ -24,3 +24,23 @@ const bool Coordenadas::MovCaballo(Coordenadas origen, Coordenadas destino) {
 	if (((abs(destino.fila - origen.fila) == 1) && (abs(destino.columna - origen.columna) == 2)) || ((abs(destino.fila - origen.fila) == 2) && (abs(destino.columna - origen.columna) == 1))) return true;
 	return false;
 }
+
+const bool Coordenadas::Condpeonb(Coordenadas origen, Coordenadas destino) {
+	if (destino.fila == origen.fila + 1 && destino.columna == origen.columna) return true;
+		return false;
+}
+
+const bool Coordenadas::Condpeonn(Coordenadas origen, Coordenadas destino) {
+	if (destino.fila == origen.fila - 1 && destino.columna == origen.columna) return true;
+	return false;
+}
+
+const bool Coordenadas::Condcomepeonb(Coordenadas origen, Coordenadas destino) {
+	if ((abs(destino.columna - origen.columna) == 1) && (destino.fila == origen.fila + 1)) return true;
+	return false;
+}
+
+const bool Coordenadas::Condcomepeonn(Coordenadas origen, Coordenadas destino) {
+	if ((abs(destino.columna - origen.columna) == 1) && (destino.fila == origen.fila - 1)) return true;
+	return false;
+}

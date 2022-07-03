@@ -24,6 +24,7 @@
     <ClInclude Include="src\Coordenadas.h" />
     <ClInclude Include="src\Inicio.h" />
     <ClInclude Include="src\Juego.h" />
+    <ClInclude Include="src\Peon.h" />
     <ClInclude Include="src\Pieza.h" />
     <ClInclude Include="src\Reina.h" />
     <ClInclude Include="src\Rey.h" />
@@ -37,6 +38,7 @@
     <ClCompile Include="src\Inicio.cpp" />
     <ClCompile Include="src\Juego.cpp" />
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Peon.cpp" />
     <ClCompile Include="src\Pieza.cpp" />
     <ClCompile Include="src\Reina.cpp" />
     <ClCompile Include="src\Rey.cpp" />
