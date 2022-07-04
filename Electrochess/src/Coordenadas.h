@@ -18,4 +18,6 @@ public:
 	static const bool Condcomepeonb(Coordenadas origen, Coordenadas destino);
 	static const bool Condcomepeonn(Coordenadas origen, Coordenadas destino);
 	static const bool FueraTablero(Coordenadas c);
+	static const bool Condpeonbfirstmove(Coordenadas origen, Coordenadas destino);
+	static const bool Condpeonnfirstmove(Coordenadas origen, Coordenadas destino);
 };

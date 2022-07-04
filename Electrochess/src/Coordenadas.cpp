@@ -44,3 +44,13 @@ const bool Coordenadas::Condcomepeonn(Coordenadas origen, Coordenadas destino) {
 	if ((abs(destino.columna - origen.columna) == 1) && (destino.fila == origen.fila - 1)) return true;
 	return false;
 }
+
+const bool Coordenadas::Condpeonbfirstmove(Coordenadas origen, Coordenadas destino) {
+	if (destino.fila == origen.fila + 2 && destino.columna == origen.columna) return true;
+	return false;
+}
+
+const bool Coordenadas::Condpeonnfirstmove(Coordenadas origen, Coordenadas destino) {
+	if (destino.fila == origen.fila - 2 && destino.columna == origen.columna) return true;
+	return false;
+}
