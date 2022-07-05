@@ -49,10 +49,69 @@ void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 	}
 	else playMusica("Move.mp3");
 
-	tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
-	tab[origen.fila][origen.columna] = nullptr;
+	//CORONACION DE LOS PEONES
+	if ((destino.fila == 7 || destino.fila == 0) && tab[origen.fila][origen.columna]->getPieza() == Pieza::PEON)
+	{
+		coronacion(origen, destino);
+	}
+	//CAMBIAR ESTADO NORMAL 
+	else
+	{
+		tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
+		tab[origen.fila][origen.columna] = nullptr;
+	}
 
 }
+
+void Tablero::coronacion(Coordenadas origen, Coordenadas destino)
+{
+	int pieza;
+
+	cout << "Por que pieza quiere cambiar su peon: " << endl;
+	cout << "Torre(1)" << endl;
+	cout << "Alfil(2)" << endl;
+	cout << "Reina(3)" << endl;
+	cout << "Caballo(4)" << endl;
+	cin >> pieza;
+
+	switch (pieza) {
+	case 1:
+		if (tab[origen.fila][origen.columna]->getColor() == Pieza::BLANCA)
+		{
+			tab[destino.fila][destino.columna] = new Torre(Pieza::BLANCA);
+		}
+		else  tab[destino.fila][destino.columna] = new Torre(Pieza::NEGRA);
+		cout << "Torre nueva" << endl;
+		break;
+	case 2:
+		if (tab[origen.fila][origen.columna]->getColor() == Pieza::BLANCA)
+		{
+			tab[destino.fila][destino.columna] = new Alfil(Pieza::BLANCA);
+		}
+		else tab[destino.fila][destino.columna] = new Alfil(Pieza::NEGRA);
+		cout << "Alfil nuevo" << endl;
+		break;
+	case 3:
+		if (tab[origen.fila][origen.columna]->getColor() == Pieza::BLANCA)
+		{
+		tab[destino.fila][destino.columna] = new Reina(Pieza::BLANCA);
+		}
+		else tab[destino.fila][destino.columna] = new Reina(Pieza::NEGRA);
+		cout << "Reina nueva" << endl;
+		break;
+	case 4:
+		if (tab[origen.fila][origen.columna]->getColor() == Pieza::BLANCA)
+		{
+			tab[destino.fila][destino.columna] = new Caballo(Pieza::BLANCA);
+		}
+		else tab[destino.fila][destino.columna] = new Caballo(Pieza::NEGRA);
+		cout << "Caballo nuevo" << endl;
+		break;
+	}
+
+	tab[origen.fila][origen.columna] = nullptr;
+}
+
 
 void Tablero::dibuja(Juego& juego)
 {
@@ -89,10 +148,7 @@ void Tablero::dibuja(Juego& juego)
 	}
 
 	//Dibuja las piezas comidas
-	int Columna = 0;
-	int FilaB = 8, FilaN = 8;
-	int Fila = 8;
-	int blancas = 0, negras = 0;
+	int Columna = 0, FilaB = 8, FilaN = 8, Fila = 8, blancas = 0, negras = 0;
 	for (int i = 0; i < 30; i++)
 	{
 		if (Comidas[i] != nullptr)

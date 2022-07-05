@@ -2,7 +2,7 @@
 #include "Reina.h"
 #include "Tablero.h"
 
-bool Reina::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
+bool Reina::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
 	if (Coordenadas::movLineal(origen, destino) == true)
 		return Pieza::validMove(origen, destino, tablero);
