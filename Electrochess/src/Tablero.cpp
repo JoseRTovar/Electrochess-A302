@@ -44,10 +44,10 @@ void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 	if (tab[destino.fila][destino.columna] != nullptr)
 	{
 		Comidas[SizeComidas++] = tab[destino.fila][destino.columna];
-		playMusica("Take.mp3");
-		cout << "Pieza comida " << endl;
+		//playMusica("Take.mp3");
+		//cout << "Pieza comida " << endl;
 	}
-	else playMusica("Move.mp3");
+	//else playMusica("Move.mp3");
 
 	//CORONACION DE LOS PEONES
 	if ((destino.fila == 7 || destino.fila == 0) && tab[origen.fila][origen.columna]->getPieza() == Pieza::PEON)
