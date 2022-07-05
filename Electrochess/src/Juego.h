@@ -27,7 +27,7 @@ public:
 	void botonRaton(int x, int y, int button, bool down);
 	void cambiarTurno() { turno = !turno; }
 	bool checkJaque(Tablero& tablero, Pieza::Color_e color);
-	void calcLegalMoves(Coordenadas o);
+	void calcLegalMoves(Coordenadas o, Pieza::Color_e color);
 	void vaciarLegalMoves()
 	{
 		for (int i = 0; i < nlegalmoves; i++)
@@ -39,5 +39,6 @@ public:
 	}
 	Coordenadas* operator[](int pos) const { return legalmoves[pos]; }
 	int getLegalMoves() { return nlegalmoves; }
+	bool checkJaqueMate(Pieza::Color_e color);
 	void dibuja();
 };

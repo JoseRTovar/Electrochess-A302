@@ -12,7 +12,7 @@ Coordenadas Juego::click0()
 
 	else
 	{
-		calcLegalMoves(c);
+		calcLegalMoves(c, (Pieza::Color_e)turno);
 		if (nlegalmoves == 0)
 		{
 			cout << "No se puede jugar esta pieza " << nlegalmoves << endl;
@@ -47,11 +47,16 @@ void Juego::click1(Coordenadas o)
 		tablero.cambiarEstado(o, d);
 
 		//Comprobaciones y acciones que se realizan al cambiar el estado de tablero
-		jaque = checkJaque(tablero, (Pieza::Color_e)!turno);
-		cout << jaque << endl;
-		vaciarLegalMoves();
-		cambiarTurno();
-		click = 0;
+		if (checkJaqueMate((Pieza::Color_e)!turno))
+			cout << "JAQUE MATE" << endl;
+		else
+		{
+			jaque = checkJaque(tablero, (Pieza::Color_e)!turno);
+			cout << jaque << endl;
+			vaciarLegalMoves();
+			cambiarTurno();
+			click = 0;
+		}
 	}
 
 	else
@@ -77,7 +82,7 @@ bool Juego::checkJaque(Tablero& tablero, Pieza::Color_e color)
 					for (int c = 0; c < N_COLUMNAS; c++)
 					{
 						Coordenadas oaux(f, c);
-						if (tablero[oaux] != nullptr && tablero[oaux]->getColor() == (Pieza::Color_e)!turno && tablero[oaux]->validMove(oaux, daux, tablero))
+						if (tablero[oaux] != nullptr && tablero[oaux]->getColor() == !color && tablero[oaux]->validMove(oaux, daux, tablero))
 							return true;
 					}
 				}
@@ -88,7 +93,25 @@ bool Juego::checkJaque(Tablero& tablero, Pieza::Color_e color)
 	return false;
 }
 
-void Juego::calcLegalMoves(Coordenadas o)
+bool Juego::checkJaqueMate(Pieza::Color_e color)
+{
+	vaciarLegalMoves();
+	for (int f = 0; f < N_FILAS; f++)
+	{
+		for (int c = 0; c < N_COLUMNAS; c++)
+		{
+			Coordenadas oaux(f, c);
+			if (tablero[oaux] != nullptr && tablero[oaux]->getColor() == color)
+			{
+				calcLegalMoves(oaux, color);
+				if (nlegalmoves != 0) return false;
+			}
+		}
+	}
+	return true;
+}
+
+void Juego::calcLegalMoves(Coordenadas o, Pieza::Color_e color)
 {
 	Coordenadas aux;
 
@@ -100,7 +123,7 @@ void Juego::calcLegalMoves(Coordenadas o)
 			{
 				Tablero tablero_aux = tablero;
 				tablero_aux.cambiarEstado(o, aux);
-				if (checkJaque(tablero_aux, (Pieza::Color_e)turno) == false)
+				if (checkJaque(tablero_aux, color) == false)
 				{
 					legalmoves[nlegalmoves++] = new Coordenadas(aux.fila, aux.columna);
 				}
