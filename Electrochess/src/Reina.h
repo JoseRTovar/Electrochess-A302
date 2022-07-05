@@ -4,6 +4,6 @@
 class Reina : public Pieza
 {
 public:
-	Reina(color_t color) :Pieza(color, REINA, "Reinablanca.png", "Reina.png") {}
+	Reina(Color_e color) :Pieza(color, REINA, "Reinablanca.png", "Reina.png") {}
 	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };

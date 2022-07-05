@@ -2,11 +2,10 @@
 #include "Alfil.h"
 #include "Tablero.h"
 
-bool Alfil::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
+bool Alfil::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
-	if (Coordenadas::MovDiagonal(origen, destino) == true)
-	{
-		return Pieza::validmove(origen, destino, tablero);
-	}
+	if (Coordenadas::movDiagonal(origen, destino) == true)
+		return Pieza::validMove(origen, destino, tablero);
+
 	return false;
 }

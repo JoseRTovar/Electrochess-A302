@@ -17,13 +17,14 @@ class Tablero
 {
 public:
 	Pieza* tab[N_FILAS][N_COLUMNAS];
-	Pieza* Comidas[30]; //Lista de piezas comidas
+	Pieza* Comidas[30];
 	Sprite fondo{ "Fondo.png" };
 	int SizeComidas = 0;
 public:
 	Tablero();
-	//Tablero(const Tablero& tablero);
 	void dibuja(Juego& juego);
 	void cambiarEstado(Coordenadas origen, Coordenadas destino);
 	Pieza* operator[](Coordenadas pos) const { return tab[pos.fila][pos.columna]; }
 };
+
+

@@ -4,6 +4,6 @@
 class Torre : public Pieza
 {
 public:
-	Torre(color_t color) :Pieza(color, TORRE, "Torreblanca.png", "Torre.png") {}
-	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
+	Torre(Color_e color) :Pieza(color, TORRE, "Torreblanca.png", "Torre.png") {}
+	virtual bool validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };

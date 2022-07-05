@@ -4,6 +4,7 @@
 class Caballo : public Pieza
 {
 public:
-	Caballo(color_t color) :Pieza(color, CABALLO, "Caballoblanco.png", "Caballo.png") {}
-	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
+	Caballo(Color_e color) :Pieza(color, CABALLO, "Caballoblanco.png", "Caballo.png") {}
+	virtual bool validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };
+

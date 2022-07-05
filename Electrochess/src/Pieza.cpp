@@ -2,12 +2,11 @@
 #include "Pieza.h"
 #include "Tablero.h"
 
-bool Pieza::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
+bool Pieza::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
 	int aux;
 
-	//Casilla ocupada y mismo color
-
+	//Revisa si la casilla está ocupada por una pieza de tu color
 	if (tablero[destino] != nullptr && tablero[destino]->getColor() == color) return false;
 
 	//no saltar -> Algoritmo para comprobar trayectoria

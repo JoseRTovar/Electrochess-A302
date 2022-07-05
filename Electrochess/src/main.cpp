@@ -8,9 +8,7 @@ int start = 0;
 Juego juego;
 Inicio inicio;
 
-//los callback, funciones que seran llamadas automaticamente por la glut
-//cuando sucedan eventos
-//NO HACE FALTA LLAMARLAS EXPLICITAMENTE
+//Callbacks
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnMouseClick(int button, int state, int x, int y); //esta funcion sera llamada para gestionar el ratón
 void OnKeyboardDown(unsigned char key, int x_t, int y_t); //detectar inicio del juego
@@ -19,14 +17,13 @@ void resize(int width, int height);
 
 int main(int argc, char* argv[])
 {
-	//Inicializar el gestor de ventanas GLUT
-	//y crear la ventana
+	//Inicializar el gestor de ventanas GLUT y crear la ventana
 	glutInit(&argc, argv);
 	glutInitWindowSize(800, 600);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
 	glutCreateWindow("Ajedrez");
 
-	//habilitar luces y definir perspectiva
+	//Habilitar luces y definir perspectiva
 	glEnable(GL_LIGHT0);
 	glEnable(GL_LIGHTING);
 	glEnable(GL_DEPTH_TEST);
@@ -91,6 +88,7 @@ void resize(int width, int height) {
 	// Impide maximizar la pantalla:
 	glutReshapeWindow(800, 600);
 }
+
 
 
 

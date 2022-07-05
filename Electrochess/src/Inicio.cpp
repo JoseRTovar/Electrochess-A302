@@ -1,6 +1,6 @@
 #include "Inicio.h"
 
-void Inicio::TextoInicial(float x, float y, float z, void* font, const char* string)
+void Inicio::textoInicial(float x, float y, float z, void* font, const char* string)
 {
 	const char* c;
 	glRasterPos3f(x, y, z);
@@ -31,15 +31,15 @@ void Inicio::dibuja()
 	glEnd();
 
 	glColor3ub(0, 0, 255);
-	TextoInicial(2, 5, 1, (void*)(int)GLUT_BITMAP_TIMES_ROMAN_24, "ELECTROCHESS");
+	textoInicial(2, 5, 1, (void*)(int)GLUT_BITMAP_TIMES_ROMAN_24, "ELECTROCHESS");
 
 	glColor3ub(0, 0, 255);
-	TextoInicial(1.5, 4, 1, (void*)(int)GLUT_BITMAP_9_BY_15, "Pulse Espacio para comenzar");
+	textoInicial(1.5, 4, 1, (void*)(int)GLUT_BITMAP_9_BY_15, "Pulse Espacio para comenzar");
 
 	glColor3ub(0, 0, 255);
-	TextoInicial(4.2, 0.9, 1, (void*)(int)GLUT_BITMAP_HELVETICA_10, "Jose Alejandro Ramos Tovar");
-	TextoInicial(4.2, 0.7, 1, (void*)(int)GLUT_BITMAP_HELVETICA_10, "Mario Sanchez Garcia");
-	TextoInicial(4.2, 0.5, 1, (void*)(int)GLUT_BITMAP_HELVETICA_10, "Pablo Lopez Lopez");
+	textoInicial(4.2, 0.9, 1, (void*)(int)GLUT_BITMAP_HELVETICA_10, "Jose Alejandro Ramos Tovar");
+	textoInicial(4.2, 0.7, 1, (void*)(int)GLUT_BITMAP_HELVETICA_10, "Mario Sanchez Garcia");
+	textoInicial(4.2, 0.5, 1, (void*)(int)GLUT_BITMAP_HELVETICA_10, "Pablo Lopez Lopez");
 
 	glEnable(GL_LIGHTING);
 }

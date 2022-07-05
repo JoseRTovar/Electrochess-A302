@@ -4,6 +4,6 @@
 class Alfil : public Pieza
 {
 public:
-	Alfil(color_t color) :Pieza(color, ALFIL, "Alfilblanco.png", "Alfil.png") {}
-	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
+	Alfil(Color_e color) :Pieza(color, ALFIL, "Alfilblanco.png", "Alfil.png") {}
+	virtual bool validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };

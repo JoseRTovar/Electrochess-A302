@@ -14,5 +14,5 @@ class Inicio
 public:
 	Sprite logo{ "Logo_color.png" };
 	virtual void dibuja();
-	void TextoInicial(float x, float y, float z, void* font, const char* string);
+	void textoInicial(float x, float y, float z, void* font, const char* string);
 };

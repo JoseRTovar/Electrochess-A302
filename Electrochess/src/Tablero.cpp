@@ -11,11 +11,6 @@ Tablero::Tablero()
 		}
 	}
 
-	for (int i = 0; i < 30; i++)
-	{
-		Comidas[i] = nullptr;
-	}
-
 	tab[0][4] = new Rey(Pieza::BLANCA);
 	tab[7][4] = new Rey(Pieza::NEGRA);
 	tab[0][0] = new Torre(Pieza::BLANCA);
@@ -38,32 +33,11 @@ Tablero::Tablero()
 		tab[6][i] = new Peon(Pieza::NEGRA);
 	}
 
+	for (int i = 0; i < 30; i++)
+	{
+		Comidas[i] = nullptr;
+	}
 }
-
-//Tablero::Tablero(const Tablero& tablero)
-//{
-//	for (int fila = 0; fila < N_FILAS; fila++)
-//	{
-//		for (int columna = 0; columna < N_COLUMNAS; columna++)
-//		{
-//			if (tablero.tab[fila][columna] == nullptr)
-//				this->tab[fila][columna] = nullptr;
-//			else
-//			{
-//				switch (tablero.tab[fila][columna]->getPieza())
-//				{
-//				case Pieza::REY:
-//					if (Pieza::BLANCA)
-//						this->tab[fila][columna] = new Rey(Pieza::BLANCA);
-//					else
-//						this->tab[fila][columna] = new Rey(Pieza::NEGRA);
-//				case Pieza::REINA:
-//					if
-//				}
-//			}
-//		}
-//	}
-//}
 
 void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 {
@@ -82,7 +56,8 @@ void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 
 void Tablero::dibuja(Juego& juego)
 {
-	for (int i = 0; i < juego.getlegalmoves(); i++)
+	//Dibuja de un color verde las casillas a las que es posible mover la pieza seleccionada
+	for (int i = 0; i < juego.getLegalMoves(); i++)
 	{
 		if ((juego[i]->fila + juego[i]->columna) % 2 == 0)  glColor3ub(50, 150, 50);
 		else glColor3ub(100, 200, 100);
@@ -94,6 +69,8 @@ void Tablero::dibuja(Juego& juego)
 		glEnd();
 		glEnable(GL_LIGHTING);
 	}
+
+	//Dibuja el tablero por completo
 	for (int fila = 0; fila < N_FILAS; fila++)
 	{
 		for (int columna = 0; columna < N_COLUMNAS; columna++)
@@ -111,6 +88,7 @@ void Tablero::dibuja(Juego& juego)
 		}
 	}
 
+	//Dibuja las piezas comidas
 	int Columna = 0;
 	int FilaB = 8, FilaN = 8;
 	int Fila = 8;
@@ -151,8 +129,4 @@ void Tablero::dibuja(Juego& juego)
 	fondo.setSize(20, 20);
 	fondo.draw();
 }
-
-
-
-
 

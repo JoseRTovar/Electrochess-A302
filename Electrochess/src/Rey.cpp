@@ -1,11 +1,10 @@
 #include "Rey.h"
 #include "Tablero.h"
 
-bool Rey::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
+bool Rey::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
-	if (Coordenadas::Movdeunoenuno(origen, destino) == true)
-	{
-		return Pieza::validmove(origen, destino, tablero);
-	}
+	if (Coordenadas::movUnitario(origen, destino) == true)
+		return Pieza::validMove(origen, destino, tablero);
+
 	return false;
 }

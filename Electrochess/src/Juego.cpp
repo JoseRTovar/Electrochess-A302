@@ -7,16 +7,16 @@ Coordenadas Juego::click0()
 	if (tablero[c] == nullptr)
 		cout << "Casilla vacia" << endl;
 
-	else if (tablero[c]->getColor() != (Pieza::color_t)turno)
+	else if (tablero[c]->getColor() != (Pieza::Color_e)turno)
 		cout << "No es tu turno" << endl;
 
 	else
 	{
-		Calclegalmoves(c);
+		calcLegalMoves(c);
 		if (nlegalmoves == 0)
 		{
 			cout << "No se puede jugar esta pieza " << nlegalmoves << endl;
-			vaciarlegalmoves();
+			vaciarLegalMoves();
 			click = 0;
 		}
 
@@ -49,7 +49,7 @@ void Juego::click1(Coordenadas o)
 		//Comprobaciones y acciones que se realizan al cambiar el estado de tablero
 		jaque = checkJaque(tablero);
 		cout << jaque << endl;
-		vaciarlegalmoves();
+		vaciarLegalMoves();
 		cambiarTurno();
 		click = 0;
 	}
@@ -57,12 +57,12 @@ void Juego::click1(Coordenadas o)
 	else
 	{
 		cout << "Movimiento no valido" << endl;
-		vaciarlegalmoves();
+		vaciarLegalMoves();
 		click = 0;
 	}
 }
 
-Juego::jaque_t Juego::checkJaque(Tablero tablero)
+Juego::Jaque_e Juego::checkJaque(Tablero& tablero)
 {
 	//Esta función chequea si alguna de las piezas del equipo que acaba de mover está haciendo jaque al rey
 	//enemigo. Para ello, recorre todas las piezas del equipo que acaba de mover y comprueba si algún validmove
@@ -76,15 +76,15 @@ Juego::jaque_t Juego::checkJaque(Tablero tablero)
 	{
 		for (oaux.columna = 0; oaux.columna < N_COLUMNAS; oaux.columna++)
 		{
-			if (tablero[oaux] != nullptr && tablero[oaux]->getColor() == (Pieza::color_t)turno)
+			if (tablero[oaux] != nullptr && tablero[oaux]->getColor() == (Pieza::Color_e)turno)
 			{
 				for (daux.fila = 0; daux.fila < N_FILAS; daux.fila++)
 				{
 					for (daux.columna = 0; daux.columna < N_COLUMNAS; daux.columna++)
 					{
-						if (tablero[oaux]->validmove(oaux, daux, tablero) && tablero[daux] != nullptr && tablero[daux]->getPieza() == Pieza::REY)
+						if (tablero[oaux]->validMove(oaux, daux, tablero) && tablero[daux] != nullptr && tablero[daux]->getPieza() == Pieza::REY)
 						{
-							return (jaque_t)!turno;
+							return (Jaque_e)!turno;
 						}
 					}
 				}
@@ -94,7 +94,7 @@ Juego::jaque_t Juego::checkJaque(Tablero tablero)
 	return NO_JAQUE;
 }
 
-void Juego::Calclegalmoves(Coordenadas o)
+void Juego::calcLegalMoves(Coordenadas o)
 {
 	//Calculamos los movimientos legales de la pieza situada en la coordenada clicada, y los añadimos al array
 	//de movimientos legales. El objetivo es añadir la norma de que un equipo no se puede meter en jaque o de que
@@ -106,7 +106,7 @@ void Juego::Calclegalmoves(Coordenadas o)
 	{
 		for (aux.columna = 0; aux.columna < N_COLUMNAS; aux.columna++)
 		{
-			if (tablero[o]->validmove(o, aux, tablero) == true)
+			if (tablero[o]->validMove(o, aux, tablero) == true)
 			{
 				legalmoves[nlegalmoves++] = new Coordenadas(aux.fila, aux.columna);
 			}
@@ -194,7 +194,7 @@ void Juego::botonRaton(int x, int y, int button, bool down)
 	//Se podria poner quizas un metodo en coordenadas pa saber si son validas
 	if (down)
 	{
-		if (Coordenadas::FueraTablero(raton) == true) cout << "Fuera del tablero" << endl;
+		if (Coordenadas::fueraTablero(raton) == true) cout << "Fuera del tablero" << endl;
 
 		else if (click == 0) raton_sel = click0();
 

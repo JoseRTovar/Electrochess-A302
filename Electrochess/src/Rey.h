@@ -4,10 +4,9 @@
 class Rey : public Pieza
 {
 public:
-	Rey(color_t color) :Pieza(color, REY, "Reyblanco.png", "Rey.png") {}
-	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
+	Rey(Color_e color) :Pieza(color, REY, "Reyblanco.png", "Rey.png") {}
+	virtual bool validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };
-
 
 
 

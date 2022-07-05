@@ -8,11 +8,11 @@ enum { MOUSE_LEFT_BUTTON, MOUSE_MIDDLE_BUTTON, MOUSE_RIGHT_BUTTON };
 class Juego
 {
 public:
-	enum jaque_t { NO_JAQUE = -1, JAQUE_B, JAQUE_N };
+	enum Jaque_e { NO_JAQUE = -1, JAQUE_B, JAQUE_N };
 private:
 	Tablero tablero;
 	bool turno;
-	jaque_t jaque;
+	Jaque_e jaque;
 	Coordenadas* legalmoves[MAX_MOVES];
 	int nlegalmoves;
 	bool click;
@@ -32,9 +32,9 @@ public:
 	void click1(Coordenadas o);
 	void botonRaton(int x, int y, int button, bool down);
 	void cambiarTurno() { turno = !turno; }
-	jaque_t checkJaque(Tablero tablero);
-	void Calclegalmoves(Coordenadas o);
-	void vaciarlegalmoves()
+	Jaque_e checkJaque(Tablero& tablero);
+	void calcLegalMoves(Coordenadas o);
+	void vaciarLegalMoves()
 	{
 		for (int i = 0; i < nlegalmoves; i++)
 		{
@@ -44,6 +44,6 @@ public:
 		nlegalmoves = 0;
 	}
 	Coordenadas* operator[](int pos) const { return legalmoves[pos]; }
-	int getlegalmoves() { return nlegalmoves; }
+	int getLegalMoves() { return nlegalmoves; }
 	void dibuja();
 };

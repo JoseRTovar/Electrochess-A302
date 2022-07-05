@@ -11,14 +11,14 @@ class Tablero;
 class Pieza
 {
 public:
-	enum pieza_t { NO_PIEZA = -1, REY, TORRE, ALFIL, REINA, CABALLO, PEON };
-	enum color_t { NO_COLOR = -1, BLANCA, NEGRA };
+	enum Pieza_e { NO_PIEZA = -1, REY, TORRE, ALFIL, REINA, CABALLO, PEON };
+	enum Color_e { NO_COLOR = -1, BLANCA, NEGRA };
 protected:
-	pieza_t pieza = NO_PIEZA;
-	color_t color = NO_COLOR;
+	Pieza_e pieza = NO_PIEZA;
+	Color_e color = NO_COLOR;
 	Sprite imagen;
 public:
-	Pieza(color_t c, pieza_t p, const char* im_b, const char* im_n) :
+	Pieza(Color_e c, Pieza_e p, const char* im_b, const char* im_n) :
 		color(c),
 		pieza(p),
 		imagen(c == BLANCA ? im_b : im_n)
@@ -27,8 +27,8 @@ public:
 		imagen.setSize(0.8, 0.8);
 	};
 
-	pieza_t getPieza() { return pieza; }
-	color_t getColor() { return color; }
+	Pieza_e getPieza() { return pieza; }
+	Color_e getColor() { return color; }
 	virtual void dibuja() { imagen.draw(); }
-	virtual bool validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
+	virtual bool validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
 };

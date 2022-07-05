@@ -9,15 +9,15 @@ public:
 public:
 	Coordenadas() {}
 	Coordenadas(int fila, int columna) :fila(fila), columna(columna) {}
-	static const bool MovLineal(Coordenadas origen, Coordenadas destino);
-	static const bool MovDiagonal(Coordenadas origen, Coordenadas destino);
-	static const bool Movdeunoenuno(Coordenadas origen, Coordenadas destino);
-	static const bool MovCaballo(Coordenadas origen, Coordenadas destino);
-	static const bool Condpeonb(Coordenadas origen, Coordenadas destino);
-	static const bool Condpeonn(Coordenadas origen, Coordenadas destino);
-	static const bool Condcomepeonb(Coordenadas origen, Coordenadas destino);
-	static const bool Condcomepeonn(Coordenadas origen, Coordenadas destino);
-	static const bool Condpeonbfirstmove(Coordenadas origen, Coordenadas destino);
-	static const bool Condpeonnfirstmove(Coordenadas origen, Coordenadas destino);
-	static const bool FueraTablero(Coordenadas c);
+	static bool movLineal(Coordenadas origen, Coordenadas destino);
+	static bool movDiagonal(Coordenadas origen, Coordenadas destino);
+	static bool movUnitario(Coordenadas origen, Coordenadas destino);
+	static bool movCaballo(Coordenadas origen, Coordenadas destino);
+	static bool movPeon_b(Coordenadas origen, Coordenadas destino);
+	static bool movPeon_n(Coordenadas origen, Coordenadas destino);
+	static bool comePeon_b(Coordenadas origen, Coordenadas destino);
+	static bool comePeon_n(Coordenadas origen, Coordenadas destino);
+	static bool primerMovePeon_b(Coordenadas origen, Coordenadas destino);
+	static bool primerMovePeon_n(Coordenadas origen, Coordenadas destino);
+	static bool fueraTablero(Coordenadas c);
 };
