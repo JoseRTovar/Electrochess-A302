@@ -13,4 +13,3 @@ bool Reina::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 	}
 	return false;
 }
-

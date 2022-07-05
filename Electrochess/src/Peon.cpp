@@ -4,26 +4,26 @@
 
 bool Peon::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
-	if(color==BLANCA)
+	if (color == BLANCA)
 	{
-			if (origen.fila == 1) 
+		if (origen.fila == 1)
+		{
+			if (Coordenadas::Condpeonbfirstmove(origen, destino) == true || Coordenadas::Condpeonb(origen, destino) == true || ((Coordenadas::Condcomepeonb(origen, destino) == true) && tablero[destino] != nullptr))
 			{
-				if (Coordenadas::Condpeonbfirstmove(origen, destino) == true || Coordenadas::Condpeonb(origen, destino) == true || ((Coordenadas::Condcomepeonb(origen, destino) == true) && tablero[destino] != nullptr))
-				{
-					return true;
-				}
+				return true;
 			}
-			else if(origen.fila != 1) 
+		}
+		else if (origen.fila != 1)
+		{
+			if ((Coordenadas::Condpeonb(origen, destino) == true) && tablero[destino] == nullptr)
 			{
-				if ((Coordenadas::Condpeonb(origen, destino) == true) && tablero[destino] == nullptr) 
-				{
-					return Pieza::validmove(origen, destino, tablero);
-				}
-				else if ((Coordenadas::Condcomepeonb(origen, destino) == true) && tablero[destino] != nullptr) 
-				{
-					return Pieza::validmove(origen, destino, tablero);
-				}
-			}	
+				return Pieza::validmove(origen, destino, tablero);
+			}
+			else if ((Coordenadas::Condcomepeonb(origen, destino) == true) && tablero[destino] != nullptr)
+			{
+				return Pieza::validmove(origen, destino, tablero);
+			}
+		}
 	}
 	else if (color == NEGRA)
 	{
@@ -48,4 +48,3 @@ bool Peon::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 	}
 	return false;
 }
-

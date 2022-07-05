@@ -12,6 +12,7 @@ using ETSIDI::stopMusica;
 #define N_FILAS 8
 #define N_COLUMNAS 8
 
+class Juego;
 class Tablero
 {
 public:
@@ -21,7 +22,7 @@ public:
 	int SizeComidas = 0;
 public:
 	Tablero();
-	void dibuja();
-	void MoverPieza(Coordenadas origen, Coordenadas destino);
+	void dibuja(Juego& juego);
+	void cambiarEstado(Coordenadas origen, Coordenadas destino);
 	Pieza* operator[](Coordenadas pos) const { return tab[pos.fila][pos.columna]; }
 };

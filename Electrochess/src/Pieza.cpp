@@ -2,7 +2,7 @@
 #include "Pieza.h"
 #include "Tablero.h"
 
-bool Pieza::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero) 
+bool Pieza::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
 	int aux;
 
@@ -12,7 +12,7 @@ bool Pieza::validmove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 
 	//no saltar -> Algoritmo para comprobar trayectoria
 	//ARRIBA ABAJO 
-	if(destino.fila != origen.fila && destino.columna == origen.columna)
+	if (destino.fila != origen.fila && destino.columna == origen.columna)
 	{
 		aux = (destino.fila - origen.fila) / abs(destino.fila - origen.fila);
 		while (abs(destino.fila - origen.fila) > 1)

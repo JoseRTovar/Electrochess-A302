@@ -4,8 +4,8 @@
 class Coordenadas
 {
 public:
-	int fila;
-	int columna;
+	int fila = 0;
+	int columna = 0;
 public:
 	Coordenadas() {}
 	Coordenadas(int fila, int columna) :fila(fila), columna(columna) {}
@@ -17,7 +17,7 @@ public:
 	static const bool Condpeonn(Coordenadas origen, Coordenadas destino);
 	static const bool Condcomepeonb(Coordenadas origen, Coordenadas destino);
 	static const bool Condcomepeonn(Coordenadas origen, Coordenadas destino);
-	static const bool FueraTablero(Coordenadas c);
 	static const bool Condpeonbfirstmove(Coordenadas origen, Coordenadas destino);
 	static const bool Condpeonnfirstmove(Coordenadas origen, Coordenadas destino);
+	static const bool FueraTablero(Coordenadas c);
 };

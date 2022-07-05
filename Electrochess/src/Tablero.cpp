@@ -1,4 +1,5 @@
 #include "Tablero.h"
+#include "Juego.h"
 
 Tablero::Tablero()
 {
@@ -10,7 +11,7 @@ Tablero::Tablero()
 		}
 	}
 
-	for(int i= 0;i < 30; i++)
+	for (int i = 0; i < 30; i++)
 	{
 		Comidas[i] = nullptr;
 	}
@@ -31,14 +32,15 @@ Tablero::Tablero()
 	tab[0][6] = new Caballo(Pieza::BLANCA);
 	tab[7][1] = new Caballo(Pieza::NEGRA);
 	tab[7][6] = new Caballo(Pieza::NEGRA);
-	for (int i = 0; i < 8; i++) {
+	for (int i = 0; i < 8; i++)
+	{
 		tab[1][i] = new Peon(Pieza::BLANCA);
 		tab[6][i] = new Peon(Pieza::NEGRA);
 	}
-	
+
 }
 
-void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)
+void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 {
 	if (tab[destino.fila][destino.columna] != nullptr)
 	{
@@ -53,8 +55,20 @@ void Tablero::MoverPieza(Coordenadas origen, Coordenadas destino)
 
 }
 
-void Tablero::dibuja()
+void Tablero::dibuja(Juego& juego)
 {
+	for (int i = 0; i < juego.getlegalmoves(); i++)
+	{
+		if ((juego[i]->fila + juego[i]->columna) % 2 == 0)  glColor3ub(50, 150, 50);
+		else glColor3ub(100, 200, 100);
+		glBegin(GL_POLYGON);
+		glVertex3d(juego[i]->columna, juego[i]->fila, 0.0);
+		glVertex3d(juego[i]->columna + 1.0, juego[i]->fila, 0.0);
+		glVertex3d(juego[i]->columna + 1.0, juego[i]->fila + 1.0, 0.0);
+		glVertex3d(juego[i]->columna, juego[i]->fila + 1.0, 0.0);
+		glEnd();
+		glEnable(GL_LIGHTING);
+	}
 	for (int fila = 0; fila < N_FILAS; fila++)
 	{
 		for (int columna = 0; columna < N_COLUMNAS; columna++)
@@ -71,33 +85,32 @@ void Tablero::dibuja()
 			glEnable(GL_LIGHTING);
 		}
 	}
+
 	int Columna = 0;
 	int FilaB = 8, FilaN = 8;
 	int Fila = 8;
 	int blancas = 0, negras = 0;
-	for (int i = 0;i < 30;i++) {
-		if (Comidas[i] != nullptr) {
-			if (Comidas[i]->getColor() == 0) {
-				if (blancas <= 7) {
-					Columna = -1;
-				}
-				else{
-					if (blancas == 8) {
-						FilaB = 8;				
-					}
+	for (int i = 0; i < 30; i++)
+	{
+		if (Comidas[i] != nullptr)
+		{
+			if (Comidas[i]->getColor() == 0)
+			{
+				if (blancas <= 7) Columna = -1;
+				else
+				{
+					if (blancas == 8) FilaB = 8;
 					Columna = -2;
 				}
 				Fila = FilaB--;
 				blancas++;
 			}
-			else {
-				if (negras <= 7) {
-					Columna = 9;
-				}
-				else {
-					if (negras == 8) {
-						FilaN = 8;
-					}
+			else
+			{
+				if (negras <= 7)  Columna = 9;
+				else
+				{
+					if (negras == 8) FilaN = 8;
 					Columna = 10;
 				}
 				Fila = FilaN--;
@@ -113,4 +126,8 @@ void Tablero::dibuja()
 	fondo.setSize(20, 20);
 	fondo.draw();
 }
+
+
+
+
 
