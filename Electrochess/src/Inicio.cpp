@@ -1,15 +1,5 @@
 #include "Inicio.h"
 
-void Inicio::textoInicial(float x, float y, float z, void* font, const char* string)
-{
-	const char* c;
-	glRasterPos3f(x, y, z);
-	for (c = string; *c != '\0'; c++)
-	{
-		glutBitmapCharacter(font, *c);
-	}
-}
-
 void Inicio::dibuja()
 {
 	gluLookAt(4, 4, 15,  // posicion del ojo

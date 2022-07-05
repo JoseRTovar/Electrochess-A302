@@ -148,31 +148,27 @@ void Tablero::dibuja(Juego& juego)
 	}
 
 	//Dibuja las piezas comidas
-	int Columna = 0, FilaB = 8, FilaN = 8, Fila = 8, blancas = 0, negras = 0;
-	for (int i = 0; i < 30; i++)
-	{
-		if (Comidas[i] != nullptr)
-		{
-			if (Comidas[i]->getColor() == 0)
-			{
-				if (blancas <= 7) Columna = -1;
-				else
-				{
-					if (blancas == 8) FilaB = 8;
-					Columna = -2;
+	int ColumnaB = -1, ColumnaN = 9, Columna = 0;
+	int FilaB = N_FILAS-1, FilaN = N_FILAS-1, Fila = N_FILAS-1;
+	int blancas = 0, negras = 0;
+	for (int i = 0;i < 30;i++) {
+		if (Comidas[i] != nullptr) {
+			if (Comidas[i]->getColor() == Pieza::BLANCA) {
+				if (blancas == N_FILAS) {
+					FilaB = N_FILAS-1;
+					ColumnaB = -2;
 				}
 				Fila = FilaB--;
+				Columna = ColumnaB;
 				blancas++;
 			}
-			else
-			{
-				if (negras <= 7)  Columna = 9;
-				else
-				{
-					if (negras == 8) FilaN = 8;
-					Columna = 10;
+			else {
+				if (negras == N_FILAS) {
+					FilaN = N_FILAS-1;
+					ColumnaN = 10;
 				}
 				Fila = FilaN--;
+				Columna = ColumnaN;
 				negras++;
 			}
 			glTranslatef(Columna, Fila, 0);
@@ -181,8 +177,8 @@ void Tablero::dibuja(Juego& juego)
 		}
 	}
 
-	fondo.setCenter(4, 4);
-	fondo.setSize(20, 20);
+	fondo.setCenter(3.6, 1.45);
+	fondo.setSize(14.9, 11.175);
 	fondo.draw();
 }
 
