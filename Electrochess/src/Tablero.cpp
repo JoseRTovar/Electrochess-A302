@@ -40,6 +40,31 @@ Tablero::Tablero()
 
 }
 
+//Tablero::Tablero(const Tablero& tablero)
+//{
+//	for (int fila = 0; fila < N_FILAS; fila++)
+//	{
+//		for (int columna = 0; columna < N_COLUMNAS; columna++)
+//		{
+//			if (tablero.tab[fila][columna] == nullptr)
+//				this->tab[fila][columna] = nullptr;
+//			else
+//			{
+//				switch (tablero.tab[fila][columna]->getPieza())
+//				{
+//				case Pieza::REY:
+//					if (Pieza::BLANCA)
+//						this->tab[fila][columna] = new Rey(Pieza::BLANCA);
+//					else
+//						this->tab[fila][columna] = new Rey(Pieza::NEGRA);
+//				case Pieza::REINA:
+//					if
+//				}
+//			}
+//		}
+//	}
+//}
+
 void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 {
 	if (tab[destino.fila][destino.columna] != nullptr)

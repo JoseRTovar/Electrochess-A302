@@ -22,6 +22,7 @@ public:
 	int SizeComidas = 0;
 public:
 	Tablero();
+	//Tablero(const Tablero& tablero);
 	void dibuja(Juego& juego);
 	void cambiarEstado(Coordenadas origen, Coordenadas destino);
 	Pieza* operator[](Coordenadas pos) const { return tab[pos.fila][pos.columna]; }
