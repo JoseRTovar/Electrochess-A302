@@ -50,7 +50,7 @@ void Juego::click1(Coordenadas o)
 		if (checkJaqueMate((Pieza::Color_e)!turno))
 		{
 			cout << "JAQUE MATE" << endl; //INCLUIR PANTALLA DE JAQUE MATE / GAME OVER
-			jaquemate.draw();
+			JaqueMate = 1;
 			tablero.cleanTablero(); //Para que no se puedan mover mas piezas
 		}
 		else
@@ -195,5 +195,5 @@ void Juego::dibuja()
 			}
 		}
 	}
-	tablero.dibuja(*this);
+	tablero.dibuja(*this,JaqueMate);
 }

@@ -20,9 +20,10 @@ public:
 	Pieza* Comidas[30];
 	Sprite fondo{ "Fondo.png" };
 	int SizeComidas = 0;
+	Sprite jaquemate{ "jaquemate.png" };
 public:
 	Tablero();
-	void dibuja(Juego& juego);
+	void dibuja(Juego& juego,int JaqueMate);
 	void cambiarEstado(Coordenadas origen, Coordenadas destino);
 	void cambiarAux(Coordenadas origen, Coordenadas destino);
 	void coronacion(Coordenadas origen, Coordenadas destino);

@@ -15,14 +15,12 @@ private:
 	Coordenadas* legalmoves[MAX_MOVES];
 	int nlegalmoves;
 	Coordenadas raton, raton_sel;
-	Sprite jaquemate{ "jaquemate.png" };
+	int JaqueMate = 0;
 public:
 	Juego() : turno(0), jaque(0), click(0), nlegalmoves(0)
 	{
 		for (int i = 0; i < MAX_MOVES; i++)
 			legalmoves[i] = nullptr;
-		jaquemate.setCenter(2, 2);
-		jaquemate.setSize(4, 4);
 	}
 	Coordenadas click0();
 	void click1(Coordenadas o);
