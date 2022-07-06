@@ -9,7 +9,8 @@ bool Peon::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 		if (origen.fila == 1)
 		{
 			if (Coordenadas::primerMovePeon_b(origen, destino) == true || Coordenadas::movPeon_b(origen, destino) == true || ((Coordenadas::comePeon_b(origen, destino) == true) && tablero[destino] != nullptr && tablero[destino]->getColor() != color))
-				return true;
+				return Pieza::validMove(origen, destino, tablero);
+
 		}
 
 		else if (origen.fila != 1)
@@ -27,7 +28,7 @@ bool Peon::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 		if (origen.fila == 6)
 		{
 			if (Coordenadas::primerMovePeon_n(origen, destino) == true || Coordenadas::movPeon_n(origen, destino) == true || ((Coordenadas::comePeon_n(origen, destino) == true) && tablero[destino] != nullptr && tablero[destino]->getColor() != color))
-				return true;
+				return Pieza::validMove(origen, destino, tablero);
 		}
 
 		else if (origen.fila != 6)

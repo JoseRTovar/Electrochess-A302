@@ -3,16 +3,15 @@
 #include "freeglut.h"
 #include <iostream>
 
-int start = 0;
-
 Juego juego;
 Inicio inicio;
+
+int start = 0;
 
 //Callbacks
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnMouseClick(int button, int state, int x, int y); //esta funcion sera llamada para gestionar el ratón
 void OnKeyboardDown(unsigned char key, int x_t, int y_t); //detectar inicio del juego
-
 void resize(int width, int height);
 
 int main(int argc, char* argv[])
@@ -74,7 +73,8 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 	switch (key)
 	{
 	case ' ':
-		if (start == 0) {
+		if (start == 0)
+		{
 			start = 1;
 			stopMusica();
 		}
@@ -84,7 +84,8 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 	glutPostRedisplay();
 }
 
-void resize(int width, int height) {
+void resize(int width, int height)
+{
 	// Impide maximizar la pantalla:
 	glutReshapeWindow(800, 600);
 }

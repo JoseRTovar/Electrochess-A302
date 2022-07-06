@@ -9,13 +9,10 @@ class Juego
 {
 private:
 	Tablero tablero;
-	bool turno;
-	bool jaque;
+	bool turno, jaque, click;
 	Coordenadas* legalmoves[MAX_MOVES];
 	int nlegalmoves;
-	bool click;
-	Coordenadas raton;
-	Coordenadas raton_sel;
+	Coordenadas raton, raton_sel;
 public:
 	Juego() : turno(0), jaque(0), click(0), nlegalmoves(0)
 	{
@@ -28,15 +25,7 @@ public:
 	void cambiarTurno() { turno = !turno; }
 	bool checkJaque(Tablero& tablero, Pieza::Color_e color);
 	void calcLegalMoves(Coordenadas o, Pieza::Color_e color);
-	void vaciarLegalMoves()
-	{
-		for (int i = 0; i < nlegalmoves; i++)
-		{
-			delete legalmoves[i];
-			legalmoves[i] = nullptr;
-		}
-		nlegalmoves = 0;
-	}
+	void vaciarLegalMoves();
 	Coordenadas* operator[](int pos) const { return legalmoves[pos]; }
 	int getLegalMoves() { return nlegalmoves; }
 	bool checkJaqueMate(Pieza::Color_e color);

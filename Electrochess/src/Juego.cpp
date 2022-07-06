@@ -48,28 +48,27 @@ void Juego::click1(Coordenadas o)
 
 		//Comprobaciones y acciones que se realizan al cambiar el estado de tablero
 		if (checkJaqueMate((Pieza::Color_e)!turno))
-			cout << "JAQUE MATE" << endl;
+			cout << "JAQUE MATE" << endl; //INCLUIR PANTALLA DE JAQUE MATE / GAME OVER
 		else
 		{
 			jaque = checkJaque(tablero, (Pieza::Color_e)!turno);
-			cout << jaque << endl;
+			if(jaque==1) cout << "JAQUE" << endl; // INCLUIR PANTALLA DE JAQUE
 			vaciarLegalMoves();
 			cambiarTurno();
 			click = 0;
 		}
 	}
-
 	else
 	{
 		cout << "Movimiento no valido" << endl;
 		vaciarLegalMoves();
 		click = 0;
 	}
+
 }
 
 bool Juego::checkJaque(Tablero& tablero, Pieza::Color_e color)
 {
-
 	for (int f = 0; f < N_FILAS; f++)
 	{
 		for (int c = 0; c < N_COLUMNAS; c++)
@@ -113,16 +112,16 @@ bool Juego::checkJaqueMate(Pieza::Color_e color)
 
 void Juego::calcLegalMoves(Coordenadas o, Pieza::Color_e color)
 {
+	Pieza* pieza = tablero[o];
 	Coordenadas aux;
-
 	for (aux.fila = 0; aux.fila < N_FILAS; aux.fila++)
 	{
 		for (aux.columna = 0; aux.columna < N_COLUMNAS; aux.columna++)
 		{
-			if (tablero[o]->validMove(o, aux, tablero) == true)
+			if (pieza->validMove(o, aux, tablero) == true)
 			{
 				Tablero tablero_aux = tablero;
-				tablero_aux.cambiarEstado(o, aux);
+				tablero_aux.cambiarAux(o, aux);
 				if (checkJaque(tablero_aux, color) == false)
 				{
 					legalmoves[nlegalmoves++] = new Coordenadas(aux.fila, aux.columna);
@@ -130,6 +129,15 @@ void Juego::calcLegalMoves(Coordenadas o, Pieza::Color_e color)
 			}
 		}
 	}
+}
+
+void Juego::vaciarLegalMoves() {
+	for (int i = 0; i < nlegalmoves; i++)
+	{
+		delete legalmoves[i];
+		legalmoves[i] = nullptr;
+	}
+	nlegalmoves = 0;
 }
 
 void Juego::botonRaton(int x, int y, int button, bool down)
@@ -159,9 +167,7 @@ void Juego::botonRaton(int x, int y, int button, bool down)
 	if (down)
 	{
 		if (Coordenadas::fueraTablero(raton) == true) cout << "Fuera del tablero" << endl;
-
 		else if (click == 0) raton_sel = click0();
-
 		else if (click == 1) click1(raton_sel);
 	}
 }

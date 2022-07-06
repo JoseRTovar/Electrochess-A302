@@ -32,11 +32,11 @@ Tablero::Tablero()
 		tab[1][i] = new Peon(Pieza::BLANCA);
 		tab[6][i] = new Peon(Pieza::NEGRA);
 	}
-
 	for (int i = 0; i < 30; i++)
 	{
 		Comidas[i] = nullptr;
 	}
+
 }
 
 void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
@@ -44,10 +44,10 @@ void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 	if (tab[destino.fila][destino.columna] != nullptr)
 	{
 		Comidas[SizeComidas++] = tab[destino.fila][destino.columna];
-		//playMusica("Take.mp3");
-		//cout << "Pieza comida " << endl;
+		playMusica("Take.mp3");
+		cout << "Pieza comida " << endl;
 	}
-	//else playMusica("Move.mp3");
+	else playMusica("Move.mp3");
 
 	//CORONACION DE LOS PEONES
 	if ((destino.fila == 7 || destino.fila == 0) && tab[origen.fila][origen.columna]->getPieza() == Pieza::PEON)
@@ -61,6 +61,13 @@ void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 		tab[origen.fila][origen.columna] = nullptr;
 	}
 
+}
+
+//CAMBIAR ESTADO PARA EL TABLERO AUXILIAR DEL JAQUE Y CALCLEGALMOVES
+void Tablero::cambiarAux(Coordenadas origen, Coordenadas destino) 
+{
+	tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
+	tab[origen.fila][origen.columna] = nullptr;
 }
 
 void Tablero::coronacion(Coordenadas origen, Coordenadas destino)
@@ -108,10 +115,9 @@ void Tablero::coronacion(Coordenadas origen, Coordenadas destino)
 		cout << "Caballo nuevo" << endl;
 		break;
 	}
-
 	tab[origen.fila][origen.columna] = nullptr;
-}
 
+}
 
 void Tablero::dibuja(Juego& juego)
 {

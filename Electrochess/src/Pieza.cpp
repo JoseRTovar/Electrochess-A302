@@ -9,7 +9,7 @@ bool Pieza::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 	//Revisa si la casilla está ocupada por una pieza de tu color
 	if (tablero[destino] != nullptr && tablero[destino]->getColor() == color) return false;
 
-	//no saltar -> Algoritmo para comprobar trayectoria
+	//No saltar -> Algoritmo para comprobar trayectoria
 	//ARRIBA ABAJO 
 	if (destino.fila != origen.fila && destino.columna == origen.columna)
 	{
