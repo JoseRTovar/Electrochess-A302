@@ -11,6 +11,7 @@ public:
 	Coordenadas(int fila, int columna) :fila(fila), columna(columna) {}
 	static bool movLineal(Coordenadas origen, Coordenadas destino);
 	static bool movDiagonal(Coordenadas origen, Coordenadas destino);
+	static bool noSaltarDiag_one(Coordenadas origen, Coordenadas destino);
 	static bool movUnitario(Coordenadas origen, Coordenadas destino);
 	static bool movCaballo(Coordenadas origen, Coordenadas destino);
 	static bool movPeon_b(Coordenadas origen, Coordenadas destino);

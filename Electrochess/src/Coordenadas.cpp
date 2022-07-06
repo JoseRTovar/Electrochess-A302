@@ -12,6 +12,12 @@ bool Coordenadas::movDiagonal(Coordenadas origen, Coordenadas destino)
 	return false;
 }
 
+bool Coordenadas::noSaltarDiag_one(Coordenadas origen, Coordenadas destino)
+{
+	if ((destino.columna - origen.columna == destino.fila - origen.fila) && destino.columna != origen.columna && destino.fila != origen.fila) return true;
+	return false;
+}
+
 bool Coordenadas::movUnitario(Coordenadas origen, Coordenadas destino)
 {
 	if (abs(destino.fila - origen.fila) <= 1 && abs(destino.columna - origen.columna) <= 1) return true;

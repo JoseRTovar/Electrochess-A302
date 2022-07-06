@@ -39,6 +39,18 @@ Tablero::Tablero()
 
 }
 
+void Tablero::cleanTablero()
+{
+	for (int fila = 0; fila < N_FILAS; fila++)
+	{
+		for (int columna = 0; columna < N_COLUMNAS; columna++)
+		{
+			tab[fila][columna] = nullptr;
+		}
+	}
+}
+
+
 void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 {
 	if (tab[destino.fila][destino.columna] != nullptr)
@@ -60,7 +72,6 @@ void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 		tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
 		tab[origen.fila][origen.columna] = nullptr;
 	}
-
 }
 
 //CAMBIAR ESTADO PARA EL TABLERO AUXILIAR DEL JAQUE Y CALCLEGALMOVES

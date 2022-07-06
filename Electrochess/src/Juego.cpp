@@ -48,7 +48,11 @@ void Juego::click1(Coordenadas o)
 
 		//Comprobaciones y acciones que se realizan al cambiar el estado de tablero
 		if (checkJaqueMate((Pieza::Color_e)!turno))
+		{
 			cout << "JAQUE MATE" << endl; //INCLUIR PANTALLA DE JAQUE MATE / GAME OVER
+			jaquemate.draw();
+			tablero.cleanTablero(); //Para que no se puedan mover mas piezas
+		}
 		else
 		{
 			jaque = checkJaque(tablero, (Pieza::Color_e)!turno);

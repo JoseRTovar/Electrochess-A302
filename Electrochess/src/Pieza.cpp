@@ -33,7 +33,7 @@ bool Pieza::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 	}
 
 	//DIAGONAL IZQ -> DCHA ARRIBA Y ABAJO
-	else if ((destino.columna - origen.columna == destino.fila - origen.fila) && destino.columna != origen.columna && destino.fila != origen.fila)
+	else if (Coordenadas::noSaltarDiag_one(origen,destino) == true)
 	{
 		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
 		while (abs(destino.columna - origen.columna) > 1)
