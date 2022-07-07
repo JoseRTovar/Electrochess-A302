@@ -18,9 +18,8 @@ class Tablero
 public:
 	Pieza* tab[N_FILAS][N_COLUMNAS];
 	Pieza* Comidas[30];
-	Sprite fondo{ "Fondo.png" };
+	Sprite fondo{ "Fondo.png" }, jaquemate{ "jaquemate.png" };
 	int SizeComidas = 0;
-	Sprite jaquemate{ "jaquemate.png" };
 public:
 	Tablero();
 	void dibuja(Juego& juego,int JaqueMate);

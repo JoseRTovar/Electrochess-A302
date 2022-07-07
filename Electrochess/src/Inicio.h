@@ -5,6 +5,7 @@
 #include <string>
 #include "freeglut.h"
 #include "ETSIDI.h"
+
 using ETSIDI::Sprite;
 using ETSIDI::playMusica;
 using ETSIDI::stopMusica;

@@ -6,5 +6,6 @@ bool Caballo::validMove(Coordenadas origen, Coordenadas destino, Tablero& tabler
 {
 	if (tablero[destino] != nullptr && tablero[destino]->getColor() == color) return false;
 	if (Coordenadas::movCaballo(origen, destino) == true) return true;
+
 	return false;
 }

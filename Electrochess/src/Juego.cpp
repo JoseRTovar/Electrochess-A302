@@ -41,6 +41,13 @@ void Juego::click1(Coordenadas o)
 			find = true;
 	}
 
+	if (tablero[d] != nullptr)
+	{
+		playMusica("Take.mp3");
+		cout << "Pieza comida " << endl;
+	}
+	else playMusica("Move.mp3");
+
 	if (find == true)
 	{
 		cout << "(" << o.fila << "," << o.columna << ")" << " -> " << "(" << d.fila << "," << d.columna << ")" << endl;
@@ -92,7 +99,6 @@ bool Juego::checkJaque(Tablero& tablero, Pieza::Color_e color)
 			}
 		}
 	}
-
 	return false;
 }
 
@@ -135,7 +141,8 @@ void Juego::calcLegalMoves(Coordenadas o, Pieza::Color_e color)
 	}
 }
 
-void Juego::vaciarLegalMoves() {
+void Juego::vaciarLegalMoves()
+{
 	for (int i = 0; i < nlegalmoves; i++)
 	{
 		delete legalmoves[i];
