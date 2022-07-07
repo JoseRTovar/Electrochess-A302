@@ -1,6 +1,12 @@
 #pragma once
 #include <cmath>
 
+//****************************************************************************************************************
+// Clase para referenciar la posición en el tablero, sus métodos realizan las operaciones matemáticas necesarias
+// para cada tipo de movimiento.
+//****************************************************************************************************************
+
+
 class Coordenadas
 {
 public:

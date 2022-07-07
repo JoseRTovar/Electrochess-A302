@@ -12,6 +12,11 @@ using ETSIDI::stopMusica;
 #define N_FILAS 8
 #define N_COLUMNAS 8
 
+//****************************************************************************************************************
+// Clase que se encarga de almacenar los datos del juego en cada momento (Posición de las piezas y piezas comidas)
+//****************************************************************************************************************
+
+
 class Juego;
 class Tablero
 {

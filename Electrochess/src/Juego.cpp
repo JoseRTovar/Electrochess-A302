@@ -1,5 +1,6 @@
 #include "Juego.h"
 
+//Método para comprobar que el primer click para seleccionar una pieza es válido.
 Coordenadas Juego::click0()
 {
 	Coordenadas c = raton;
@@ -10,6 +11,8 @@ Coordenadas Juego::click0()
 	else if (tablero[c]->getColor() != (Pieza::Color_e)turno)
 		cout << "No es tu turno" << endl;
 
+	//Al seleccionar una pieza clacula todos sus movimientos legales, en caso de no haber, se elimina la selección
+	//y no se puede jugar esa pieza. Esta función devuelve las coordenadas seleccionadas
 	else
 	{
 		calcLegalMoves(c, (Pieza::Color_e)turno);
@@ -30,40 +33,44 @@ Coordenadas Juego::click0()
 	return c;
 }
 
+//Función para indicar las coordenadas a las que se va a mover la pieza que se encuentra en las coordenadas 
+//seleccionadas en el click0
 void Juego::click1(Coordenadas o)
 {
 	Coordenadas d = raton;
 	bool find = false;
 
+	//Si las coordenadas del segundo click coinciden con coordenadas válidas para esa pieza, esta se puede mover.
 	for (int i = 0; i < nlegalmoves; i++)
 	{
 		if (d.fila == legalmoves[i]->fila && d.columna == legalmoves[i]->columna)
 			find = true;
 	}
 
-	if (tablero[d] != nullptr)
-	{
-		playMusica("Take.mp3");
-		cout << "Pieza comida " << endl;
-	}
-	else playMusica("Move.mp3");
-
 	if (find == true)
 	{
+		if (tablero[d] != nullptr)
+		{
+			playMusica("Take.mp3");
+			cout << "Pieza comida " << endl;
+		}
+		else playMusica("Move.mp3");
+
+		//Se imprime en consola el movimiento realizado y se le pasa la información del nuevo estado al tablero
 		cout << "(" << o.fila << "," << o.columna << ")" << " -> " << "(" << d.fila << "," << d.columna << ")" << endl;
 		tablero.cambiarEstado(o, d);
 
 		//Comprobaciones y acciones que se realizan al cambiar el estado de tablero
 		if (checkJaqueMate((Pieza::Color_e)!turno))
 		{
-			cout << "JAQUE MATE" << endl; //INCLUIR PANTALLA DE JAQUE MATE / GAME OVER
+			cout << "JAQUE MATE" << endl;
 			JaqueMate = 1;
-			tablero.cleanTablero(); //Para que no se puedan mover mas piezas
+			tablero.cleanTablero();
 		}
 		else
 		{
 			jaque = checkJaque(tablero, (Pieza::Color_e)!turno);
-			if(jaque==1) cout << "JAQUE" << endl; // INCLUIR PANTALLA DE JAQUE
+			if (jaque == 1) cout << "JAQUE" << endl;
 			vaciarLegalMoves();
 			cambiarTurno();
 			click = 0;
@@ -75,9 +82,10 @@ void Juego::click1(Coordenadas o)
 		vaciarLegalMoves();
 		click = 0;
 	}
-
 }
 
+//Función que se encarga de chequear si en un estado determinado del tablero, el rey de un color se encuentra en 
+//jaque. Para ello, comprueba si existe alguna pieza que lo esté atacando.
 bool Juego::checkJaque(Tablero& tablero, Pieza::Color_e color)
 {
 	for (int f = 0; f < N_FILAS; f++)
@@ -102,6 +110,9 @@ bool Juego::checkJaque(Tablero& tablero, Pieza::Color_e color)
 	return false;
 }
 
+//Función que se encarga de comprobar si el estado actual del tablero es Jaque mate. Comprueba si de las pieza 
+//del color susceptible de esta bajo jaque mate, existe alguna que tenga un movimiento valido, si no es así, es 
+//Jaque mate.
 bool Juego::checkJaqueMate(Pieza::Color_e color)
 {
 	vaciarLegalMoves();
@@ -120,6 +131,9 @@ bool Juego::checkJaqueMate(Pieza::Color_e color)
 	return true;
 }
 
+//Función que se encarga de calcular todos los movimientos legales de una pieza, es decir, que además de que
+//cumplan con su propia regla de movimiento, protejan al rey si están en jaque o no se permita auto introducirse
+//en jaque mate. En caso de encontrar un movimiento válido lo almacena en un array.
 void Juego::calcLegalMoves(Coordenadas o, Pieza::Color_e color)
 {
 	Pieza* pieza = tablero[o];
@@ -141,6 +155,7 @@ void Juego::calcLegalMoves(Coordenadas o, Pieza::Color_e color)
 	}
 }
 
+//Función para vaciar los movimientos legales calculados cada vez que una pieza es pulsada con el ratón.
 void Juego::vaciarLegalMoves()
 {
 	for (int i = 0; i < nlegalmoves; i++)
@@ -151,11 +166,10 @@ void Juego::vaciarLegalMoves()
 	nlegalmoves = 0;
 }
 
+//Función que gestiona el control de los botones del ratón y convierte las coordenadas generales a coordenadas del
+//tablero. 
 void Juego::botonRaton(int x, int y, int button, bool down)
 {
-	// gestiona el control de los botones del ratón
-	// convierte de coordenadas generales (mundo) a coordenadas del tablero (celda)
-
 	GLint viewport[4];
 	GLdouble modelview[16];
 	GLdouble projection[16];
@@ -174,7 +188,7 @@ void Juego::botonRaton(int x, int y, int button, bool down)
 	raton.fila = (int)(abs(posY));
 	raton.columna = (int)(posX);
 
-	//Se podria poner quizas un metodo en coordenadas pa saber si son validas
+	//Permite distinguir entre el primer y segundo click (Primer click seleccionar, segundo mover).
 	if (down)
 	{
 		if (Coordenadas::fueraTablero(raton) == true) cout << "Fuera del tablero" << endl;
@@ -183,6 +197,7 @@ void Juego::botonRaton(int x, int y, int button, bool down)
 	}
 }
 
+//Función para dibujar todos los elementos del juego.
 void Juego::dibuja()
 {
 	gluLookAt(4, 4, 15,  // posicion del ojo
@@ -202,5 +217,6 @@ void Juego::dibuja()
 			}
 		}
 	}
-	tablero.dibuja(*this,JaqueMate);
+	tablero.dibuja(*this, JaqueMate);
 }
+

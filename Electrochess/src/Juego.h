@@ -7,6 +7,12 @@
 enum { MOUSE_LEFT_BUTTON, MOUSE_MIDDLE_BUTTON, MOUSE_RIGHT_BUTTON };
 using ETSIDI::Sprite;
 
+//****************************************************************************************************************
+// Clase que gestiona todos los acontecimientos del juego. Se trata de una clase superior a tablero y piezas,
+// encargada de comunicar al jugador con el tablero. Recibe la información del exterior y se la transmite al
+// tablero, siendo este el que presenta toda la información en cada momento del juego.
+//****************************************************************************************************************
+
 class Juego
 {
 private:
