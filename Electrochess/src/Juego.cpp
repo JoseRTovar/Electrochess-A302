@@ -18,14 +18,14 @@ Coordenadas Juego::click0()
 		calcLegalMoves(c, (Pieza::Color_e)turno);
 		if (nlegalmoves == 0)
 		{
-			cout << "No se puede jugar esta pieza " << nlegalmoves << endl;
+			cout << "No se puede jugar esta pieza " << endl;
 			vaciarLegalMoves();
 			click = 0;
 		}
 
 		else
 		{
-			cout << "Se puede jugar esta pieza " << nlegalmoves << endl;
+			cout << "Se puede jugar esta pieza " << endl;
 			click = 1;
 		}
 	}
@@ -58,7 +58,8 @@ void Juego::click1(Coordenadas o)
 		else playMusica("Move.mp3");
 
 		//Se imprime en consola el movimiento realizado y se le pasa la información del nuevo estado al tablero
-		cout << "(" << o.fila << "," << o.columna << ")" << " -> " << "(" << d.fila << "," << d.columna << ")" << endl;
+		o.print() << "->";
+		d.print() << endl;
 		tablero.cambiarEstado(o, d);
 
 		//Comprobaciones y acciones que se realizan al cambiar el estado de tablero
@@ -225,6 +226,7 @@ void Juego::dibuja()
 		jaquematen.draw();
 		playMusica("Gameover.mp3");
 	}
+
 	else if (JaqueMate == 1 && turno == Pieza::BLANCA) {
 		jaquemateb.setCenter(-2, -3);
 		jaquemateb.setSize(4, 2);
@@ -240,5 +242,9 @@ void Juego::dibuja()
 
 	tablero.dibuja(*this);
 
+	//Dibuja el fondo de la pantalla
+	fondo.setCenter(3.6, 1.45);
+	fondo.setSize(14.9, 11.175);
+	fondo.draw();
 }
 

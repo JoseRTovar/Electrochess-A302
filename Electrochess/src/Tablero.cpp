@@ -40,7 +40,7 @@ Tablero::Tablero()
 
 }
 
-//Metodo que elimina todas las piezas del tablero
+//Metodo que elimina todas las piezas del tablero (Utilizado al finalizar el juego)
 void Tablero::cleanTablero()
 {
 	for (int fila = 0; fila < N_FILAS; fila++)
@@ -50,6 +50,11 @@ void Tablero::cleanTablero()
 			tab[fila][columna] = nullptr;
 		}
 	}
+	for (int i = 0; i < SizeComidas; i++)
+	{
+		Comidas[i] = nullptr;
+	}
+	SizeComidas = 0;
 }
 
 //Metodo encargado del movimiento de las piezas del tablero
@@ -64,11 +69,11 @@ void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 	//CORONACION DE LOS PEONES
 	if ((destino.fila == 7 || destino.fila == 0) && tab[origen.fila][origen.columna]->getPieza() == Pieza::PEON)
 		coronacion(origen, destino);
-	
+
 	//CAMBIAR ESTADO NORMAL 
 	else
 		movEstado(origen, destino);
-
+		
 }
 
 //Cambiar el estado del tablero 
@@ -192,9 +197,5 @@ void Tablero::dibuja(Juego& juego)
 			glTranslatef(-Columna, -Fila, 0);
 		}
 	}
-	//Dibuja el fondo de la pantalla
-	fondo.setCenter(3.6, 1.45);
-	fondo.setSize(14.9, 11.175);
-	fondo.draw();
 }
 

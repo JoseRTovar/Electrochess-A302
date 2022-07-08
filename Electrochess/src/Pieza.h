@@ -1,16 +1,12 @@
 #pragma once
-#include <iostream>
 #include "ETSIDI.h"
 #include "freeglut.h"
 #include "Coordenadas.h"
-
 using ETSIDI::Sprite;
-using namespace std;
 
 //*****************************************************************************************************************************
 //Clase base Pieza encargada de definir todos tus atributos y metodos de forma que se puedan hereden a todos los tipos de pieza
 //*****************************************************************************************************************************
-
 
 class Tablero;
 class Pieza

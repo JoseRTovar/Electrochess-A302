@@ -83,3 +83,36 @@ bool Coordenadas::fueraTablero(Coordenadas c)
 	if (c.fila > 7 || c.fila < 0 || c.columna > 7 || c.columna < 0) return true;
 	return false;
 }
+
+ostream& Coordenadas::print(ostream& o)
+{
+	switch (columna)
+	{
+	case 0:
+		o << "a";
+		break;
+	case 1:
+		o << "b";
+		break;
+	case 2:
+		o << "c";
+		break;
+	case 3:
+		o << "d";
+		break;
+	case 4:
+		o << "e";
+		break;
+	case 5:
+		o << "f";
+		break;
+	case 6:
+		o << "g";
+		break;
+	case 7:
+		o << "h";
+		break;
+	}
+	o << fila + 1;
+	return o;
+}

@@ -1,5 +1,7 @@
 #pragma once
+#include <iostream>
 #include <cmath>
+using namespace std;
 
 //****************************************************************************************************************
 // Clase para referenciar la posición en el tablero, sus métodos realizan las operaciones matemáticas necesarias
@@ -26,4 +28,5 @@ public:
 	static bool primerMovePeon_b(Coordenadas origen, Coordenadas destino);
 	static bool primerMovePeon_n(Coordenadas origen, Coordenadas destino);
 	static bool fueraTablero(Coordenadas c);
+	ostream& print(ostream& o = cout);
 };

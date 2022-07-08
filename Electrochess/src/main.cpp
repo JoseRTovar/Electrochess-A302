@@ -5,7 +5,6 @@
 
 Juego juego;
 Inicio inicio;
-
 int start = 0;
 
 //CALLBACKS FUNCIONES

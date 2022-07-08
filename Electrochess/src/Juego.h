@@ -3,8 +3,6 @@
 #include "freeglut.h"
 #include "ETSIDI.h"
 #define MAX_MOVES 27
-
-enum { MOUSE_LEFT_BUTTON, MOUSE_MIDDLE_BUTTON, MOUSE_RIGHT_BUTTON };
 using ETSIDI::Sprite;
 
 //****************************************************************************************************************
@@ -12,6 +10,8 @@ using ETSIDI::Sprite;
 // encargada de comunicar al jugador con el tablero. Recibe la información del exterior y se la transmite al
 // tablero, siendo este el que presenta toda la información en cada momento del juego.
 //****************************************************************************************************************
+
+enum { MOUSE_LEFT_BUTTON, MOUSE_MIDDLE_BUTTON, MOUSE_RIGHT_BUTTON };
 
 class Juego
 {
@@ -23,6 +23,7 @@ private:
 	Coordenadas raton, raton_sel;
 	int JaqueMate = 0;
 	Sprite jaquemateb{ "jaquemateb.png" }, jaquematen{ "jaquematen.png" }, Jaque{ "Jaque.png" };
+	Sprite fondo{ "Fondo.png" };
 public:
 	Juego() : turno(0), jaque(0), click(0), nlegalmoves(0)
 	{
