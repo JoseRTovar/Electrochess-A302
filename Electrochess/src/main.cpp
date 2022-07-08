@@ -80,6 +80,11 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 			start = 1;
 			stopMusica();
 		}
+	//Play again 
+//	case 'p':
+//		if (JaqueMate != 0)
+//			start = 0;
+//		break;
 	default:
 		break;
 	}

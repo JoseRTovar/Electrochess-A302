@@ -22,7 +22,7 @@ private:
 	int nlegalmoves;
 	Coordenadas raton, raton_sel;
 	int JaqueMate = 0;
-	Sprite jaquemateb{ "jaquemateb.png" }, jaquematen{ "jaquematen.png" }, Jaque{ "Jaque.png" };
+	Sprite jaquemate{ "jaquemate.png" }, Jaque{ "Jaque.png" };
 	Sprite fondo{ "Fondo.png" };
 public:
 	Juego() : turno(0), jaque(0), click(0), nlegalmoves(0)
