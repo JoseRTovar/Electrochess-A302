@@ -29,7 +29,7 @@ public:
 	Tablero();
 	void dibuja(Juego& juego,int JaqueMate);
 	void cambiarEstado(Coordenadas origen, Coordenadas destino);
-	void cambiarAux(Coordenadas origen, Coordenadas destino);
+	void movEstado(Coordenadas origen, Coordenadas destino);
 	void coronacion(Coordenadas origen, Coordenadas destino);
 	Pieza* operator[](Coordenadas pos) const { return tab[pos.fila][pos.columna]; }
 	void cleanTablero();

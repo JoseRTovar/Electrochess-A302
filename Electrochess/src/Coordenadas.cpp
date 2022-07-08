@@ -14,7 +14,7 @@ bool Coordenadas::movDiagonal(Coordenadas origen, Coordenadas destino)
 	return false;
 }
 
-//
+//Algoritmo matematico para la condicion diagonal del calculo de trayectorias "no saltar"
 bool Coordenadas::noSaltarDiag_one(Coordenadas origen, Coordenadas destino)
 {
 	if ((destino.columna - origen.columna == destino.fila - origen.fila) && destino.columna != origen.columna && destino.fila != origen.fila) return true;

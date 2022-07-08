@@ -1,6 +1,10 @@
 #pragma once
 #include "Pieza.h"
 
+//****************************
+//Clase Torre heredada de Pieza
+//****************************
+
 class Torre : public Pieza
 {
 public:

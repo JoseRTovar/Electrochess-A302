@@ -1,6 +1,10 @@
 #pragma once
 #include "Pieza.h"
 
+//****************************
+//Clase Rey heredada de Pieza
+//****************************
+
 class Rey : public Pieza
 {
 public:

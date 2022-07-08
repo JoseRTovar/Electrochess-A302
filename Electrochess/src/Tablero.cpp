@@ -1,6 +1,7 @@
 #include "Tablero.h"
 #include "Juego.h"
 
+//CONSTRUCTOR DEL TABLERO -> Se posicionan todas las piezas sobre el tablero y se contruyte el array de piezas y piezas comidas
 Tablero::Tablero()
 {
 	for (int fila = 0; fila < N_FILAS; fila++)
@@ -10,7 +11,7 @@ Tablero::Tablero()
 			tab[fila][columna] = nullptr;
 		}
 	}
-
+	
 	tab[0][4] = new Rey(Pieza::BLANCA);
 	tab[7][4] = new Rey(Pieza::NEGRA);
 	tab[0][0] = new Torre(Pieza::BLANCA);
@@ -39,6 +40,7 @@ Tablero::Tablero()
 
 }
 
+//Metodo que elimina todas las piezas del tablero
 void Tablero::cleanTablero()
 {
 	for (int fila = 0; fila < N_FILAS; fila++)
@@ -50,9 +52,10 @@ void Tablero::cleanTablero()
 	}
 }
 
-
+//Metodo encargado del movimiento de las piezas del tablero
 void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 {
+	//PIEZAS COMIDAS
 	if (tab[destino.fila][destino.columna] != nullptr)
 	{
 		Comidas[SizeComidas++] = tab[destino.fila][destino.columna];
@@ -60,25 +63,22 @@ void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 
 	//CORONACION DE LOS PEONES
 	if ((destino.fila == 7 || destino.fila == 0) && tab[origen.fila][origen.columna]->getPieza() == Pieza::PEON)
-	{
 		coronacion(origen, destino);
-	}
-
+	
 	//CAMBIAR ESTADO NORMAL 
 	else
-	{
-		tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
-		tab[origen.fila][origen.columna] = nullptr;
-	}
+		movEstado(origen, destino);
+
 }
 
-//CAMBIAR ESTADO PARA EL TABLERO AUXILIAR DEL JAQUE Y CALCLEGALMOVES
-void Tablero::cambiarAux(Coordenadas origen, Coordenadas destino) 
+//Cambiar el estado del tablero 
+void Tablero::movEstado(Coordenadas origen, Coordenadas destino) 
 {
 	tab[destino.fila][destino.columna] = tab[origen.fila][origen.columna];
 	tab[origen.fila][origen.columna] = nullptr;
 }
 
+//MOVIMIENTO ESPECIAL CON POSIBILIDAD DE SELECCION DE PIEZA -> CORONACION DE LOS PEONES
 void Tablero::coronacion(Coordenadas origen, Coordenadas destino)
 {
 	int pieza;
@@ -128,6 +128,7 @@ void Tablero::coronacion(Coordenadas origen, Coordenadas destino)
 
 }
 
+//METODO DE DIBUJO 
 void Tablero::dibuja(Juego& juego, int JaqueMate)
 {
 	//Dibuja de un color verde las casillas a las que es posible mover la pieza seleccionada
@@ -196,7 +197,7 @@ void Tablero::dibuja(Juego& juego, int JaqueMate)
 			glTranslatef(-Columna, -Fila, 0);
 		}
 	}
-
+	//Dibuja el fondo de la pantalla
 	fondo.setCenter(3.6, 1.45);
 	fondo.setSize(14.9, 11.175);
 	fondo.draw();

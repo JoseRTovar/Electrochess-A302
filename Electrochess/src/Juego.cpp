@@ -49,6 +49,7 @@ void Juego::click1(Coordenadas o)
 
 	if (find == true)
 	{
+		//Se añade sonido al movimiento de las piezas
 		if (tablero[d] != nullptr)
 		{
 			playMusica("Take.mp3");
@@ -145,7 +146,7 @@ void Juego::calcLegalMoves(Coordenadas o, Pieza::Color_e color)
 			if (pieza->validMove(o, aux, tablero) == true)
 			{
 				Tablero tablero_aux = tablero;
-				tablero_aux.cambiarAux(o, aux);
+				tablero_aux.movEstado(o, aux);
 				if (checkJaque(tablero_aux, color) == false)
 				{
 					legalmoves[nlegalmoves++] = new Coordenadas(aux.fila, aux.columna);
@@ -200,9 +201,9 @@ void Juego::botonRaton(int x, int y, int button, bool down)
 //Función para dibujar todos los elementos del juego.
 void Juego::dibuja()
 {
-	gluLookAt(4, 4, 15,  // posicion del ojo
+	gluLookAt(4, 4, 15,			    // posicion del ojo
 		4.0, 4.0, 0.0,      // hacia que punto mira  (0,0,0) 
-		0.0, 1.0, 0.0);      // definimos hacia arriba (eje Y)
+		0.0, 1.0, 0.0);			   // definimos hacia arriba (eje Y)
 
 	Coordenadas coord;
 	for (coord.fila = 0; coord.fila < N_FILAS; coord.fila++)

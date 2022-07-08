@@ -2,6 +2,8 @@
 #include "Peon.h"
 #include "Tablero.h"
 
+//Definicion de movimientos validos para el Peon
+//Primer movimiento de cada peon especial y demas movimientos normales
 bool Peon::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
 	if (color == BLANCA)

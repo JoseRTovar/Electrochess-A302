@@ -1,5 +1,6 @@
 #include "Inicio.h"
 
+//Dibujo y musica de la pantalla de Inicio 
 void Inicio::dibuja()
 {
 	gluLookAt(4, 4, 15,				// posicion del ojo

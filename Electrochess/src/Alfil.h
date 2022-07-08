@@ -1,6 +1,10 @@
 #pragma once
 #include "Pieza.h"
 
+//****************************
+//Clase Alfil heredada de Pieza
+//****************************
+
 class Alfil : public Pieza
 {
 public:

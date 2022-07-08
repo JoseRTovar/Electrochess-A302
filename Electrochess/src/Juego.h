@@ -38,5 +38,6 @@ public:
 	Coordenadas* operator[](int pos) const { return legalmoves[pos]; }
 	int getLegalMoves() { return nlegalmoves; }
 	bool checkJaqueMate(Pieza::Color_e color);
+	int getJaqueMate() { return JaqueMate; }
 	void dibuja();
 };

@@ -6,11 +6,11 @@ bool Pieza::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 {
 	int aux;
 
-	//Revisa si la casilla está ocupada por una pieza de tu color
+	//Se revisa si la casilla está ocupada por una pieza del mismo color que el turno 
 	if (tablero[destino] != nullptr && tablero[destino]->getColor() == color) return false;
 
-	//No saltar -> Algoritmo para comprobar trayectoria
-	//ARRIBA ABAJO 
+	//COMPROBACION DE TRAYECTORIA. Objetivo: no saltar entre piezas
+	//LINEAL EN FILAS 
 	if (destino.fila != origen.fila && destino.columna == origen.columna)
 	{
 		aux = (destino.fila - origen.fila) / abs(destino.fila - origen.fila);
@@ -21,7 +21,7 @@ bool Pieza::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 		}
 	}
 
-	//DERECHA E IZQUIERDA
+	//LINEAL EN COLUMNAS
 	else if (destino.columna != origen.columna && destino.fila == origen.fila)
 	{
 		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
@@ -32,7 +32,7 @@ bool Pieza::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 		}
 	}
 
-	//DIAGONAL IZQ -> DCHA ARRIBA Y ABAJO
+	//DIAGONAL DE IZQUIERDA A DERECHA
 	else if (Coordenadas::noSaltarDiag_one(origen,destino) == true)
 	{
 		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
@@ -44,7 +44,7 @@ bool Pieza::validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero)
 		}
 	}
 
-	//DIAGONAL DCHA -> IZQ
+	//DIAGONAL DE DERECHA A IZQUIERDA
 	else if (destino.columna != origen.columna && destino.fila != origen.fila)
 	{
 		aux = (destino.columna - origen.columna) / abs(destino.columna - origen.columna);
