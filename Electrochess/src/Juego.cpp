@@ -218,6 +218,6 @@ void Juego::dibuja()
 			}
 		}
 	}
-	tablero.dibuja(*this, JaqueMate);
+	tablero.dibuja(*this, JaqueMate,jaque);
 }
 

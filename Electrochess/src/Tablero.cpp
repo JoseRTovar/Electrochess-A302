@@ -129,7 +129,7 @@ void Tablero::coronacion(Coordenadas origen, Coordenadas destino)
 }
 
 //METODO DE DIBUJO 
-void Tablero::dibuja(Juego& juego, int JaqueMate)
+void Tablero::dibuja(Juego& juego, int JaqueMate, int jaque)
 {
 	//Dibuja de un color verde las casillas a las que es posible mover la pieza seleccionada
 	for (int i = 0; i < juego.getLegalMoves(); i++)
@@ -148,6 +148,11 @@ void Tablero::dibuja(Juego& juego, int JaqueMate)
 		jaquemate.setCenter(-2, -2);
 		jaquemate.setSize(4, 4);
 		jaquemate.draw();
+	}
+	if (jaque == 1) {
+		Jaque.setCenter(-2.75, -8.2);
+		Jaque.setSize(2.64, 1.16);
+		Jaque.draw();
 	}
 
 	//Dibuja el tablero por completo
