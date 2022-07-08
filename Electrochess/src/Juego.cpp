@@ -218,6 +218,27 @@ void Juego::dibuja()
 			}
 		}
 	}
-	tablero.dibuja(*this, JaqueMate,jaque);
+
+	if (JaqueMate == 1 && turno == Pieza::NEGRA) {
+		jaquematen.setCenter(-2, -3);
+		jaquematen.setSize(4, 2);
+		jaquematen.draw();
+		playMusica("Gameover.mp3");
+	}
+	else if (JaqueMate == 1 && turno == Pieza::BLANCA) {
+		jaquemateb.setCenter(-2, -3);
+		jaquemateb.setSize(4, 2);
+		jaquemateb.draw();
+		playMusica("Gameover.mp3");
+	}
+
+	if (jaque == 1) {
+		Jaque.setCenter(-2.75, -8.2);
+		Jaque.setSize(2.64, 1.16);
+		Jaque.draw();
+	}
+
+	tablero.dibuja(*this);
+
 }
 

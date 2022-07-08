@@ -23,11 +23,11 @@ class Tablero
 public:
 	Pieza* tab[N_FILAS][N_COLUMNAS];
 	Pieza* Comidas[30];
-	Sprite fondo{ "Fondo.png" }, jaquemate{ "jaquemate.png" }, Jaque{ "Jaque.png" };;
+	Sprite fondo{ "Fondo.png" };
 	int SizeComidas = 0;
 public:
 	Tablero();
-	void dibuja(Juego& juego,int JaqueMate, int jaque);
+	void dibuja(Juego& juego);
 	void cambiarEstado(Coordenadas origen, Coordenadas destino);
 	void movEstado(Coordenadas origen, Coordenadas destino);
 	void coronacion(Coordenadas origen, Coordenadas destino);

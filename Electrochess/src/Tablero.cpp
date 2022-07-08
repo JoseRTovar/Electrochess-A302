@@ -129,7 +129,7 @@ void Tablero::coronacion(Coordenadas origen, Coordenadas destino)
 }
 
 //METODO DE DIBUJO 
-void Tablero::dibuja(Juego& juego, int JaqueMate, int jaque)
+void Tablero::dibuja(Juego& juego)
 {
 	//Dibuja de un color verde las casillas a las que es posible mover la pieza seleccionada
 	for (int i = 0; i < juego.getLegalMoves(); i++)
@@ -143,16 +143,6 @@ void Tablero::dibuja(Juego& juego, int JaqueMate, int jaque)
 		glVertex3d(juego[i]->columna, juego[i]->fila + 1.0, 0.0);
 		glEnd();
 		glEnable(GL_LIGHTING);
-	}
-	if (JaqueMate == 1) {
-		jaquemate.setCenter(-2, -2);
-		jaquemate.setSize(4, 4);
-		jaquemate.draw();
-	}
-	if (jaque == 1) {
-		Jaque.setCenter(-2.75, -8.2);
-		Jaque.setSize(2.64, 1.16);
-		Jaque.draw();
 	}
 
 	//Dibuja el tablero por completo

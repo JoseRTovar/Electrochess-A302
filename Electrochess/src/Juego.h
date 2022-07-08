@@ -22,6 +22,7 @@ private:
 	int nlegalmoves;
 	Coordenadas raton, raton_sel;
 	int JaqueMate = 0;
+	Sprite jaquemateb{ "jaquemateb.png" }, jaquematen{ "jaquematen.png" }, Jaque{ "Jaque.png" };
 public:
 	Juego() : turno(0), jaque(0), click(0), nlegalmoves(0)
 	{
@@ -38,6 +39,5 @@ public:
 	Coordenadas* operator[](int pos) const { return legalmoves[pos]; }
 	int getLegalMoves() { return nlegalmoves; }
 	bool checkJaqueMate(Pieza::Color_e color);
-	int getJaqueMate() { return JaqueMate; }
 	void dibuja();
 };
