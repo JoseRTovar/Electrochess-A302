@@ -5,7 +5,7 @@
 using ETSIDI::Sprite;
 
 //*****************************************************************************************************************************
-//Clase base Pieza encargada de definir todos tus atributos y metodos de forma que se puedan hereden a todos los tipos de pieza
+//Clase base Pieza encargada de definir todos tus atributos y métodos de forma que se puedan hereden a todos los tipos de pieza
 //*****************************************************************************************************************************
 
 class Tablero;
@@ -27,9 +27,8 @@ public:
 		imagen.setCenter(0.4, 0.4);
 		imagen.setSize(0.8, 0.8);
 	};
-
 	Pieza_e getPieza() { return pieza; }
 	Color_e getColor() { return color; }
-	virtual void dibuja() { imagen.draw(); }
 	virtual bool validMove(Coordenadas origen, Coordenadas destino, Tablero& tablero);
+	virtual void dibuja() { imagen.draw(); }
 };

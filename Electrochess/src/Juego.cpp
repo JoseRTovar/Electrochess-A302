@@ -66,7 +66,7 @@ void Juego::click1(Coordenadas o)
 		if (checkJaqueMate((Pieza::Color_e)!turno))
 		{
 			cout << "JAQUE MATE" << endl;
-			JaqueMate = 1;
+			jaqueMate = 1;
 			tablero.cleanTablero();
 		}
 		else
@@ -220,14 +220,14 @@ void Juego::dibuja()
 		}
 	}
 
-	if (JaqueMate == 1 && turno == Pieza::NEGRA) {
+	if (jaqueMate == 1 && turno == Pieza::NEGRA) {
 		jaquematen.setCenter(-2, -3);
 		jaquematen.setSize(4, 2);
 		jaquematen.draw();
 		playMusica("Gameover.mp3");
 	}
 
-	else if (JaqueMate == 1 && turno == Pieza::BLANCA) {
+	else if (jaqueMate == 1 && turno == Pieza::BLANCA) {
 		jaquemateb.setCenter(-2, -3);
 		jaquemateb.setSize(4, 2);
 		jaquemateb.draw();

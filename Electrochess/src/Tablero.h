@@ -26,12 +26,12 @@ public:
 	int SizeComidas = 0;
 public:
 	Tablero();
-	void dibuja(Juego& juego);
+	Pieza* operator[](Coordenadas pos) const { return tab[pos.fila][pos.columna]; }
 	void cambiarEstado(Coordenadas origen, Coordenadas destino);
 	void movEstado(Coordenadas origen, Coordenadas destino);
 	void coronacion(Coordenadas origen, Coordenadas destino);
-	Pieza* operator[](Coordenadas pos) const { return tab[pos.fila][pos.columna]; }
 	void cleanTablero();
+	void dibuja(Juego& juego);
 };
 
 

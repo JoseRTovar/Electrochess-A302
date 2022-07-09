@@ -40,23 +40,6 @@ Tablero::Tablero()
 
 }
 
-//Metodo que elimina todas las piezas del tablero (Utilizado al finalizar el juego)
-void Tablero::cleanTablero()
-{
-	for (int fila = 0; fila < N_FILAS; fila++)
-	{
-		for (int columna = 0; columna < N_COLUMNAS; columna++)
-		{
-			tab[fila][columna] = nullptr;
-		}
-	}
-	for (int i = 0; i < SizeComidas; i++)
-	{
-		Comidas[i] = nullptr;
-	}
-	SizeComidas = 0;
-}
-
 //Metodo encargado del movimiento de las piezas del tablero
 void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 {
@@ -73,9 +56,9 @@ void Tablero::cambiarEstado(Coordenadas origen, Coordenadas destino)
 	//CAMBIAR ESTADO NORMAL 
 	else
 		movEstado(origen, destino);
-		
 }
 
+ 
 //Cambiar el estado del tablero 
 void Tablero::movEstado(Coordenadas origen, Coordenadas destino) 
 {
@@ -130,7 +113,23 @@ void Tablero::coronacion(Coordenadas origen, Coordenadas destino)
 		break;
 	}
 	tab[origen.fila][origen.columna] = nullptr;
-
+}
+ 
+//Metodo que elimina todas las piezas del tablero (Utilizado al finalizar el juego)
+void Tablero::cleanTablero()
+{
+	for (int fila = 0; fila < N_FILAS; fila++)
+	{
+		for (int columna = 0; columna < N_COLUMNAS; columna++)
+		{
+			tab[fila][columna] = nullptr;
+		}
+	}
+	for (int i = 0; i < SizeComidas; i++)
+	{
+		Comidas[i] = nullptr;
+	}
+	SizeComidas = 0;
 }
 
 //METODO DE DIBUJO 

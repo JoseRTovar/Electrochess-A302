@@ -17,15 +17,14 @@ class Juego
 {
 private:
 	Tablero tablero;
-	bool turno, jaque, click;
+	bool turno, jaque, jaqueMate, click;
 	Coordenadas* legalmoves[MAX_MOVES];
 	int nlegalmoves;
 	Coordenadas raton, raton_sel;
-	int JaqueMate = 0;
 	Sprite jaquemateb{ "jaquemateb.png" }, jaquematen{ "jaquematen.png" }, Jaque{ "Jaque.png" };
 	Sprite fondo{ "Fondo.png" };
 public:
-	Juego() : turno(0), jaque(0), click(0), nlegalmoves(0)
+	Juego() : turno(0), jaque(0), jaqueMate(0), click(0), nlegalmoves(0)
 	{
 		for (int i = 0; i < MAX_MOVES; i++)
 			legalmoves[i] = nullptr;
