@@ -70,10 +70,10 @@ void OnMouseClick(int b, int state, int x, int y)
 //INTERACCION POR TECLADO
 void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 {
-	
+
 	switch (key)
 	{
-	//START
+		//START
 	case ' ':
 		if (start == 0)
 		{
