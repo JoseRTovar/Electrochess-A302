@@ -220,13 +220,17 @@ void Juego::dibuja()
 		}
 	}
 
-	if (JaqueMate == 1) {
-		if (turno == Pieza::NEGRA) jaquemate = Sprite("jaquemate.png");
-		else jaquemate = Sprite("jaquemateblancas.png");
-	
-		jaquemate.setCenter(-2, -2);
-		jaquemate.setSize(4, 4);
-		jaquemate.draw();
+	if (JaqueMate == 1 && turno == Pieza::NEGRA) {
+		jaquematen.setCenter(-2, -3);
+		jaquematen.setSize(4, 2);
+		jaquematen.draw();
+		playMusica("Gameover.mp3");
+	}
+
+	else if (JaqueMate == 1 && turno == Pieza::BLANCA) {
+		jaquemateb.setCenter(-2, -3);
+		jaquemateb.setSize(4, 2);
+		jaquemateb.draw();
 		playMusica("Gameover.mp3");
 	}
 
