@@ -11,3 +11,5 @@ programación C++ y la API OpenGL para la representación gráfica del juego.
 Dentro del repositorio de github encontramos 3 carpetas: Dependencies, donde se encuentran las bibliotecas externas utilizadas en el proyecto (ETSIDI y freeglut);
 Electrochess, donde se sitúa la subcarpeta src en la que se encuentra el código fuente del trabajo (.h y .cpp) y por último, la carpeta bin donde se sitúa el .exe del
 proyecto, así como los .dll de las librerías externas.
+
+Para poder compilar el programa son necesarias las herramientas de compilación para v143.
